@@ -4,6 +4,6 @@ permalink: /posts/
 layout: posts
 author_profile: true
 sidebar:
-  title: "Sample Title"
+  title: "All Title"
   nav: sidebar-sample
 ---
