@@ -19,3 +19,8 @@ Hence, in summary:
   - The Mann-Whitney U test is usually used in cases that data sample size is small;
   - The test can detect differences in shape and spread as well as just differences in medians.
   - The mean is $$\frac{\alpha}{\alpha+\beta}=\frac{81}{81+219}=.270$$
+  
+
+Calculation
+----------------------
+The computation
