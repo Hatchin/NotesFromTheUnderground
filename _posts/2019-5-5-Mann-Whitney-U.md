@@ -8,6 +8,7 @@ tags:
   - Web App
 author_profile: true
 mathjax: true
+comments: true
 ---
 
 Use of Mann-Whitney test
