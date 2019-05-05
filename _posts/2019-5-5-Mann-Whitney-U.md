@@ -10,6 +10,9 @@ author_profile: true
 mathjax: true
 ---
 
+Use of Mann-Whitney test
+----------------------------
+
 The Mann–Whitney U test is the non-parametric alternative test to the independent sample t-test. It is a test of both location and shape. Given two independent samples, it tests whether one variable tends to have values higher than the other (test on sample means). Theoretically, in large samples the Mann-Whitney test can also detect differences in spread even when the medians are very similar. 
 
 This test does not assume that the samples is normally distributed, that the variances of the two populations are equal or the two sample sizes are equal.
@@ -21,6 +24,6 @@ Hence, in summary:
   - The mean is $$\frac{\alpha}{\alpha+\beta}=\frac{81}{81+219}=.270$$
   
 
-Calculation
+Test Statistic for the Mann Whitney U Test
 ----------------------
 The computation
