@@ -272,3 +272,4 @@ How to
 ------------------
 - Enable Latex (render math equations)([source](https://github.com/mmistakes/minimal-mistakes/issues/735))
 - Enable center text in pages([source](https://stackoverflow.com/questions/3912694/using-markdown-how-do-i-center-an-image-and-its-caption/43691451))
+- PDF render ([source](https://jamesonzimmer.com/simple-pdf-embed-for-jekyll/))
