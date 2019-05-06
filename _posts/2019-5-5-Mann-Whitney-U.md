@@ -26,10 +26,19 @@ Hence, in summary:
 
 Test Statistic and Calculation Example
 ----------------------
-Consider a Phase II clinical trial designed to investigate the effectiveness of a new drug to reduce symptoms of asthma in children. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the number of episodes of shortness of breath over a 1 week period following receipt of the assigned treatment. The data are shown below.
+Consider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below.
 
 Pros | Cons 
 --- | --- 
 Very efficient |  Prone to outliers
 O(no.iteration * no.clusters * no.instances * no.data \ dimensions) | Cannot have categorical variables (since we are computing means, must be numerical)
 Make use of all the data |  
+
+
+\begin{table}[]
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Placebo  & 7 & 5 & 6 & 4 & 12\\ \midrule
+New Drug & 3 & 6 & 4 & 2 & 1\\ \bottomrule
+\end{tabular}
+\end{table}
