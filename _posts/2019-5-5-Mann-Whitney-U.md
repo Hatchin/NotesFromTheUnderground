@@ -136,9 +136,11 @@ With samples this large, the value of $$U$$ approaches a normal distribution, an
    U =  max( U_{1}, ..., U_{i})
    $$
 
-2. Compute the standard deviation of $$U$$
+2. Compute the z value of $$U$$ statistic
 
    $$
    \sigma _{U}={\sqrt {n_{1}n_{2}(n_{1}+n_{2}+1) \over 12}}
+   \\
+   Z = \frac{ U - \frac{n_{1}n{2}}{2}}{\sigma _{U}}
    $$
    
