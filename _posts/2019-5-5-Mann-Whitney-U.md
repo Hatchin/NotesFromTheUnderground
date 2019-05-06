@@ -36,7 +36,7 @@ Make use of all the data |
 
 
 \begin{table}[]
-\begin{tabular}{@{}lllll@{}}
+\begin{tabular}{||c c c c||} 
 \toprule
 Placebo  & 7 & 5 & 6 & 4 & 12\\ \midrule
 New Drug & 3 & 6 & 4 & 2 & 1\\ \bottomrule
