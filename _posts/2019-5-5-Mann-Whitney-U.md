@@ -35,5 +35,6 @@ O(no.iteration * no.clusters * no.instances * no.data \ dimensions) | Cannot hav
 Make use of all the data |  
 
 | Placebo     | 7 | 5 | 6 | 4 | 12 |
+| :---        | :---:  |  :---:  | :---:  | :---:  |  ---: |
 | New Drug    | 3 | 6 | 4 | 2 | 1  |
 
