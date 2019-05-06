@@ -51,10 +51,10 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
 
    To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows.
    
-   |             |          Grouping           ||
-   First Header  | Second Header | Third Header |
-    ------------ | :-----------: | -----------: |
-   Content       |          *Long Cell*        ||
-   Content       |   **Cell**    |         Cell |
+   | Total Samples (Ordered) ||            Ranks   ||
+   Placebo    |   New Drugs   | Placebo | New Drugs |
+   ---------- | :-----------: | :-----: |---------: |
+   \n         |  1            |  \n     |1          |
+   \n         |  2            |  \n     | 2         |
 
 
