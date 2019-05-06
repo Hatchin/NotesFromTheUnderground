@@ -41,6 +41,6 @@ H_{1}: The \ two \ populations \ are \ not \ equal.
 $$
 
 {: style="text-align:center"}
-$H_{0}$ 
+$$H_{0}$$
 
 What about thist?
