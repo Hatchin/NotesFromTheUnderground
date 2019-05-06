@@ -55,9 +55,9 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    Placebo    |   New Drugs   | Placebo | New Drugs |
    |:---------| :-----------: | :-----: |---------: |
    |          |  1            |         |1          |
-       \      |  2            |  \      | 2         |
-       \      |  3            |  \      | 3         |
-       \      |  2            |  \      | 2         |
+   |          |  2            |         | 2         |
+   |          |  3            |         | 3         |
+   |          |  2            |         | 2         |
    4          |  4            |  4.5    | 4.5       |
    5          |               | 6       |           |
    6          |  6            | 7.5     | 7.5       |
