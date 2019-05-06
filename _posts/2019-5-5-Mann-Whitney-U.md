@@ -34,4 +34,6 @@ Consider a test designed to investigate the effectiveness of a new drug. A total
 
 The hypothesis is given below: 
 
--> This is centered Text <-
+{: style="text-align:center"}
+That is, while there is value in the items on
+the right, we value the items on the left more.
