@@ -37,4 +37,4 @@ Make use of all the data |
 | Name     | Character |
 | ---      | ---       |
 | Backtick | `         |
-| Pipe     | \|        |
+
