@@ -93,10 +93,20 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    $$
    
    For this example,
-  $$
-  U_{1} = 5(5) + \frac{5(6)}{2} - 37 = 3
-  \\
-  U_{1} = 5(5) + \frac{5(6)}{2} - 18 = 22
-  $$
+   
+   $$
+   U_{1} = 5(5) + \frac{5(6)}{2} - 37 = 3
+   \\
+   U_{1} = 5(5) + \frac{5(6)}{2} - 18 = 22
+   $$
   
-   Thus, the test statistic is $$U=3$$.
+   Thus, the test statistic is  $$U=3$$.
+   
+4. Compare $$U$$ with critical $$U$$
+   
+   In every test, we must determine whether the observed $$U$$ supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of $$U$$ such that,
+   {: style="text-align:center"}
+   If $$U \leq critical \U$$, we reject $$H_{0}$$ in favor of $$H_{1}$$ and,
+   if $$U > critical \U$$ we do not reject $$H_{0}$$.
+   
+   <embed src="https://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/Mann-Whitney-Table-CriticalValues.pdf" type="application/pdf" />
