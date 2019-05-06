@@ -167,4 +167,4 @@ However, the scipy version of Mann-Whitney U test noted that
 Use only when the number of observation in each sample is > 20.
 ```
 
-
+Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed. 
