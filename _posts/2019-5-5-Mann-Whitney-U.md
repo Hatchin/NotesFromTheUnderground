@@ -40,7 +40,13 @@ H_{0}: The \ two \ populations \ are \ equal \ versus
 H_{1}: The \ two \ populations \ are \ not \ equal.
 $$
 
-{: style="text-align:center"}
-$$H_{0}$$
+The sample size is small ($$n_{1}=n_{2}=5$$), so a nonparametric test is appropriate. We are going to use Mann Whitney U test to solve this problem. 
 
-What about thist?
+The test statistic for the Mann Whitney U Test is denoted $$U$$, whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good. 
+
+### Calculation
+The statistic, $$U$$, could be easily calculated by hand, especially for small samples. 
+
+1. Assign ranks 
+
+To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows. We also need to keep track of the group assignments in the total sample.
