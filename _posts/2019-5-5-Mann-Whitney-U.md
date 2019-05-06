@@ -32,8 +32,11 @@ Consider a test designed to investigate the effectiveness of a new drug. A total
 | :---        | :---:  |  :---:  | :---:  | :---:  |  ---: |
 | New Drug    | 3 | 6 | 4 | 2 | 1  |
 
-<div id="container">
-    <img />
-    This is an image
-</div>
+{:.center}
+This is an image
 
+Hi!
+
+.center {
+  text-align: center;
+}
