@@ -35,5 +35,6 @@ Consider a test designed to investigate the effectiveness of a new drug. A total
 The hypothesis is given below: 
 
 {: style="text-align:center"}
-That is, while there is value in the items on
-the right, we value the items on the left more.
+That is, while there is value in the items on the right, we value the items on the left more.
+
+What about thist?
