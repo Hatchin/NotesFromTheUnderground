@@ -44,7 +44,7 @@ The sample size is small ($$n_{1}=n_{2}=5$$), so a nonparametric test is appropr
 
 The test statistic for the Mann Whitney U Test is denoted $$U$$, whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good. 
 
-### Calculation
+### Small Sample Example
 The statistic, $$U$$, could be easily calculated by hand, especially for small samples. 
 
 1. Assign ranks 
@@ -115,4 +115,15 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    The table of critical $$U$$ is as follows.
    <iframe src="https://drive.google.com/file/d/1tDhqpREuVXevtImG0N_oviIFcb3khlah/preview" width="640" height="480"></iframe>
     
-   From this table, we could get the critical $$U = 2$$ and therefore, $$U = 3 > 2 = critical \ U$$. We do not reject $$H_{0}$$ and do not have statistically significant evidence at $$\alpha =0.05$$, to show that the two populations are not equal. 
+    
+   From this table, we could get the critical $$U = 2$$ and therefore, 
+   
+   $$
+   U = 3 > 2 = critical \ U
+   $$ 
+   
+   We do not reject $$H_{0}$$ and do not have statistically significant evidence at $$\alpha =0.05$$, to show that the two populations are not equal. 
+   
+### When sample size is larger
+
+
