@@ -112,7 +112,7 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    {: style="text-align:center"}
    if $$U > critical \ U$$ we do not reject $$H_{0}$$.
    
-   <embed src="https://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/Mann-Whitney-Table-CriticalValues.pdf" type="application/pdf" />
-   
-   
+   The table of critical $$U$$ is as follows.
    <iframe src="https://drive.google.com/file/d/1tDhqpREuVXevtImG0N_oviIFcb3khlah/preview" width="640" height="480"></iframe>
+    
+   From this table, we could get the critical $$U = 2$$ and therefore, $$U = 3 > 2 = critical \ U$$. We do not reject $$H_{0}$$ and do not have statistically significant evidence at $$\alpha =0.05$$, to show that the two populations are not equal. 
