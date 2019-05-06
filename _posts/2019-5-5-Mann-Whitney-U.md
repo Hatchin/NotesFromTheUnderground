@@ -68,10 +68,15 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    
 2. Sum the ranks for each group
    
-   The second step is to calculate the sum of ranks (SoR) of each group.  
+   The second step is to calculate the sum of ranks (R) of each group.  
    
    In the placebo group, 
    $$
-   SoR = 4.5 + 6 + 7.5 + 9 + 10 = 37
+   R_{1} = 4.5 + 6 + 7.5 + 9 + 10 = 37
+   $$
+   
+   In the new drugs group,
+   $$
+   R_{2} = 1 + 2 + 3 + 2 + 4.5 + 7.5 = 18
    $$
    
