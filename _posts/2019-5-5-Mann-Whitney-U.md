@@ -124,6 +124,21 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    
    We do not reject $$H_{0}$$ and do not have statistically significant evidence at $$\alpha =0.05$$, to show that the two populations are not equal. 
    
-### When sample size is larger
+### When sample size is larger (n > 20)
 
+With samples this large, the value of $$U$$ approaches a normal distribution, and so the null hypothesis can be tested by a Z-test.
 
+1. Compute $$U$$
+   
+   Here,
+   
+   $$
+   U =  max( U_{1}, ..., U_{i})
+   $$
+
+2. Compute the standard deviation of $$U$$
+
+   $$
+   \sigma _{U}={\sqrt {n_{1}n_{2}(n_{1}+n_{2}+1) \over 12}}
+   $$
+   
