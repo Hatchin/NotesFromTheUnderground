@@ -157,7 +157,14 @@ With samples this large, the value of $$U$$ approaches a normal distribution, an
    if $$Z > critical \ Z = 1.96$$ we reject $$H_{0}$$ in favor of $$H_{1}$$.
    
    
-Available Python Script
+Python Script for Mann–Whitney U test
 ----------------------
 
 The Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in [scipy.stat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html). 
+
+However, the scipy version of Mann-Whitney U test noted that
+```
+Use only when the number of observation in each sample is > 20.
+```
+
+
