@@ -35,8 +35,9 @@ Consider a test designed to investigate the effectiveness of a new drug. A total
 The hypothesis is given below: 
 
 $$
-H_{0}: The two populations are equal versus
-H_{1}: The two populations are not equal.
+H_{0}: The \ two \ populations \ are \ equal \ versus
+\\
+H_{1}: The \ two \ populations \ are \ not \ equal.
 $$
 
 {: style="text-align:center"}
