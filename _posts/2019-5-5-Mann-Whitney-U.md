@@ -32,7 +32,7 @@ Consider a test designed to investigate the effectiveness of a new drug. A total
 | :---        | :---:  |  :---:  | :---:  | :---:  |  ---: |
 | New Drug    | 3 | 6 | 4 | 2 | 1  |
 
-The hypothesis is given below: 
+The hypothesis is given below and and the test is supposed to run at the 5% level of significance (i.e., $$\alpha=0.05$$).: 
 
 $$
 H_{0}: The \ two \ populations \ are \ equal \ versus
@@ -84,8 +84,19 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    
 3. Compute $$U$$
    
-   Given
+   Given,
    
    $$
    U_{i} = n_{1}n_{2} + \frac{n_{i}(n_{i}+1)}{2} - R_{i}
+   
+   U =  min( U_{1}, ..., U_{i})
    $$
+   
+   For this example,
+  $$
+  U_{1} = 5(5) + \frac{5(6)}{2} - 37 = 3
+  \\
+  U_{1} = 5(5) + \frac{5(6)}{2} - 18 = 22
+  $$
+  
+   Thus, the test statistic is $$U=3$$.
