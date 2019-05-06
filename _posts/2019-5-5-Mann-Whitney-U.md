@@ -53,7 +53,7 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    
    | Total Samples (Ordered) ||            Ranks   ||
    Placebo    |   New Drugs   | Placebo | New Drugs |
-   ---------- | :-----------: | :-----: |---------: |
+   ----------:| :-----------: | :-----: |---------: |
               |  1            |         |1          |
               |  2            |         | 2         |
               |  3            |         | 3         |
