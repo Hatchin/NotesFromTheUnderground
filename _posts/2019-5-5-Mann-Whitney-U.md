@@ -49,9 +49,9 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
 
 1. Assign ranks 
 
-   To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows.
+   The first step is to rank all the data. To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows.
    
-   | Total Samples (Ordered) ||            Ranks   ||
+   | Sample Value (Ordered)  ||            Ranks   ||
    Placebo    |   New Drugs   | Placebo | New Drugs |
    |:---------| :-----------: | :-----: |---------: |
    |          |  1            |         |1          |
@@ -63,4 +63,15 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    6          |  6            | 7.5     | 7.5       |
    7          |               | 9       |           |
    12         |               | 10      |           |
-
+   
+   For the tie values, we use their mean of ranks. 
+   
+2. Sum the ranks for each group
+   
+   The second step is to calculate the sum of ranks (SoR) of each group.  
+   
+   In the placebo group, 
+   $$
+   SoR = 4.5 + 6 + 7.5 + 9 + 10 = 37
+   $$
+   
