@@ -141,6 +141,18 @@ With samples this large, the value of $$U$$ approaches a normal distribution, an
    $$
    \sigma _{U}={\sqrt {n_{1}n_{2}(n_{1}+n_{2}+1) \over 12}}
    \\
+   \\
    Z = \frac{ U - \frac{n_{1}n{2}}{2}}{\sigma _{U}}
    $$
+   
+3. Determination
+
+   Compare the obtained Z value and the critical Z value to determine whether to retain or reject the null hypothesis. 
+   at the 5% level of significance, similarly,
+   
+   {: style="text-align:center"}
+   If $$Z \leq critical \ Z = 1.96$$, we do not reject $$H_{0}$$ and,
+   
+   {: style="text-align:center"}
+   if $$Z > critical \ Z = 1.96$$ we reject $$H_{0}$$ in favor of $$H_{1}$$.
    
