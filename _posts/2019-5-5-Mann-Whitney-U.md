@@ -10,6 +10,7 @@ author_profile: true
 mathjax: true
 comments: true
 toc: true
+toc_sticky: true
 ---
 
 This is an extension for original Mann-Whitney U test in Scipy. Add solution to test for small sample size (n < 20).
