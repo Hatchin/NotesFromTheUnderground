@@ -108,6 +108,7 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    
    {: style="text-align:center"}
    If $$U \leq critical \ U$$, we reject $$H_{0}$$ in favor of $$H_{1}$$ and,
+   
    {: style="text-align:center"}
    if $$U > critical \ U$$ we do not reject $$H_{0}$$.
    
