@@ -49,6 +49,6 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
 
 1. Assign ranks 
 
-⋅⋅⋅To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two 
+   To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two 
 
   To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data   from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows. We also need to keep track of the group assignments in the total sample.
