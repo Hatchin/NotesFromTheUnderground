@@ -114,8 +114,5 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    
    <embed src="https://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/Mann-Whitney-Table-CriticalValues.pdf" type="application/pdf" />
    
-   <a href="https://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/Mann-Whitney-Table-CriticalValues.pdf" target="_blank">
-  
-  <object     data="http://partners.adobe.com/public/developer/en/acrobat/sdk/pdf/pdf_creation_apis_and_specs/PDFOpenParameters.pdf" type="application/pdf" width="100px" height="100%">
-  <p>Alternative text</p>
-  </object>
+   
+   <iframe src="https://drive.google.com/file/d/1tDhqpREuVXevtImG0N_oviIFcb3khlah/preview" width="640" height="480"></iframe>
