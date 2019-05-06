@@ -110,6 +110,6 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    If $$U \leq critical \ U$$, we reject $$H_{0}$$ in favor of $$H_{1}$$ and,
    if $$U > critical \ U$$ we do not reject $$H_{0}$$.
    
-   <embed src="https://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/Mann-Whitney-Table-CriticalValues.pdf" type="application/pdf" />
+   <embed src="http://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/Mann-Whitney-Table-CriticalValues.pdf" type="application/pdf" />
    
-   ![caterpillar](https://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/Mann-Whitney-Table-CriticalValues.pdf)
+   ![caterpillar](http://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/Mann-Whitney-Table-CriticalValues.pdf)
