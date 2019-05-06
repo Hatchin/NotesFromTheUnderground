@@ -32,11 +32,6 @@ Consider a test designed to investigate the effectiveness of a new drug. A total
 | :---        | :---:  |  :---:  | :---:  | :---:  |  ---: |
 | New Drug    | 3 | 6 | 4 | 2 | 1  |
 
-{:.center}
-This is an image
+The hypothesis is given below: 
 
-Hi!
-
-.center {
-  text-align: center;
-}
+-> This is centered Text <-
