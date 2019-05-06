@@ -34,7 +34,6 @@ Very efficient |  Prone to outliers
 O(no.iteration * no.clusters * no.instances * no.data \ dimensions) | Cannot have categorical variables (since we are computing means, must be numerical)
 Make use of all the data |  
 
-| Name     | Character |
-| ---      | ---       |
-| Backtick | `         |
+| Placebo     | 7 | 5 | 6 | 4 | 12 |
+| New Drug    | 3 | 6 | 4 | 2 | 1  |
 
