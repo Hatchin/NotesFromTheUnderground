@@ -28,13 +28,12 @@ Test Statistic and Calculation Example
 ----------------------
 Consider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below.
 
-Pros | Cons 
---- | --- 
-Very efficient |  Prone to outliers
-O(no.iteration * no.clusters * no.instances * no.data \ dimensions) | Cannot have categorical variables (since we are computing means, must be numerical)
-Make use of all the data |  
-
 | Placebo     | 7 | 5 | 6 | 4 | 12 |
 | :---        | :---:  |  :---:  | :---:  | :---:  |  ---: |
 | New Drug    | 3 | 6 | 4 | 2 | 1  |
+
+<div id="container">
+    <img />
+    This is an image
+</div>
 
