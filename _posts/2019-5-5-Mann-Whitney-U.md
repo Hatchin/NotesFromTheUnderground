@@ -34,7 +34,12 @@ Consider a test designed to investigate the effectiveness of a new drug. A total
 
 The hypothesis is given below: 
 
+$$
+H_{0}: The two populations are equal versus
+H_{1}: The two populations are not equal.
+$$
+
 {: style="text-align:center"}
-That is, while there is value in the items on the right, we value the items on the left more.
+$H_{0}$ 
 
 What about thist?
