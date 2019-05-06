@@ -40,9 +40,9 @@ H_{0}: The \ two \ populations \ are \ equal \ versus
 H_{1}: The \ two \ populations \ are \ not \ equal.
 $$
 
-The sample size is small ($$n_{1}=n_{2}=5$$), so a nonparametric test is appropriate. We are going to use Mann Whitney U test to solve this problem. 
+The sample size is small ($$n_{1}=n_{2}=5$$), so a nonparametric test is appropriate. We are going to use Mann-Whitney U test to solve this problem. 
 
-The test statistic for the Mann Whitney U Test is denoted $$U$$, whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good. 
+The test statistic for the Mann-Whitney U Test is denoted $$U$$, whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good. 
 
 ### Small Sample Example
 The statistic, $$U$$, could be easily calculated by hand, especially for small samples. 
@@ -156,3 +156,8 @@ With samples this large, the value of $$U$$ approaches a normal distribution, an
    {: style="text-align:center"}
    if $$Z > critical \ Z = 1.96$$ we reject $$H_{0}$$ in favor of $$H_{1}$$.
    
+   
+Available Python Script
+----------------------
+
+The Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in [scipy.stat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html). 
