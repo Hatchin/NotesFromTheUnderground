@@ -117,7 +117,8 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    if $$U > critical \ U$$ we do not reject $$H_{0}$$.
    
    The table of critical $$U$$ is as follows.
-   <iframe src="https://drive.google.com/file/d/1tDhqpREuVXevtImG0N_oviIFcb3khlah/preview" width="640" height="480"></iframe>
+   
+   <iframe src="https://drive.google.com/file/d/1tDhqpREuVXevtImG0N_oviIFcb3khlah/preview" width="600" height="450"></iframe>
     
     
    From this table, we could get the critical $$U = 2$$ and therefore, 
