@@ -88,7 +88,7 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    
    $$
    U_{i} = n_{1}n_{2} + \frac{n_{i}(n_{i}+1)}{2} - R_{i}
-   
+   \\
    U =  min( U_{1}, ..., U_{i})
    $$
    
