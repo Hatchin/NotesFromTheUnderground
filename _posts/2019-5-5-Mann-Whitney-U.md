@@ -1,5 +1,5 @@
 ---
-title: "Mann Whitney U Test Tool"
+title: "Mann Whitney U Test - A Python Tool of Small Sample Size"
 excerpt_separator: "<!--more-->"
 categories:
   - Stat
