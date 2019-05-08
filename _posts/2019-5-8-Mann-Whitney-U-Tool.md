@@ -87,7 +87,7 @@ You could also visit the [webpage](https://mannwhitney.herokuapp.com/?utm_source
 
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/mann-demo.png">
+  <img width="460" height="300" src="https://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/mann-demo.png">Example
 </p>
 
 
