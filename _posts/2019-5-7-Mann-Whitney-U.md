@@ -18,6 +18,7 @@ In this series, I am going to take a journey on Mann-Whitney U test and my Pytho
 Because the current scipy version only support test for large sample size(n>20),  the new script is made to test for small sample size (n < 20).
 
 [Part 1](https://hatchin.github.io/stat/Mann-Whitney-U/): an overview of Mann-Whitney U test
+
 [Part 2](https://hatchin.github.io/stat/Mann-Whitney-U-Tool/): an introduction to new Mann-Whitney U test function
 
 Use of Mann-Whitney test
