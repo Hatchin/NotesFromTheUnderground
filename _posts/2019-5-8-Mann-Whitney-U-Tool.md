@@ -82,6 +82,15 @@ Web Application
 
 You could also visit the [webpage](https://mannwhitney.herokuapp.com/?utm_source=blog&utm_medium=post&utm_campaign=Webpage){:target="_blank"} which is an application for this script if you don't need to run the script. 
 
+{: style="text-align:center"}
+![demo](https://github.com/Hatchin/Mann-Whitney-Extension/blob/master/demo.png)
+
+
+<p align="center">
+  <img width="460" height="300" src="https://github.com/Hatchin/Mann-Whitney-Extension/blob/master/demo.png">
+</p>
+
+
 Similary, just provide two groups of data and the application will run the test and show all the result. 
 
 The valid format of input data includes:
