@@ -4,8 +4,7 @@ excerpt_separator: "<!--more-->"
 categories:
   - Stat
 tags:
-  - Tool
-  - Web App
+  - Theory
 author_profile: true
 mathjax: true
 comments: true
