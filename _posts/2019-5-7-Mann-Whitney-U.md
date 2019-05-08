@@ -19,7 +19,7 @@ Because the current scipy version only support test for large sample size(n>20),
 
 [Part 1](https://hatchin.github.io/stat/Mann-Whitney-U/): an overview of Mann-Whitney U test
 
-[Part 2](https://hatchin.github.io/stat/Mann-Whitney-U-Tool/): an introduction to new Mann-Whitney U test function
+[Part 2](https://hatchin.github.io/stat/Mann-Whitney-U-Tool/){:target="_blank"}: an introduction to new Mann-Whitney U test function
 
 Use of Mann-Whitney test
 ----------------------------
