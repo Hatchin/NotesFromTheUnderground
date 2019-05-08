@@ -82,9 +82,6 @@ Web Application
 
 You could also visit the [webpage](https://mannwhitney.herokuapp.com/?utm_source=blog&utm_medium=post&utm_campaign=Webpage){:target="_blank"} which is an application for this script if you don't need to run the script. 
 
-{: style="text-align:center"}
-![Example]({{ site.url }}{{ site.baseurl }}/assets/images/mann-demo.png)
-
 
 <p align="center">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/mann-demo.png" alt="">Example
