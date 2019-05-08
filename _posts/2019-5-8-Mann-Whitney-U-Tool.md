@@ -76,3 +76,27 @@ After testing, you could fetch the following results:
 `mwm.effectsize`     the effect size
 
 `mwm.largergroup`    the index of the larger group (1 or 2)
+
+Web Application
+--------------
+
+You could also visit the [webpage](https://mannwhitney.herokuapp.com/?utm_source=blog&utm_medium=post&utm_campaign=Webpage){:target="_blank"} which is an application for this script if you don't need to run the script. 
+
+Similary, just provide two groups of data and the application will run the test and show all the result. 
+
+The valid format of input data includes:
+  - copy directly from Excel (a row or a column)
+  - mannul typing
+    - separate with comma, e.g. `1, 2, 3, 4`
+    - separate with space, e.g. `1 2 3 4`
+    - mixture, e.g. `1  2  , 3, 4`
+    
+### Run the server on your instance
+
+It is easy to set up your application and run it on your machine. After installing the required packages, simply run
+
+```
+python app.py runserver
+```
+
+Then it is on at [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
