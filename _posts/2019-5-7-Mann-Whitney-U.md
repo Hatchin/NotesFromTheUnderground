@@ -1,5 +1,5 @@
 ---
-title: "Mann Whitney U Test - with Python Solution for Small Sample "
+title: "Mann Whitney U Test - Overview"
 excerpt_separator: "<!--more-->"
 categories:
   - Stat
@@ -13,7 +13,12 @@ toc: true
 toc_sticky: true
 ---
 
-This is an extension for original Mann-Whitney U test in Scipy. Add solution to test for small sample size (n < 20).
+In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in [Scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html){:target="_blank"}. 
+
+Because the current scipy version only support test for large sample size(n>20),  the new script is made to test for small sample size (n < 20).
+
+[Part 1](https://hatchin.github.io/stat/Mann-Whitney-U/): an overview of Mann-Whitney U test
+[Part 2](https://hatchin.github.io/stat/Mann-Whitney-U-Tool/): an introduction to new Mann-Whitney U test function
 
 Use of Mann-Whitney test
 ----------------------------
@@ -172,11 +177,13 @@ However, the scipy version of Mann-Whitney U test noted that
 Use only when the number of observation in each sample is > 20.
 ```
 
-
-
 Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed. 
 
-Morwe details could be found:
+In [Part 2](https://hatchin.github.io/stat/Mann-Whitney-U-Tool/), we go further to have a detailed demo on the new application.
+
+---------------------------------
+
+More details could be found:
 
 [Tool: Web Application](https://mannwhitney.herokuapp.com/?utm_source=blog&utm_medium=post&utm_campaign=Webpage){:target="_blank"}
 
