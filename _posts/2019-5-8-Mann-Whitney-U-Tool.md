@@ -83,11 +83,6 @@ Web Application
 
 You could also visit the [webpage](https://mannwhitney.herokuapp.com/?utm_source=blog&utm_medium=post&utm_campaign=Webpage){:target="_blank"} which is an application for this script if you don't want to run the code. 
 
-
-<p align="center">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/mann-demo.png" alt="">Example
-</p>
-
 <p align="center">
   <img src="https://raw.githubusercontent.com/Hatchin/Mann-Whitney-U-Test/master/demo.png" alt="">Example
 </p>
