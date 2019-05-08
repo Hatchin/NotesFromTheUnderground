@@ -178,7 +178,7 @@ Because Mann-Whitney U test is very useful in small data sample cases, such as c
 
 Morwe details could be found:
 
-[Tool: Web Application](https://mannwhitney.herokuapp.com/)
+[Tool: Web Application](https://mannwhitney.herokuapp.com/?utm_source=blog&utm_medium=post&utm_campaign=Webpage)
 
 [Package Source Code](https://github.com/Hatchin/Mann-Whitney-U-Test/blob/master/mannwhitney.py)
 
