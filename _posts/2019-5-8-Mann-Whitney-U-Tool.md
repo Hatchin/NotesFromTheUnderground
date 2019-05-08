@@ -81,13 +81,16 @@ After testing, you could fetch the following results:
 Web Application
 --------------
 
-You could also visit the [webpage](https://mannwhitney.herokuapp.com/?utm_source=blog&utm_medium=post&utm_campaign=Webpage){:target="_blank"} which is an application for this script if you don't need to run the script. 
+You could also visit the [webpage](https://mannwhitney.herokuapp.com/?utm_source=blog&utm_medium=post&utm_campaign=Webpage){:target="_blank"} which is an application for this script if you don't want to run the code. 
 
 
 <p align="center">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/mann-demo.png" alt="">Example
 </p>
 
+<p align="center">
+  <img src="https://github.com/Hatchin/Mann-Whitney-U-Test/blob/master/demo.png" alt="">Example
+</p>
 
 Similary, just provide two groups of data and the application will run the test and show all the result. 
 
