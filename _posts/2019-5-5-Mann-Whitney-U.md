@@ -1,5 +1,5 @@
 ---
-title: "Mann Whitney U Test - with Python Solution for Small Sample"
+title: "Mann Whitney U Test - with Python Solution for Small Sample\[todo]"
 excerpt_separator: "<!--more-->"
 categories:
   - Stat
