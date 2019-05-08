@@ -89,7 +89,7 @@ You could also visit the [webpage](https://mannwhitney.herokuapp.com/?utm_source
 </p>
 
 <p align="center">
-  <img src="https://github.com/Hatchin/Mann-Whitney-U-Test/blob/master/demo.png" alt="">Example
+  <img src="https://raw.githubusercontent.com/Hatchin/Mann-Whitney-U-Test/master/demo.png" alt="">Example
 </p>
 
 Similary, just provide two groups of data and the application will run the test and show all the result. 
