@@ -54,7 +54,8 @@ Then you could run it just as follows:
 mwm = mannWhitney(data1,
                   data2, 
                   tail='two', 
-                  significant_level=0.05) # do the mwm test of two-tailed at a significant level of 0.05
+                  significant_level=0.05) # two-tailed test
+                                          # at 0.05 significance
 ```
 
 ### Analyze
