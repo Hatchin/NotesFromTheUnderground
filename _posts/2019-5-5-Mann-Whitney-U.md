@@ -1,5 +1,5 @@
 ---
-title: "Mann Whitney U Test - A Python Tool of Small Sample Size"
+title: "Mann Whitney U Test - with Python Solution for Small Sample"
 excerpt_separator: "<!--more-->"
 categories:
   - Stat
