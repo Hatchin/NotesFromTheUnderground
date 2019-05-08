@@ -83,11 +83,11 @@ Web Application
 You could also visit the [webpage](https://mannwhitney.herokuapp.com/?utm_source=blog&utm_medium=post&utm_campaign=Webpage){:target="_blank"} which is an application for this script if you don't need to run the script. 
 
 {: style="text-align:center"}
-![demo](https://github.com/Hatchin/Mann-Whitney-Extension/blob/master/demo.png)
+![demo](https://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/mann-demo.png)
 
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/Hatchin/Mann-Whitney-Extension/blob/master/demo.png">
+  <img width="460" height="300" src="https://github.com/Hatchin/hatchin.github.io/blob/master/assets/images/mann-demo.png">
 </p>
 
 
