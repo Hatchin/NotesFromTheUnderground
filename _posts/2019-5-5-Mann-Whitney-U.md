@@ -165,7 +165,7 @@ With samples this large, the value of $$U$$ approaches a normal distribution, an
 Python Script for Mann–Whitney U test
 ----------------------
 
-The Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in [scipy.stat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html). 
+The Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in [scipy.stat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html){:target="_blank"}. 
 
 However, the scipy version of Mann-Whitney U test noted that
 ```
@@ -178,8 +178,8 @@ Because Mann-Whitney U test is very useful in small data sample cases, such as c
 
 Morwe details could be found:
 
-[Tool: Web Application](https://mannwhitney.herokuapp.com/?utm_source=blog&utm_medium=post&utm_campaign=Webpage)
+[Tool: Web Application](https://mannwhitney.herokuapp.com/?utm_source=blog&utm_medium=post&utm_campaign=Webpage){:target="_blank"}
 
-[Package Source Code](https://github.com/Hatchin/Mann-Whitney-U-Test/blob/master/mannwhitney.py)
+[Package Source Code](https://github.com/Hatchin/Mann-Whitney-U-Test/blob/master/mannwhitney.py){:target="_blank"}
 
-[Github](https://github.com/Hatchin/Mann-Whitney-U-Test)
+[Github](https://github.com/Hatchin/Mann-Whitney-U-Test){:target="_blank"}
