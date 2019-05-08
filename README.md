@@ -9,3 +9,6 @@ How to
 - PDF render ([source](https://jamesonzimmer.com/simple-pdf-embed-for-jekyll/))
 - Back to Top ([source](https://github.com/vfeskov/vanilla-back-to-top/blob/v7.2.0/EXAMPLES.md))
 - Links open in new window([source](https://stackoverflow.com/questions/3492153/markdown-open-a-new-window-link))
+- image 
+  - [standard](https://mmistakes.github.io/minimal-mistakes/post%20formats/post-image-standard/)
+  - [central](https://gist.github.com/DavidWells/7d2e0e1bc78f4ac59a123ddf8b74932d)
