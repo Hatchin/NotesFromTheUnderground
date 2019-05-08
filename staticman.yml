@@ -42,7 +42,7 @@ comments:
   # to be used directly (e.g. a string, number or array)
   generatedFields:
     date:
-      type: "uniqueId"
+      type: "Date"
       options:
         format: "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 
