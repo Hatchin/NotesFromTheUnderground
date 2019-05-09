@@ -132,7 +132,7 @@ author:
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
     - label: "Subscribe"
-      icon: "fab fa-fw fa-instagram"
+      icon: "fas fa-compass"
       url: "https://hatchin.github.io/about/#Contact"
 
 # Site Footer
