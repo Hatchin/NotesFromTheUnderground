@@ -16,16 +16,16 @@ This is Hatchin, just an ordinary person, a wandering machine learning practitio
 
 I work as a Data Scientist focused on Deep Learning and predictive analytics. Up to now I am based in Bay Area. Here is my blog for everything about Data Science I would like to share. 
 
-<!DOCTYPE HTML>
+
 <html>
 {% if page.subscribe %}
-    <h4>Subscribe</h4>
+    <h4>Contact</h4>
     <form action="https://formspree.io/sangyushen@gmail.com"
         method="POST">
-        <input type="text" placeholder="Name" name="name" style="height:36px; width:150px">
-        <input type="email" placeholder="Email" name="_replyto" required style="height:36px; width:150px">
-        <input type="message" placeholder="Message(if any)" name="message" style="height:36px; width:150px">
-        <input type="submit" value="Get Updates" style="height:36px; width:150px">
+        <input type="text" placeholder="Name" name="name" >
+        <input type="email" placeholder="Email" name="_replyto" required >
+        <input type="message" placeholder="Message(if any)" name="message" >
+        <input type="submit" value="Send">
     </form>
  {% endif %}
 </html>
