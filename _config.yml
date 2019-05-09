@@ -104,6 +104,8 @@ analytics:
     tracking_id          : "UA-139196533-1"
     anonymize_ip         : true #, false (default)
 
+# Subscribe
+subscribe                : true
 
 # Site Author
 author:
@@ -112,7 +114,7 @@ author:
   bio              : "用生活代替推理。"
   location         : "Invisible City"
   email            :
-  subscribe        : true
+
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
