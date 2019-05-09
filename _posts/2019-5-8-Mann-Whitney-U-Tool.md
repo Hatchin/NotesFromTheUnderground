@@ -6,7 +6,7 @@ categories:
 tags:
   - Tool
   - Web App
-author_profile: true
+author_profile: 
   subscribe: false
 mathjax: true
 comments: true
