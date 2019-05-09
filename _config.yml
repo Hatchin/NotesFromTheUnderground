@@ -104,9 +104,6 @@ analytics:
     tracking_id          : "UA-139196533-1"
     anonymize_ip         : true #, false (default)
 
-# Subscribe
-subscribe                : true
-
 # Site Author
 author:
   name             : "Hatchin"
