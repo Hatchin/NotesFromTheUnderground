@@ -18,14 +18,18 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
 
 
 <html>
+<br>
+<br>
 {% if page.subscribe %}
-    <h4>Contact</h4>
+  If you would like to subscribe or leave me a message
+    <h3>Contact</h3>
     <form action="https://formspree.io/sangyushen@gmail.com"
         method="POST">
         <input type="text" placeholder="Name" name="name" >
         <input type="email" placeholder="Email" name="_replyto" required >
-        <input type="message" placeholder="Message(if any)" name="message" >
+        <input type="message" placeholder="Message (if any)" name="message" >
         <input type="submit" value="Send">
+        <input type="hidden" name='redirect_to' value="/path/to/thank-you.html"/> 
     </form>
  {% endif %}
 </html>
