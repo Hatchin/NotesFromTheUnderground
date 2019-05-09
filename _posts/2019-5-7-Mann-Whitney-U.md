@@ -6,7 +6,6 @@ categories:
 tags:
   - Theory
 author_profile: true
-subscribe: false
 mathjax: true
 comments: true
 toc: true
