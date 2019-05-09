@@ -24,10 +24,9 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
         method="POST">
         <input type="text" placeholder="Name" name="name" >
         <input type="email" placeholder="Email" name="_replyto" required >
-        <input type="message" placeholder="Message (if any)" name="message" >
-        <textarea form ="myform" name="taname"
+        <textarea form ="myform" name="message"
                   rows = "3"
-                  cols = "80" placeholder="Hey"></textarea>
+                  cols = "80" placeholder="Message (if any)"></textarea>
         <input type="submit" value="Send">
     </form>
 </html>
