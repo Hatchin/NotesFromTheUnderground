@@ -25,6 +25,9 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
         <input type="text" placeholder="Name" name="name" >
         <input type="email" placeholder="Email" name="_replyto" required >
         <input type="message" placeholder="Message (if any)" name="message" >
+        <textarea> id = "myTextArea"
+                  rows = "3"
+                  cols = "80">Your text here</textarea>
         <input type="submit" value="Send">
     </form>
 </html>
