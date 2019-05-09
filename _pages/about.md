@@ -3,7 +3,6 @@ title: "About Me"
 layout: single
 permalink: /about/
 author_profile: true
-subscribe : true
 header:
   overlay_image: /assets/images/teaser.JPG
   overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
