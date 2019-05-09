@@ -27,6 +27,5 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
         <input type="email" placeholder="Email" name="_replyto" required >
         <input type="message" placeholder="Message (if any)" name="message" >
         <input type="submit" value="Send">
-        <input type="hidden" name='redirect_to' value="/path/to/thank-you.html"/> 
     </form>
 </html>
