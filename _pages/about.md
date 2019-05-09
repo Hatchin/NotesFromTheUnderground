@@ -19,8 +19,8 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
 <html>
 <br>
 <br>
+  <h3>Contact</h3>
   If you would like to subscribe or leave me a message
-    <h3>Contact</h3>
     <form action="https://formspree.io/sangyushen@gmail.com"
         method="POST">
         <input type="text" placeholder="Name" name="name" >
