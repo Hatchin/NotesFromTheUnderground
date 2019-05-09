@@ -6,11 +6,12 @@
   </li>
 -->
   {% if author.subscribe %}
+    <h4>Subscribe</h4>
     <form action="https://formspree.io/sangyushen@gmail.com"
-        method="POST">Subscribe
+        method="POST">
         <input type="text" placeholder="Name" name="name">
         <input type="email" placeholder="Email" name="_replyto" required>
         <input type="message" placeholder="Message (if any)" name="message">
-      <input type="submit" value="Send">
+      <input type="submit" value="Subscribe to this blog">
     </form>
   {% endif %}
