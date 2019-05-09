@@ -25,4 +25,4 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
         <input type="message" placeholder="Message(if any)" name="message" style="height:36px; width:150px">
         <input type="submit" value="Get Updates" style="height:36px; width:150px">
     </form>
-  {% endif %}
+ {% endif %}
