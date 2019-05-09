@@ -20,14 +20,14 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
 <br>
   <h3>Contact</h3><a class ="Contact" id="Contact"></a>
   If you would like to subscribe or leave me a message
-    <form action="https://formspree.io/sangyushen@gmail.com"
+    <form id="myform" action="https://formspree.io/sangyushen@gmail.com"
         method="POST">
         <input type="text" placeholder="Name" name="name" >
         <input type="email" placeholder="Email" name="_replyto" required >
         <input type="message" placeholder="Message (if any)" name="message" >
-        <textarea id = "myTextArea"
+        <textarea form ="myform" name="taname"
                   rows = "3"
-                  cols = "80">Your text here</textarea>
+                  cols = "80" placeholder="Hey"></textarea>
         <input type="submit" value="Send">
     </form>
 </html>
