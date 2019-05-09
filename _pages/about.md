@@ -19,7 +19,6 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
 <html>
 <br>
 <br>
-{% if page.subscribe %}
   If you would like to subscribe or leave me a message
     <h3>Contact</h3>
     <form action="https://formspree.io/sangyushen@gmail.com"
@@ -30,5 +29,4 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
         <input type="submit" value="Send">
         <input type="hidden" name='redirect_to' value="/path/to/thank-you.html"/> 
     </form>
- {% endif %}
 </html>
