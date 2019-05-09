@@ -6,8 +6,8 @@ categories:
 tags:
   - Tool
   - Web App
-author_profile: 
-  subscribe: false
+author_profile: true
+subscribe: false
 mathjax: true
 comments: true
 toc: true
