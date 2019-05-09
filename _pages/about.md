@@ -16,6 +16,8 @@ This is Hatchin, just an ordinary person, a wandering machine learning practitio
 
 I work as a Data Scientist focused on Deep Learning and predictive analytics. Up to now I am based in Bay Area. Here is my blog for everything about Data Science I would like to share. 
 
+<!DOCTYPE HTML>
+<html>
 {% if page.subscribe %}
     <h4>Subscribe</h4>
     <form action="https://formspree.io/sangyushen@gmail.com"
@@ -26,3 +28,4 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
         <input type="submit" value="Get Updates" style="height:36px; width:150px">
     </form>
  {% endif %}
+</html>
