@@ -112,6 +112,7 @@ author:
   bio              : "用生活代替推理。"
   location         : "Invisible City"
   email            :
+  subscribe        : true
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
