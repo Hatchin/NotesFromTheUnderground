@@ -11,7 +11,7 @@ header:
 <html>
 <br>
   <p align="center">
-    <h0>Thank You!</h0>
+    <h1>Thank You!</h1>
     <div class="jumbotron text-xs-center">
       <p class="lead"><strong>It is great to hear from you! </strong>We will get in touch.</p>
       <hr>
