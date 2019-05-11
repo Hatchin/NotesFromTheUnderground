@@ -33,6 +33,7 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
         <span style="display:inline-block">
             <input id="Checkbox1" type="checkbox"  value="1"/>文字1
         </span>
+        <br>
         <input type="submit" value="Send">
     </form>
 
