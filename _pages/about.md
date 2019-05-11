@@ -30,9 +30,7 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
                   
         <input type="checkbox" name="Subscribe" value="Add me"><label for="Subscribe"> Subscribe</label>
         <br>
-        <span style="display:inline-block">
-            <input id="Checkbox1" type="checkbox"  value="1"/>文字1
-        </span>
+        <input id="Checkbox1" type="checkbox"  value="1"/>文字1
         <br>
         <input type="submit" value="Send">
     </form>
