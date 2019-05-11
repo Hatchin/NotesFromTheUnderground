@@ -1,5 +1,5 @@
 ---
-title: " "
+title: "Thank You!"
 layout: single
 permalink: /thankyou/
 author_profile: false
@@ -11,7 +11,7 @@ header:
 <html>
 <br>
   <div class="jumbotron text-xs-center">
-  <h1>Thank You!</h1>
+  
   <p class="lead"><strong>It is great to hear from you! </strong>We will get in touch.</p>
   <hr>
  
