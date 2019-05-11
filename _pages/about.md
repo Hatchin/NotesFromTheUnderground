@@ -33,17 +33,6 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
   
   
   <br>
-  <form action="https://mailthis.to/sangyushen@gmail.com"
-    method="POST" encType="multipart/form-data">
-    <input type="text" name="name" placeholder="Your name">
-    <input type="email" name="_replyto" placeholder="Your email">
-    <textarea name="message" placeholder="Enter your message here"></textarea>
-    <input type="file" name="file" placeholder="Attachments (optional)">
-    <input type="hidden" name="_subject" value="Contact form submitted">
-    <input type="hidden" name="_after" value="https://hatchin.github.io">
-    <input type="hidden" name="_honeypot" value="">
-    <input type="hidden" name="_confirmation" value="">
-    <input type="submit" value="Send">
-</form>
+  <form method="post" action="https://briskforms.com/go/61b71634c7cdc1cc22aae9b9f369d969">
 
 </html>
