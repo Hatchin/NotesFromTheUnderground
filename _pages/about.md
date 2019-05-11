@@ -33,6 +33,13 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
   
   
   <br>
-  <form method="post" action="https://briskforms.com/go/61b71634c7cdc1cc22aae9b9f369d969">
+  <form id='second' method="post" action="https://briskforms.com/go/61b71634c7cdc1cc22aae9b9f369d969">
+  <input type="text" placeholder="Name" name="name" >
+        <input type="email" placeholder="Email" name="_replyto" required >
+        <textarea form ="second" name="message"
+                  rows = "3"
+                  cols = "80" placeholder="Message (if any)"></textarea>
+        <input type="submit" value="Send">
+    </form>
 
 </html>
