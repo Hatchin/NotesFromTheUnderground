@@ -28,8 +28,10 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
                   rows = "3"
                   cols = "80" placeholder="Message (if any)"></textarea>
                   
-        <input type="checkbox" name="Subscribe" value="Add me"> Subscribe <br />
-        <br><br><br><br><br><br>
+        <input type="checkbox" name="Subscribe" value="Add me"><label for="love"> Subscribe</label>
+
+Read more: https://html.com/input-type-checkbox/#ixzz5nbg9kRxv
+
         <input type="submit" value="Send">
     </form>
 
