@@ -26,8 +26,8 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
         <textarea form ="second" name="message"
                   rows = "3"
                   cols = "80" placeholder="Message (if any)"></textarea>
-        <input type="checkbox" name="Subscribe" value="Add me"> Subscribe<br>
-        <li><input type="submit" value="Send"></li>
+        <input type="checkbox" name="Subscribe" value="Add me"> Subscribe</input><br>
+        <input type="submit" value="Send">
     </form>
 
 </html>
