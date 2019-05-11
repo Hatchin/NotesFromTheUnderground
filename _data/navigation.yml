@@ -21,7 +21,7 @@ main:
 sidebar-sample:
   - title: "Parent Page A"
     children:
-      - title: "Child Page A1"
+      - title: "Homepage"
         url: https://github.com/Hatchin
       - title: "Child Page A2"
         url: https://github.com/Hatchin
