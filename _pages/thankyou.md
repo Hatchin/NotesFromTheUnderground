@@ -13,11 +13,10 @@ header:
   <p align="center">
     <h1>Thank You!</h1>
     <div class="jumbotron text-xs-center">
-      <p class="lead"><strong>It is great to hear from you! </strong>We will get in touch.</p>
+      <p class="lead">It is great to hear from you! We will get in touch.</p>
       <hr>
 
       <p class="lead">
-        <a href="/">Home</a>
         <a class="btn btn-primary btn-sm" href="https://hatchin.github.io/" role="button">Continue to homepage</a>
       </p>
 
