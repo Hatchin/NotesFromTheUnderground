@@ -30,7 +30,7 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
                   
         <input type="checkbox" name="Subscribe" value="Add me"> Subscribe
         <br><br/>
-        <input type="submit" value="Send">
+        <button form="second" type="submit" value="Send" class="right-aligned">Send</button>
     </form>
 
 </html>
