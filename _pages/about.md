@@ -28,7 +28,6 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
                   cols = "80" placeholder="Message (if any)"></textarea>
         <input type="checkbox" name="Subscribe" value="Add me"> Subscribe<br>
         <input type="checkbox" name="Subscribe" value=": Add me" style="width:15px;height:10px;"/> Subscribe <br>
-        <br>
         
         <input type="submit" value="Send">
     </form>
