@@ -24,6 +24,7 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
         <input type="text" placeholder="Name" name="name" >
         <input type="email" placeholder="Email" name="_replyto" required >
         <input type="checkbox" name="Subscribe" value="Add me"> Subscribe<br>
+        <br>
         <textarea form ="second" name="message"
                   rows = "3"
                   cols = "80" placeholder="Message (if any)"></textarea>
