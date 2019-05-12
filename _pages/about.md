@@ -29,9 +29,9 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
                   cols = "80" placeholder="Message (if any)"></textarea>
                   
         <input type="checkbox" name="Subscribe" value="Add me"><label for="Subscribe"> Subscribe</label>
-        <br>
-        <input id="Checkbox1" type="checkbox"  value="1"/>文字1
-        <br>
+        <label>
+            <input type="checkbox" id="birth_city" name="birth_city" />City
+        </label>
         <input type="submit" value="Send">
     </form>
 
