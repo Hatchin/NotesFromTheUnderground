@@ -5,7 +5,7 @@ permalink: /about/
 author_profile: true
 header:
   overlay_image: /assets/images/teaser.JPG
-  overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
+  overlay_filter: 0.3 # same as adding an opacity of 0.3 to a black background
 
 ---
 
@@ -30,7 +30,7 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
                   
         <input type="checkbox" name="Subscribe" value="Add me"><label for="Subscribe"> Subscribe</label>
         <label>
-            <input type="checkbox" id="birth_city" name="birth_city" />City
+            <input type="checkbox" id="birth_city" name="birth_city" >City
         </label>
         <input type="submit" value="Send">
     </form>
