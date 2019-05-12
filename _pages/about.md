@@ -29,7 +29,6 @@ I work as a Data Scientist focused on Deep Learning and predictive analytics. Up
         </textarea>
         <input type="checkbox" name="Subscribe" value="Add me">Subscribe
         <label for="Subscribe">
-            <input type="checkbox" id="birth_city" name="birth_city" >Second Subscribe
         </label>
         <input type="submit" value="Send">
     </form>
