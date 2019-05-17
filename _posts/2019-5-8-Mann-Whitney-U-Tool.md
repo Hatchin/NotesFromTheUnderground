@@ -18,7 +18,7 @@ Mann-Whitney U test is very useful in small data sample cases, such as clinical 
 
 [Part 1](https://hatchin.github.io/stat/Mann-Whitney-U/?utm_source=blog&utm_medium=post&utm_campaign=part2){:target="_blank"}: an overview of Mann-Whitney U test
 
-[Part 2](https://hatchin.github.io/stat/Mann-Whitney-U-Tool/): an introduction to new Mann-Whitney U test function
+[Part 2](https://hatchin.github.io/stat/Mann-Whitney-U-Tool/): an introduction to Mann-Whitney U test in Python
 
 ------------------------
 
