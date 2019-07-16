@@ -30,7 +30,8 @@ sidebar-sample:
         url: /
       - title: "Child Page A4"
         url: /
-  - title: "Parent Page B"
+  - title: "Tags"
+    url: https://hatchin.github.io/tags/
     children:
       - title: "Child Page B1"
         url: /
