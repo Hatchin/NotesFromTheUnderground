@@ -22,21 +22,17 @@ sidebar-sample:
   - title: "Categories"
     url: https://hatchin.github.io/categories/
     children:
-      - title: "Testing"
+      - title: "Clustering"
         url: https://github.com/Hatchin
-      - title: "Child Page A2"
-        url: https://github.com/Hatchin
-      - title: "Child Page A3"
-        url: /
-      - title: "Child Page A4"
-        url: /
+      - title: "Stat"
+        url: https://hatchin.github.io/categories/#stat
   - title: "Tags"
     url: https://hatchin.github.io/tags/
     children:
-      - title: "Child Page B1"
-        url: /
-      - title: "Child Page B2"
-        url: /
-      - title: "Child Page B3"
-        url: /
+      - title: "Theory"
+        url: https://hatchin.github.io/tags/#theory
+      - title: "Tool"
+        url: https://hatchin.github.io/tags/#tool
+      - title: "Web App"
+        url: https://hatchin.github.io/tags/#web-app
 
