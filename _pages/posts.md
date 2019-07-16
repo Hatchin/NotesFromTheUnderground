@@ -3,6 +3,6 @@ title: "Posts by Year"
 permalink: /posts/
 layout: posts
 sidebar:
-  title: "All Title"
+  title: "Tags"
   nav: sidebar-sample
 ---
