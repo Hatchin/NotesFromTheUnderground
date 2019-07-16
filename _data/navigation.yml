@@ -20,7 +20,7 @@ main:
 #     url: /collection-archive/
 sidebar-sample:
   - title: "Categories"
-    url: https://github.com/Hatchin
+    url: https://hatchin.github.io/categories/
     children:
       - title: "Testing"
         url: https://github.com/Hatchin
