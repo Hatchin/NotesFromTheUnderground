@@ -12,4 +12,5 @@ How to
 - image 
   - [standard](https://mmistakes.github.io/minimal-mistakes/post%20formats/post-image-standard/)
   - [central](https://gist.github.com/DavidWells/7d2e0e1bc78f4ac59a123ddf8b74932d)
+  - when refering to an image/file in github, need to use the rawgithub link. (right click the origin file and open in new tab, there is the link)
 - font size small ([source](https://meta.stackexchange.com/questions/26756/how-do-i-use-a-small-font-size-in-questions-and-answers) )
