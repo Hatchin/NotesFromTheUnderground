@@ -13,7 +13,7 @@ Hey —
 
 This is Hatchin. 
 
-Here is another blog for something about Data Science I am interested in. 
+Another station, to share and record, for something about Data Science. 
 
 
 <html>
