@@ -13,7 +13,7 @@ Hey —
 
 This is Hatchin. 
 
-I work as a Data Scientist focused on Deep Learning and predictive analytics. Up to now I am based in Bay Area. Here is my blog for everything about Data Science I would like to share. 
+Here is another blog for something about Data Science I am interested in. 
 
 
 <html>
