@@ -10,6 +10,7 @@ mathjax: true
 comments: true
 toc: true
 toc_sticky: true
+language: en
 ---
 
 In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in [Scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html){:target="_blank"}. 
@@ -31,7 +32,7 @@ Hence, in summary:
   - The Mann-Whitney U test is used as an alternative to a t test when the data are not normally distributed;
   - The Mann-Whitney U test is usually used in cases that data sample size is small;
   - The test can detect differences in shape and spread as well as just differences in medians.
-  
+
 
 Test Statistic and Calculation Example
 ----------------------
@@ -124,13 +125,12 @@ The statistic, $$U$$, could be easily calculated by hand, especially for small s
    The table of critical $$U$$ is as follows.
    
    <iframe src="https://drive.google.com/file/d/1tDhqpREuVXevtImG0N_oviIFcb3khlah/preview" width="600" height="450"></iframe>
-    
-    
+   
    From this table, we could get the critical $$U = 2$$ and therefore, 
    
    $$
    U = 3 > 2 = critical \ U
-   $$ 
+   $$
    
    We do not reject $$H_{0}$$ and do not have statistically significant evidence at $$\alpha =0.05$$, to show that the two populations are not equal. 
    

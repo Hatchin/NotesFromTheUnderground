@@ -15,10 +15,14 @@
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
+locale: 
+  en                     : "en-US"
+  zh                     : "zh-CN"
 title                    : "Notes from the Underground"
 title_separator          : "|"
-name                     : "Hatchin"
+name: 
+  en                     : "Hatchin"
+  zh                     : "哈金"
 description              : "Hatchin's Page."
 url                      : "https://hatchin.github.io/"
 baseurl                  : # the subpath of your site, e.g. "/blog"

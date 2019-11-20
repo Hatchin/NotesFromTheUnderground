@@ -11,6 +11,7 @@ mathjax: true
 comments: true
 toc: true
 toc_sticky: true
+language: en
 ---
 In this part, I am going to show a demo on the Mann-Whitney U Test Python script which is able to perform test on both small and large sample size. 
 
@@ -38,7 +39,7 @@ Download [Mann-Whitney-U-Test](https://github.com/Hatchin/Mann-Whitney-U-Test) t
 ```
 pip install -r requirements.txt
 ```
-  
+
 ### Use It
 
 In order to use Mann-Whitney-U-Test, you need your data organized as a list like the following:
