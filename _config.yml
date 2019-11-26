@@ -110,7 +110,7 @@ analytics:
 
 # Site Author
 author:
-  name             : 
+  name: 
     en             : "Hatchin"
     zh             : "哈金"
   avatar           : "/assets/images/photo.png"
