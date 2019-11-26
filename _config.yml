@@ -115,7 +115,9 @@ author:
     zh             : "哈金"
   avatar           : "/assets/images/photo.png"
   bio              : "用生活代替推理。"
-  location         : "Invisible City"
+  location: 
+    en             : "Invisible City"
+    zh             : "看不见的城市"
   email            :
 
   links:
