@@ -16,8 +16,8 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale: 
-  en                     : "en-US"
-  zh                     : "zh-CN"
+  en                     : "en"
+  zh                     : "zh"
 title                    : "Notes from the Underground"
 title_separator          : "|"
 name: 
