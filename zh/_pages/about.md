@@ -2,6 +2,7 @@
 title: "关于我"
 layout: single
 language: zh
+permalink: /zh/about/
 handle: /about/
 author_profile: true
 header:
