@@ -1,7 +1,7 @@
 <div class="page__footer-follow">
   <ul class="social-icons">
-    {% if site.data.ui-text[site.locale[page.language]].follow_label %}
-      <li><strong>{{ site.data.ui-text[site.locale[page.language]].follow_label }}</strong></li>
+    {% if site.data.ui-text[page.language].follow_label %}
+      <li><strong>{{ site.data.ui-text[page.language].follow_label }}</strong></li>
     {% endif %}
 
     {% if site.footer.links %}
@@ -16,4 +16,4 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.name[page.language] | default: site.title }}. {{ site.data.ui-text[site.locale[page.language]].powered_by | default: "Powered by" }} <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.title[page.language] | default: site.title.en }}. {{ site.data.ui-text[page.language].powered_by | default: "Powered by" }} <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
