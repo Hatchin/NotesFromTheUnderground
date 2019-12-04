@@ -7,7 +7,9 @@ layout: archive
 <h3 class="archive__subtitle">{{ site.data.ui-text[page.language].recent_posts | default: "Recent Posts" }}</h3>
 
 {% for post in paginator.posts %}
-  {% include archive-single.html %}
+  {% if post.language == page.language %} 
+    {% include archive-single.html %}
+  {% endif %}
 {% endfor %}
 
 {% include paginator.html %}
