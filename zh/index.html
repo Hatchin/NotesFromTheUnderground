@@ -16,3 +16,7 @@ header:
 
 <h1 id="page-title" class="page__title">{{site.data.ui-text[page.language].email_label}}</h1>
 
+{% for post in paginator.posts %}
+  <li><a>{{ post.language }}</a></li>
+{% endfor %}
+
