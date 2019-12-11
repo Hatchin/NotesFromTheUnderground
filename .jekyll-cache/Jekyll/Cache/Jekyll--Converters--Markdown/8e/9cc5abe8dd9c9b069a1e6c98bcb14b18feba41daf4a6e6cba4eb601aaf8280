@@ -1,0 +1,11 @@
+I"ü<ul class="toc__menu">
+  <li><a href="#use-of-mann-whitney-test">Use of Mann-Whitney test</a></li>
+  <li><a href="#test-statistic-and-calculation-example">Test Statistic and Calculation Example</a>
+    <ul>
+      <li><a href="#small-sample-example">Small Sample Example</a></li>
+      <li><a href="#when-sample-size-is-larger-n--20">When sample size is larger (n &gt; 20)</a></li>
+    </ul>
+  </li>
+  <li><a href="#python-script-for-mannwhitney-u-test">Python Script for Mannâ€“Whitney U test</a></li>
+</ul>
+:ET
