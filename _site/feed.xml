@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://hatchin.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://hatchin.github.io//" rel="alternate" type="text/html" /><updated>2019-12-11T10:49:31-08:00</updated><id>https://hatchin.github.io//feed.xml</id><title type="html">{“en”=&amp;gt;”Notes from the Underground”, “zh”=&amp;gt;”地下室手记”}</title><subtitle>Hatchin's Page.</subtitle><author><name>{&quot;en&quot;=&gt;&quot;Hatchin&quot;, &quot;zh&quot;=&gt;&quot;哈金&quot;}</name></author><entry><title type="html">FlowSOM: to analyze flow or mass cytometry data using a self‐organizing map</title><link href="https://hatchin.github.io//en/neural%20network/clustering/2019/08/30/FlowSOM/" rel="alternate" type="text/html" title="FlowSOM: to analyze flow or mass cytometry data using a self‐organizing map" /><published>2019-08-30T00:00:00-07:00</published><updated>2019-08-30T00:00:00-07:00</updated><id>https://hatchin.github.io//en/neural%20network/clustering/2019/08/30/FlowSOM</id><content type="html" xml:base="https://hatchin.github.io//en/neural%20network/clustering/2019/08/30/FlowSOM/">&lt;h2 id=&quot;backgroud&quot;&gt;Backgroud&lt;/h2&gt;
+&lt;p&gt;FlowSOM(Van Gassen et al., 2015)&lt;sup&gt;[1]&lt;/sup&gt; is one of the available algorithms for flow cytometry and high-dimensional data analysis.&lt;/p&gt;
+
+&lt;p&gt;Flow cytometry is a technique which could detect and measure characteristics of many thousand cells or particles per second. The high‐dimensional flow cytometry data have made it possible to detect protein marker expression, allowing cell populations to be characterized in unprecedented detail. Briefly speacking, the first step is going to be a clustering problem for high-dimensional data and FlowSOM could be a solution.&lt;/p&gt;
+
+&lt;p&gt;According to Weber and Robinson(2016)&lt;sup&gt;[2]&lt;/sup&gt;, FlowSOM “had extremely fast runtimes, making this method well‐suited for interactive, exploratory analysis of large, high‐dimensional data sets on a standard laptop or desktop computer.”&lt;/p&gt;
+
+&lt;h2 id=&quot;algorithm&quot;&gt;Algorithm&lt;/h2&gt;
+&lt;p&gt;FlowSOM analyzes flow or mass cytometry data using a self-Organizing Map (SOM). Using a two-level clustering and star charts, FlowSOM helps to obtain a clear overview of how all markers are behaving on all cells, and to detect subsets that might be missed otherwise.&lt;/p&gt;
+
+&lt;p&gt;The algorithm consists of four steps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;reading the data&lt;/li&gt;
+  &lt;li&gt;building a Self-Organizing Map&lt;/li&gt;
+  &lt;li&gt;building a minimal spanning tree&lt;/li&gt;
+  &lt;li&gt;computing a meta-clustering&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;reading-the-data&quot;&gt;Reading the data&lt;/h3&gt;
+
+&lt;p&gt;It actually refers to the preprocessing step. Instead of processing one fcs file, it was recommended to combine several fcs files from an experiment for training. In this way, the model is built on the whole experiment.&lt;/p&gt;
+
+&lt;p&gt;There are a lot of different pre-processing methods, we will take scaling as an example. Once all files are read and bundled together, it could be scaled by:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;c_{ij} =  \frac{c_{ij} - mean(c_{1j},.... c_{nj})}{std(c_{1j},.... c_{nj})}&lt;/script&gt;
+
+&lt;p&gt;This means each column gets a mean value of 0 and a standard deviation of 1, and ensures that each marker gets the same importance in the further processing of the data. (If expert knowledge indicates that one marker should get a higher importance than another one, specific scaling parameters can be set to reflect this in the further course of the algorithm.)&lt;/p&gt;
+
+&lt;h3 id=&quot;selforganizing-map&quot;&gt;Self‐Organizing Map&lt;/h3&gt;
+
+&lt;p&gt;A self-organizing map (SOM) is a specific type of artificial neural network (ANN), used for clustering (Kohonen, 1990)&lt;sup&gt;[3]&lt;/sup&gt;.
+It is able to convert complex, nonlinear statistical relationships between high-dimensional data items into simple geometric relationships on a low-dimensional display.&lt;/p&gt;
+
+&lt;p&gt;It uses unsupervised learning to produce a low-dimensional (typically two-dimensional), discretized representation of the input space of the training samples, called a map, and is therefore also a method to do dimensionality reduction.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://miro.medium.com/max/387/0*HV0Qm0sHs_ogxL12&quot; alt=&quot;&quot; /&gt; SOM 
+&lt;/p&gt;
+
+&lt;p&gt;The figure below illustrates how  a SOM is trained. The purple blob is the distribution of the training data. The small white disc is the current training datum drawn from that distribution. At first, the SOM nodes are arbitrarily positioned in the data space. The node (highlighted in yellow) nearest the training datum is selected. It’s moved towards the training datum, as are its neighbors on the grid. After many iterations, the grid tends to approximate the data distribution (right).&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Somtraining.svg/800px-Somtraining.svg.png&quot; alt=&quot;&quot; /&gt;  Training of a SOM
+&lt;/p&gt;
+
+&lt;p&gt;Training a self-organizing map occurs in several steps:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Initialize the weights for each node. The weights are set to small standardized random values.&lt;/li&gt;
+  &lt;li&gt;Choose a vector at random from the training set and present to the lattice.&lt;/li&gt;
+  &lt;li&gt;Examine every node to calculate which one’s weight is most like the input vector. This will allow you to obtain the Best Matching Unit (BMU). We compute the BMU by iterating over all the nodes and calculating the Euclidean distance between each node’s weight and the current input vector. The node with a weight vector closest to the input vector is marked as the BMU.&lt;/li&gt;
+  &lt;li&gt;Calculate the radius of the neighborhood of the BMU. Nodes found within the radius are deemed to be inside the neighborhood of the BMU.&lt;/li&gt;
+  &lt;li&gt;Weights of the nodes found in step 4 are adjusted to make them more like the input vector. The weights of the nodes closer to the BMU are adjusted more.&lt;/li&gt;
+  &lt;li&gt;Repeat step 2 for N iterations.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;minimum-spanning-tree&quot;&gt;Minimum Spanning Tree&lt;/h3&gt;
+
+&lt;p&gt;The resulting clustering of SOM will be visualized by a minimal spanning tree (MST). MST (Whitney, 1972)&lt;sup&gt;[4]&lt;/sup&gt; connects the nodes of a graph in such a way that the sum of the weights of the branches is minimal. By doing this, nodes will get connected to the ones they are the most similar to, taking the multidimensional topology of the data in account. Shortly, it is a subset of the edges of a connected, edge-weighted undirected graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight.&lt;/p&gt;
+
+&lt;h3 id=&quot;meta-clustering&quot;&gt;Meta Clustering&lt;/h3&gt;
+
+&lt;p&gt;SOMs can be used to get an immediate clustering, where the number of nodes is set to the expected number of cell types. However, for visualization purposes, it is advantageous to include more nodes than the expected number of clusters. By doing this, cells that are in between cell types can also get a place in the grid and smaller changes in the cell types can be noticed.&lt;/p&gt;
+
+&lt;p&gt;The meta-clustering technique conducted on the SOM is hierarchical consensus meta-clustering, which clusters the weights of trained SOM into different groups.&lt;/p&gt;
+
+&lt;h2 id=&quot;python-implementation-for-flowsom&quot;&gt;Python Implementation for FlowSOM&lt;/h2&gt;
+&lt;p&gt;The python scripts for FlowSOM is available &lt;a href=&quot;https://github.com/Hatchin/FlowSOM&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;[1] Van Gassen, S., Callebaut, B., Van Helden, M.J., Lambrecht, B.N., Demeester, P., Dhaene, T. and Saeys, Y., 2015. FlowSOM: Using self‐organizing maps for visualization and interpretation of cytometry data. Cytometry Part A, 87(7), pp.636-645.&lt;/p&gt;
+
+&lt;p&gt;[2] Weber, L.M. and Robinson, M.D., 2016. Comparison of clustering methods for high‐dimensional single‐cell flow and mass cytometry data. Cytometry Part A, 89(12), pp.1084-1096.&lt;/p&gt;
+
+&lt;p&gt;[3] Kohonen, T., 1990. The self-organizing map. Proceedings of the IEEE, 78(9), pp.1464-1480.&lt;/p&gt;
+
+&lt;p&gt;[4] Whitney, V.K.M., 1972. Algorithm 422: minimal spanning tree [H]. Communications of the ACM, 15(4), pp.273-274.&lt;/p&gt;</content><author><name>{&quot;en&quot;=&gt;&quot;Hatchin&quot;, &quot;zh&quot;=&gt;&quot;哈金&quot;}</name></author><category term="Theory" /><summary type="html">Backgroud FlowSOM(Van Gassen et al., 2015)[1] is one of the available algorithms for flow cytometry and high-dimensional data analysis. Flow cytometry is a technique which could detect and measure characteristics of many thousand cells or particles per second. The high‐dimensional flow cytometry data have made it possible to detect protein marker expression, allowing cell populations to be characterized in unprecedented detail. Briefly speacking, the first step is going to be a clustering problem for high-dimensional data and FlowSOM could be a solution. According to Weber and Robinson(2016)[2], FlowSOM “had extremely fast runtimes, making this method well‐suited for interactive, exploratory analysis of large, high‐dimensional data sets on a standard laptop or desktop computer.” Algorithm FlowSOM analyzes flow or mass cytometry data using a self-Organizing Map (SOM). Using a two-level clustering and star charts, FlowSOM helps to obtain a clear overview of how all markers are behaving on all cells, and to detect subsets that might be missed otherwise. The algorithm consists of four steps: reading the data building a Self-Organizing Map building a minimal spanning tree computing a meta-clustering Reading the data It actually refers to the preprocessing step. Instead of processing one fcs file, it was recommended to combine several fcs files from an experiment for training. In this way, the model is built on the whole experiment. There are a lot of different pre-processing methods, we will take scaling as an example. Once all files are read and bundled together, it could be scaled by: This means each column gets a mean value of 0 and a standard deviation of 1, and ensures that each marker gets the same importance in the further processing of the data. (If expert knowledge indicates that one marker should get a higher importance than another one, specific scaling parameters can be set to reflect this in the further course of the algorithm.) Self‐Organizing Map A self-organizing map (SOM) is a specific type of artificial neural network (ANN), used for clustering (Kohonen, 1990)[3]. It is able to convert complex, nonlinear statistical relationships between high-dimensional data items into simple geometric relationships on a low-dimensional display. It uses unsupervised learning to produce a low-dimensional (typically two-dimensional), discretized representation of the input space of the training samples, called a map, and is therefore also a method to do dimensionality reduction. SOM The figure below illustrates how a SOM is trained. The purple blob is the distribution of the training data. The small white disc is the current training datum drawn from that distribution. At first, the SOM nodes are arbitrarily positioned in the data space. The node (highlighted in yellow) nearest the training datum is selected. It’s moved towards the training datum, as are its neighbors on the grid. After many iterations, the grid tends to approximate the data distribution (right). Training of a SOM Training a self-organizing map occurs in several steps: Initialize the weights for each node. The weights are set to small standardized random values. Choose a vector at random from the training set and present to the lattice. Examine every node to calculate which one’s weight is most like the input vector. This will allow you to obtain the Best Matching Unit (BMU). We compute the BMU by iterating over all the nodes and calculating the Euclidean distance between each node’s weight and the current input vector. The node with a weight vector closest to the input vector is marked as the BMU. Calculate the radius of the neighborhood of the BMU. Nodes found within the radius are deemed to be inside the neighborhood of the BMU. Weights of the nodes found in step 4 are adjusted to make them more like the input vector. The weights of the nodes closer to the BMU are adjusted more. Repeat step 2 for N iterations. Minimum Spanning Tree The resulting clustering of SOM will be visualized by a minimal spanning tree (MST). MST (Whitney, 1972)[4] connects the nodes of a graph in such a way that the sum of the weights of the branches is minimal. By doing this, nodes will get connected to the ones they are the most similar to, taking the multidimensional topology of the data in account. Shortly, it is a subset of the edges of a connected, edge-weighted undirected graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight. Meta Clustering SOMs can be used to get an immediate clustering, where the number of nodes is set to the expected number of cell types. However, for visualization purposes, it is advantageous to include more nodes than the expected number of clusters. By doing this, cells that are in between cell types can also get a place in the grid and smaller changes in the cell types can be noticed. The meta-clustering technique conducted on the SOM is hierarchical consensus meta-clustering, which clusters the weights of trained SOM into different groups. Python Implementation for FlowSOM The python scripts for FlowSOM is available here. Reference [1] Van Gassen, S., Callebaut, B., Van Helden, M.J., Lambrecht, B.N., Demeester, P., Dhaene, T. and Saeys, Y., 2015. FlowSOM: Using self‐organizing maps for visualization and interpretation of cytometry data. Cytometry Part A, 87(7), pp.636-645. [2] Weber, L.M. and Robinson, M.D., 2016. Comparison of clustering methods for high‐dimensional single‐cell flow and mass cytometry data. Cytometry Part A, 89(12), pp.1084-1096. [3] Kohonen, T., 1990. The self-organizing map. Proceedings of the IEEE, 78(9), pp.1464-1480. [4] Whitney, V.K.M., 1972. Algorithm 422: minimal spanning tree [H]. Communications of the ACM, 15(4), pp.273-274.</summary></entry><entry><title type="html">FlowSOM: to analyze flow or mass cytometry data using a self‐organizing map</title><link href="https://hatchin.github.io//zh/neural%20network/clustering/2019/08/30/FlowSOM/" rel="alternate" type="text/html" title="FlowSOM: to analyze flow or mass cytometry data using a self‐organizing map" /><published>2019-08-30T00:00:00-07:00</published><updated>2019-08-30T00:00:00-07:00</updated><id>https://hatchin.github.io//zh/neural%20network/clustering/2019/08/30/FlowSOM</id><content type="html" xml:base="https://hatchin.github.io//zh/neural%20network/clustering/2019/08/30/FlowSOM/">&lt;p&gt;黑&lt;/p&gt;
+
+&lt;h2 id=&quot;backgroud&quot;&gt;Backgroud&lt;/h2&gt;
+
+&lt;p&gt;FlowSOM(Van Gassen et al., 2015)&lt;sup&gt;[1]&lt;/sup&gt; is one of the available algorithms for flow cytometry and high-dimensional data analysis.&lt;/p&gt;
+
+&lt;p&gt;Flow cytometry is a technique which could detect and measure characteristics of many thousand cells or particles per second. The high‐dimensional flow cytometry data have made it possible to detect protein marker expression, allowing cell populations to be characterized in unprecedented detail. Briefly speacking, the first step is going to be a clustering problem for high-dimensional data and FlowSOM could be a solution.&lt;/p&gt;
+
+&lt;p&gt;According to Weber and Robinson(2016)&lt;sup&gt;[2]&lt;/sup&gt;, FlowSOM “had extremely fast runtimes, making this method well‐suited for interactive, exploratory analysis of large, high‐dimensional data sets on a standard laptop or desktop computer.”&lt;/p&gt;
+
+&lt;h2 id=&quot;algorithm&quot;&gt;Algorithm&lt;/h2&gt;
+&lt;p&gt;FlowSOM analyzes flow or mass cytometry data using a self-Organizing Map (SOM). Using a two-level clustering and star charts, FlowSOM helps to obtain a clear overview of how all markers are behaving on all cells, and to detect subsets that might be missed otherwise.&lt;/p&gt;
+
+&lt;p&gt;The algorithm consists of four steps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;reading the data&lt;/li&gt;
+  &lt;li&gt;building a Self-Organizing Map&lt;/li&gt;
+  &lt;li&gt;building a minimal spanning tree&lt;/li&gt;
+  &lt;li&gt;computing a meta-clustering&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;reading-the-data&quot;&gt;Reading the data&lt;/h3&gt;
+
+&lt;p&gt;It actually refers to the preprocessing step. Instead of processing one fcs file, it was recommended to combine several fcs files from an experiment for training. In this way, the model is built on the whole experiment.&lt;/p&gt;
+
+&lt;p&gt;There are a lot of different pre-processing methods, we will take scaling as an example. Once all files are read and bundled together, it could be scaled by:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;c_{ij} =  \frac{c_{ij} - mean(c_{1j},.... c_{nj})}{std(c_{1j},.... c_{nj})}&lt;/script&gt;
+
+&lt;p&gt;This means each column gets a mean value of 0 and a standard deviation of 1, and ensures that each marker gets the same importance in the further processing of the data. (If expert knowledge indicates that one marker should get a higher importance than another one, specific scaling parameters can be set to reflect this in the further course of the algorithm.)&lt;/p&gt;
+
+&lt;h3 id=&quot;selforganizing-map&quot;&gt;Self‐Organizing Map&lt;/h3&gt;
+
+&lt;p&gt;A self-organizing map (SOM) is a specific type of artificial neural network (ANN), used for clustering (Kohonen, 1990)&lt;sup&gt;[3]&lt;/sup&gt;.
+It is able to convert complex, nonlinear statistical relationships between high-dimensional data items into simple geometric relationships on a low-dimensional display.&lt;/p&gt;
+
+&lt;p&gt;It uses unsupervised learning to produce a low-dimensional (typically two-dimensional), discretized representation of the input space of the training samples, called a map, and is therefore also a method to do dimensionality reduction.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://miro.medium.com/max/387/0*HV0Qm0sHs_ogxL12&quot; alt=&quot;&quot; /&gt; SOM 
+&lt;/p&gt;
+
+&lt;p&gt;The figure below illustrates how  a SOM is trained. The purple blob is the distribution of the training data. The small white disc is the current training datum drawn from that distribution. At first, the SOM nodes are arbitrarily positioned in the data space. The node (highlighted in yellow) nearest the training datum is selected. It’s moved towards the training datum, as are its neighbors on the grid. After many iterations, the grid tends to approximate the data distribution (right).&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Somtraining.svg/800px-Somtraining.svg.png&quot; alt=&quot;&quot; /&gt;  Training of a SOM
+&lt;/p&gt;
+
+&lt;p&gt;Training a self-organizing map occurs in several steps:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Initialize the weights for each node. The weights are set to small standardized random values.&lt;/li&gt;
+  &lt;li&gt;Choose a vector at random from the training set and present to the lattice.&lt;/li&gt;
+  &lt;li&gt;Examine every node to calculate which one’s weight is most like the input vector. This will allow you to obtain the Best Matching Unit (BMU). We compute the BMU by iterating over all the nodes and calculating the Euclidean distance between each node’s weight and the current input vector. The node with a weight vector closest to the input vector is marked as the BMU.&lt;/li&gt;
+  &lt;li&gt;Calculate the radius of the neighborhood of the BMU. Nodes found within the radius are deemed to be inside the neighborhood of the BMU.&lt;/li&gt;
+  &lt;li&gt;Weights of the nodes found in step 4 are adjusted to make them more like the input vector. The weights of the nodes closer to the BMU are adjusted more.&lt;/li&gt;
+  &lt;li&gt;Repeat step 2 for N iterations.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;minimum-spanning-tree&quot;&gt;Minimum Spanning Tree&lt;/h3&gt;
+
+&lt;p&gt;The resulting clustering of SOM will be visualized by a minimal spanning tree (MST). MST (Whitney, 1972)&lt;sup&gt;[4]&lt;/sup&gt; connects the nodes of a graph in such a way that the sum of the weights of the branches is minimal. By doing this, nodes will get connected to the ones they are the most similar to, taking the multidimensional topology of the data in account. Shortly, it is a subset of the edges of a connected, edge-weighted undirected graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight.&lt;/p&gt;
+
+&lt;h3 id=&quot;meta-clustering&quot;&gt;Meta Clustering&lt;/h3&gt;
+
+&lt;p&gt;SOMs can be used to get an immediate clustering, where the number of nodes is set to the expected number of cell types. However, for visualization purposes, it is advantageous to include more nodes than the expected number of clusters. By doing this, cells that are in between cell types can also get a place in the grid and smaller changes in the cell types can be noticed.&lt;/p&gt;
+
+&lt;p&gt;The meta-clustering technique conducted on the SOM is hierarchical consensus meta-clustering, which clusters the weights of trained SOM into different groups.&lt;/p&gt;
+
+&lt;h2 id=&quot;python-implementation-for-flowsom&quot;&gt;Python Implementation for FlowSOM&lt;/h2&gt;
+&lt;p&gt;The python scripts for FlowSOM is available &lt;a href=&quot;https://github.com/Hatchin/FlowSOM&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;[1] Van Gassen, S., Callebaut, B., Van Helden, M.J., Lambrecht, B.N., Demeester, P., Dhaene, T. and Saeys, Y., 2015. FlowSOM: Using self‐organizing maps for visualization and interpretation of cytometry data. Cytometry Part A, 87(7), pp.636-645.&lt;/p&gt;
+
+&lt;p&gt;[2] Weber, L.M. and Robinson, M.D., 2016. Comparison of clustering methods for high‐dimensional single‐cell flow and mass cytometry data. Cytometry Part A, 89(12), pp.1084-1096.&lt;/p&gt;
+
+&lt;p&gt;[3] Kohonen, T., 1990. The self-organizing map. Proceedings of the IEEE, 78(9), pp.1464-1480.&lt;/p&gt;
+
+&lt;p&gt;[4] Whitney, V.K.M., 1972. Algorithm 422: minimal spanning tree [H]. Communications of the ACM, 15(4), pp.273-274.&lt;/p&gt;</content><author><name>{&quot;en&quot;=&gt;&quot;Hatchin&quot;, &quot;zh&quot;=&gt;&quot;哈金&quot;}</name></author><category term="Theory" /><summary type="html">黑 Backgroud FlowSOM(Van Gassen et al., 2015)[1] is one of the available algorithms for flow cytometry and high-dimensional data analysis. Flow cytometry is a technique which could detect and measure characteristics of many thousand cells or particles per second. The high‐dimensional flow cytometry data have made it possible to detect protein marker expression, allowing cell populations to be characterized in unprecedented detail. Briefly speacking, the first step is going to be a clustering problem for high-dimensional data and FlowSOM could be a solution. According to Weber and Robinson(2016)[2], FlowSOM “had extremely fast runtimes, making this method well‐suited for interactive, exploratory analysis of large, high‐dimensional data sets on a standard laptop or desktop computer.” Algorithm FlowSOM analyzes flow or mass cytometry data using a self-Organizing Map (SOM). Using a two-level clustering and star charts, FlowSOM helps to obtain a clear overview of how all markers are behaving on all cells, and to detect subsets that might be missed otherwise. The algorithm consists of four steps: reading the data building a Self-Organizing Map building a minimal spanning tree computing a meta-clustering Reading the data It actually refers to the preprocessing step. Instead of processing one fcs file, it was recommended to combine several fcs files from an experiment for training. In this way, the model is built on the whole experiment. There are a lot of different pre-processing methods, we will take scaling as an example. Once all files are read and bundled together, it could be scaled by: This means each column gets a mean value of 0 and a standard deviation of 1, and ensures that each marker gets the same importance in the further processing of the data. (If expert knowledge indicates that one marker should get a higher importance than another one, specific scaling parameters can be set to reflect this in the further course of the algorithm.) Self‐Organizing Map A self-organizing map (SOM) is a specific type of artificial neural network (ANN), used for clustering (Kohonen, 1990)[3]. It is able to convert complex, nonlinear statistical relationships between high-dimensional data items into simple geometric relationships on a low-dimensional display. It uses unsupervised learning to produce a low-dimensional (typically two-dimensional), discretized representation of the input space of the training samples, called a map, and is therefore also a method to do dimensionality reduction. SOM The figure below illustrates how a SOM is trained. The purple blob is the distribution of the training data. The small white disc is the current training datum drawn from that distribution. At first, the SOM nodes are arbitrarily positioned in the data space. The node (highlighted in yellow) nearest the training datum is selected. It’s moved towards the training datum, as are its neighbors on the grid. After many iterations, the grid tends to approximate the data distribution (right). Training of a SOM Training a self-organizing map occurs in several steps: Initialize the weights for each node. The weights are set to small standardized random values. Choose a vector at random from the training set and present to the lattice. Examine every node to calculate which one’s weight is most like the input vector. This will allow you to obtain the Best Matching Unit (BMU). We compute the BMU by iterating over all the nodes and calculating the Euclidean distance between each node’s weight and the current input vector. The node with a weight vector closest to the input vector is marked as the BMU. Calculate the radius of the neighborhood of the BMU. Nodes found within the radius are deemed to be inside the neighborhood of the BMU. Weights of the nodes found in step 4 are adjusted to make them more like the input vector. The weights of the nodes closer to the BMU are adjusted more. Repeat step 2 for N iterations. Minimum Spanning Tree The resulting clustering of SOM will be visualized by a minimal spanning tree (MST). MST (Whitney, 1972)[4] connects the nodes of a graph in such a way that the sum of the weights of the branches is minimal. By doing this, nodes will get connected to the ones they are the most similar to, taking the multidimensional topology of the data in account. Shortly, it is a subset of the edges of a connected, edge-weighted undirected graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight. Meta Clustering SOMs can be used to get an immediate clustering, where the number of nodes is set to the expected number of cell types. However, for visualization purposes, it is advantageous to include more nodes than the expected number of clusters. By doing this, cells that are in between cell types can also get a place in the grid and smaller changes in the cell types can be noticed. The meta-clustering technique conducted on the SOM is hierarchical consensus meta-clustering, which clusters the weights of trained SOM into different groups. Python Implementation for FlowSOM The python scripts for FlowSOM is available here. Reference [1] Van Gassen, S., Callebaut, B., Van Helden, M.J., Lambrecht, B.N., Demeester, P., Dhaene, T. and Saeys, Y., 2015. FlowSOM: Using self‐organizing maps for visualization and interpretation of cytometry data. Cytometry Part A, 87(7), pp.636-645. [2] Weber, L.M. and Robinson, M.D., 2016. Comparison of clustering methods for high‐dimensional single‐cell flow and mass cytometry data. Cytometry Part A, 89(12), pp.1084-1096. [3] Kohonen, T., 1990. The self-organizing map. Proceedings of the IEEE, 78(9), pp.1464-1480. [4] Whitney, V.K.M., 1972. Algorithm 422: minimal spanning tree [H]. Communications of the ACM, 15(4), pp.273-274.</summary></entry><entry><title type="html">Mann Whitney U Test - with Python Solution for Small Sample</title><link href="https://hatchin.github.io//en/stat/2019/05/08/Mann-Whitney-U-Tool/" rel="alternate" type="text/html" title="Mann Whitney U Test - with Python Solution for Small Sample" /><published>2019-05-08T00:00:00-07:00</published><updated>2019-05-08T00:00:00-07:00</updated><id>https://hatchin.github.io//en/stat/2019/05/08/Mann-Whitney-U-Tool</id><content type="html" xml:base="https://hatchin.github.io//en/stat/2019/05/08/Mann-Whitney-U-Tool/">&lt;p&gt;In this part, I am going to show a demo on the Mann-Whitney U Test Python script which is able to perform test on both small and large sample size.&lt;/p&gt;
+
+&lt;p&gt;Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples). However, in many modern statistical packages which included Mann-Whitney U test, they were only valid when the data sample size was large. Hence, it is necessary and helpful to have a complete application of Mann-Whitney U test, including two conditions of small sample and large sample.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hatchin.github.io/stat/Mann-Whitney-U/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=part2&quot; target=&quot;_blank&quot;&gt;Part 1&lt;/a&gt;: an overview of Mann-Whitney U test&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hatchin.github.io/stat/Mann-Whitney-U-Tool/&quot;&gt;Part 2&lt;/a&gt;: an introduction to Mann-Whitney U test in Python&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mannwhitney.herokuapp.com/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=Webpage&quot; target=&quot;_blank&quot;&gt;Tool: Web Application&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Hatchin/Mann-Whitney-U-Test/blob/master/mannwhitney.py&quot; target=&quot;_blank&quot;&gt;Package Source Code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Hatchin/Mann-Whitney-U-Test&quot; target=&quot;_blank&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;demo&quot;&gt;Demo&lt;/h2&gt;
+
+&lt;h3 id=&quot;installation&quot;&gt;Installation&lt;/h3&gt;
+
+&lt;p&gt;Download &lt;a href=&quot;https://github.com/Hatchin/Mann-Whitney-U-Test&quot;&gt;Mann-Whitney-U-Test&lt;/a&gt; to a directory of your choice and then run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;use-it&quot;&gt;Use It&lt;/h3&gt;
+
+&lt;p&gt;In order to use Mann-Whitney-U-Test, you need your data organized as a list like the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from mannwhitney import *
+data1 = [1,2,3,4,4,5]
+data2 = [4,5,6,6,9,10,14]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then you could run it just as follows:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mwm = mannWhitney(data1,
+                  data2, 
+                  tail='two', 
+                  significant_level=0.05) # two-tailed test
+                                          # at 0.05 significance
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;analyze&quot;&gt;Analyze&lt;/h3&gt;
+
+&lt;p&gt;After testing, you could fetch the following results:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.n1&lt;/code&gt; &amp;amp; &lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.n2&lt;/code&gt;  the number of sample size for a group&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.sample_size&lt;/code&gt;    small or large sample size&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.significance&lt;/code&gt;   whether the test show signicant difference&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.criticalu&lt;/code&gt;      the critical U value obtained from the table (only available when sample size is small)&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.p&lt;/code&gt;              the p value calculated from the testing data (only available when sample size is large)&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.stat_a&lt;/code&gt;         the U statistics calculated from the testing data&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.effectsize&lt;/code&gt;     the effect size&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.largergroup&lt;/code&gt;    the index of the larger group (1 or 2)&lt;/p&gt;
+
+&lt;h2 id=&quot;web-application&quot;&gt;Web Application&lt;/h2&gt;
+
+&lt;p&gt;You could also visit the &lt;a href=&quot;https://mannwhitney.herokuapp.com/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=Webpage&quot; target=&quot;_blank&quot;&gt;webpage&lt;/a&gt; which is an application for this script if you don’t want to run the code.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://raw.githubusercontent.com/Hatchin/Mann-Whitney-U-Test/master/demo.png&quot; alt=&quot;&quot; /&gt;Example
+&lt;/p&gt;
+
+&lt;p&gt;Similary, just provide two groups of data and the application will run the test and show all the result.&lt;/p&gt;
+
+&lt;p&gt;The valid format of input data includes:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;copy directly from Excel (a row or a column)&lt;/li&gt;
+  &lt;li&gt;mannul typing
+    &lt;ul&gt;
+      &lt;li&gt;separate with comma, e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;1, 2, 3, 4&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;separate with space, e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;1 2 3 4&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;mixture, e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;1  2  , 3, 4&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;run-the-server-on-your-instance&quot;&gt;Run the server on your instance&lt;/h3&gt;
+
+&lt;p&gt;It is easy to set up your application and run it on your machine. After installing the required packages, simply run&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python app.py runserver
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then it is on at &lt;a href=&quot;http://127.0.0.1:5000/&quot;&gt;http://127.0.0.1:5000/&lt;/a&gt;&lt;/p&gt;</content><author><name>{&quot;en&quot;=&gt;&quot;Hatchin&quot;, &quot;zh&quot;=&gt;&quot;哈金&quot;}</name></author><category term="Tool" /><category term="Web App" /><summary type="html">In this part, I am going to show a demo on the Mann-Whitney U Test Python script which is able to perform test on both small and large sample size. Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples). However, in many modern statistical packages which included Mann-Whitney U test, they were only valid when the data sample size was large. Hence, it is necessary and helpful to have a complete application of Mann-Whitney U test, including two conditions of small sample and large sample. Part 1: an overview of Mann-Whitney U test Part 2: an introduction to Mann-Whitney U test in Python Tool: Web Application Package Source Code Github Demo Installation Download Mann-Whitney-U-Test to a directory of your choice and then run: pip install -r requirements.txt Use It In order to use Mann-Whitney-U-Test, you need your data organized as a list like the following: from mannwhitney import * data1 = [1,2,3,4,4,5] data2 = [4,5,6,6,9,10,14] Then you could run it just as follows: mwm = mannWhitney(data1, data2, tail='two', significant_level=0.05) # two-tailed test # at 0.05 significance Analyze After testing, you could fetch the following results: mwm.n1 &amp;amp; mwm.n2 the number of sample size for a group mwm.sample_size small or large sample size mwm.significance whether the test show signicant difference mwm.criticalu the critical U value obtained from the table (only available when sample size is small) mwm.p the p value calculated from the testing data (only available when sample size is large) mwm.stat_a the U statistics calculated from the testing data mwm.effectsize the effect size mwm.largergroup the index of the larger group (1 or 2) Web Application You could also visit the webpage which is an application for this script if you don’t want to run the code. Example Similary, just provide two groups of data and the application will run the test and show all the result. The valid format of input data includes: copy directly from Excel (a row or a column) mannul typing separate with comma, e.g. 1, 2, 3, 4 separate with space, e.g. 1 2 3 4 mixture, e.g. 1 2 , 3, 4 Run the server on your instance It is easy to set up your application and run it on your machine. After installing the required packages, simply run python app.py runserver Then it is on at http://127.0.0.1:5000/</summary></entry><entry><title type="html">Mann Whitney U Test - with Python Solution for Small Sample</title><link href="https://hatchin.github.io//zh/stat/2019/05/08/Mann-Whitney-U-Tool/" rel="alternate" type="text/html" title="Mann Whitney U Test - with Python Solution for Small Sample" /><published>2019-05-08T00:00:00-07:00</published><updated>2019-05-08T00:00:00-07:00</updated><id>https://hatchin.github.io//zh/stat/2019/05/08/Mann-Whitney-U-Tool</id><content type="html" xml:base="https://hatchin.github.io//zh/stat/2019/05/08/Mann-Whitney-U-Tool/">&lt;p&gt;黑In this part, I am going to show a demo on the Mann-Whitney U Test Python script which is able to perform test on both small and large sample size.&lt;/p&gt;
+
+&lt;p&gt;Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples). However, in many modern statistical packages which included Mann-Whitney U test, they were only valid when the data sample size was large. Hence, it is necessary and helpful to have a complete application of Mann-Whitney U test, including two conditions of small sample and large sample.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hatchin.github.io/stat/Mann-Whitney-U/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=part2&quot; target=&quot;_blank&quot;&gt;Part 1&lt;/a&gt;: an overview of Mann-Whitney U test&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hatchin.github.io/stat/Mann-Whitney-U-Tool/&quot;&gt;Part 2&lt;/a&gt;: an introduction to Mann-Whitney U test in Python&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mannwhitney.herokuapp.com/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=Webpage&quot; target=&quot;_blank&quot;&gt;Tool: Web Application&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Hatchin/Mann-Whitney-U-Test/blob/master/mannwhitney.py&quot; target=&quot;_blank&quot;&gt;Package Source Code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Hatchin/Mann-Whitney-U-Test&quot; target=&quot;_blank&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;demo&quot;&gt;Demo&lt;/h2&gt;
+
+&lt;h3 id=&quot;installation&quot;&gt;Installation&lt;/h3&gt;
+
+&lt;p&gt;Download &lt;a href=&quot;https://github.com/Hatchin/Mann-Whitney-U-Test&quot;&gt;Mann-Whitney-U-Test&lt;/a&gt; to a directory of your choice and then run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;use-it&quot;&gt;Use It&lt;/h3&gt;
+
+&lt;p&gt;In order to use Mann-Whitney-U-Test, you need your data organized as a list like the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from mannwhitney import *
+data1 = [1,2,3,4,4,5]
+data2 = [4,5,6,6,9,10,14]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then you could run it just as follows:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mwm = mannWhitney(data1,
+                  data2, 
+                  tail='two', 
+                  significant_level=0.05) # two-tailed test
+                                          # at 0.05 significance
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;analyze&quot;&gt;Analyze&lt;/h3&gt;
+
+&lt;p&gt;After testing, you could fetch the following results:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.n1&lt;/code&gt; &amp;amp; &lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.n2&lt;/code&gt;  the number of sample size for a group&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.sample_size&lt;/code&gt;    small or large sample size&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.significance&lt;/code&gt;   whether the test show signicant difference&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.criticalu&lt;/code&gt;      the critical U value obtained from the table (only available when sample size is small)&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.p&lt;/code&gt;              the p value calculated from the testing data (only available when sample size is large)&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.stat_a&lt;/code&gt;         the U statistics calculated from the testing data&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.effectsize&lt;/code&gt;     the effect size&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mwm.largergroup&lt;/code&gt;    the index of the larger group (1 or 2)&lt;/p&gt;
+
+&lt;h2 id=&quot;web-application&quot;&gt;Web Application&lt;/h2&gt;
+
+&lt;p&gt;You could also visit the &lt;a href=&quot;https://mannwhitney.herokuapp.com/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=Webpage&quot; target=&quot;_blank&quot;&gt;webpage&lt;/a&gt; which is an application for this script if you don’t want to run the code.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://raw.githubusercontent.com/Hatchin/Mann-Whitney-U-Test/master/demo.png&quot; alt=&quot;&quot; /&gt;Example
+&lt;/p&gt;
+
+&lt;p&gt;Similary, just provide two groups of data and the application will run the test and show all the result.&lt;/p&gt;
+
+&lt;p&gt;The valid format of input data includes:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;copy directly from Excel (a row or a column)&lt;/li&gt;
+  &lt;li&gt;mannul typing
+    &lt;ul&gt;
+      &lt;li&gt;separate with comma, e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;1, 2, 3, 4&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;separate with space, e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;1 2 3 4&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;mixture, e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;1  2  , 3, 4&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;run-the-server-on-your-instance&quot;&gt;Run the server on your instance&lt;/h3&gt;
+
+&lt;p&gt;It is easy to set up your application and run it on your machine. After installing the required packages, simply run&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python app.py runserver
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then it is on at &lt;a href=&quot;http://127.0.0.1:5000/&quot;&gt;http://127.0.0.1:5000/&lt;/a&gt;&lt;/p&gt;</content><author><name>{&quot;en&quot;=&gt;&quot;Hatchin&quot;, &quot;zh&quot;=&gt;&quot;哈金&quot;}</name></author><category term="Tool" /><category term="Web App" /><summary type="html">黑In this part, I am going to show a demo on the Mann-Whitney U Test Python script which is able to perform test on both small and large sample size. Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples). However, in many modern statistical packages which included Mann-Whitney U test, they were only valid when the data sample size was large. Hence, it is necessary and helpful to have a complete application of Mann-Whitney U test, including two conditions of small sample and large sample. Part 1: an overview of Mann-Whitney U test Part 2: an introduction to Mann-Whitney U test in Python Tool: Web Application Package Source Code Github Demo Installation Download Mann-Whitney-U-Test to a directory of your choice and then run: pip install -r requirements.txt Use It In order to use Mann-Whitney-U-Test, you need your data organized as a list like the following: from mannwhitney import * data1 = [1,2,3,4,4,5] data2 = [4,5,6,6,9,10,14] Then you could run it just as follows: mwm = mannWhitney(data1, data2, tail='two', significant_level=0.05) # two-tailed test # at 0.05 significance Analyze After testing, you could fetch the following results: mwm.n1 &amp;amp; mwm.n2 the number of sample size for a group mwm.sample_size small or large sample size mwm.significance whether the test show signicant difference mwm.criticalu the critical U value obtained from the table (only available when sample size is small) mwm.p the p value calculated from the testing data (only available when sample size is large) mwm.stat_a the U statistics calculated from the testing data mwm.effectsize the effect size mwm.largergroup the index of the larger group (1 or 2) Web Application You could also visit the webpage which is an application for this script if you don’t want to run the code. Example Similary, just provide two groups of data and the application will run the test and show all the result. The valid format of input data includes: copy directly from Excel (a row or a column) mannul typing separate with comma, e.g. 1, 2, 3, 4 separate with space, e.g. 1 2 3 4 mixture, e.g. 1 2 , 3, 4 Run the server on your instance It is easy to set up your application and run it on your machine. After installing the required packages, simply run python app.py runserver Then it is on at http://127.0.0.1:5000/</summary></entry><entry><title type="html">Mann Whitney U Test - Overview</title><link href="https://hatchin.github.io//en/stat/2019/05/07/Mann-Whitney-U/" rel="alternate" type="text/html" title="Mann Whitney U Test - Overview" /><published>2019-05-07T00:00:00-07:00</published><updated>2019-05-07T00:00:00-07:00</updated><id>https://hatchin.github.io//en/stat/2019/05/07/Mann-Whitney-U</id><content type="html" xml:base="https://hatchin.github.io//en/stat/2019/05/07/Mann-Whitney-U/">&lt;p&gt;In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in &lt;a href=&quot;https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html&quot; target=&quot;_blank&quot;&gt;Scipy&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Because the current scipy version only support test for large sample size(n&amp;gt;20),  the new script is made to test for small sample size (n &amp;lt; 20).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hatchin.github.io/stat/Mann-Whitney-U/&quot;&gt;Part 1&lt;/a&gt;: an overview of Mann-Whitney U test&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hatchin.github.io/stat/Mann-Whitney-U-Tool/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=part1&quot; target=&quot;_blank&quot;&gt;Part 2&lt;/a&gt; : an introduction to Mann-Whitney U test in Python&lt;/p&gt;
+
+&lt;h2 id=&quot;use-of-mann-whitney-test&quot;&gt;Use of Mann-Whitney test&lt;/h2&gt;
+
+&lt;p&gt;The Mann–Whitney U test is a non-parametric alternative test to the independent sample t-test. It is a test of both location and shape. Given two independent samples, it tests whether one variable tends to have values higher than the other (test on sample means). Theoretically, in large samples the Mann-Whitney test can also detect differences in spread even when the medians are very similar.&lt;/p&gt;
+
+&lt;p&gt;This test does not assume that the samples is normally distributed, that the variances of the two populations are equal or that the two sample sizes are equal.&lt;/p&gt;
+
+&lt;p&gt;Hence, in summary:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Mann-Whitney U test is used as an alternative to a t test when the data are not normally distributed;&lt;/li&gt;
+  &lt;li&gt;The Mann-Whitney U test is usually used in cases that data sample size is small;&lt;/li&gt;
+  &lt;li&gt;The test can detect differences in shape and spread as well as just differences in medians.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;test-statistic-and-calculation-example&quot;&gt;Test Statistic and Calculation Example&lt;/h2&gt;
+&lt;p&gt;Consider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Placebo&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;12&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;New Drug&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The hypothesis is given below and and the test is supposed to run at the 5% level of significance (i.e., &lt;script type=&quot;math/tex&quot;&gt;\alpha=0.05&lt;/script&gt;).:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;H_{0}: The \ two \ populations \ are \ equal \ versus
+\\
+H_{1}: The \ two \ populations \ are \ not \ equal.&lt;/script&gt;
+
+&lt;p&gt;The sample size is small (&lt;script type=&quot;math/tex&quot;&gt;n_{1}=n_{2}=5&lt;/script&gt;), so a nonparametric test is appropriate. We are going to use Mann-Whitney U test to solve this problem.&lt;/p&gt;
+
+&lt;p&gt;The test statistic for the Mann-Whitney U Test is denoted &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt;, whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good.&lt;/p&gt;
+
+&lt;h3 id=&quot;small-sample-example&quot;&gt;Small Sample Example&lt;/h3&gt;
+&lt;p&gt;The statistic, &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt;, could be easily calculated by hand, especially for small samples.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Assign ranks&lt;/p&gt;
+
+    &lt;p&gt;The first step is to rank all the data. To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows.&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th style=&quot;text-align: left&quot;&gt;Sample Value (Ordered)&lt;/th&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;Ranks&lt;/th&gt;
+          &lt;th style=&quot;text-align: right&quot;&gt; &lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th style=&quot;text-align: left&quot;&gt;Placebo&lt;/th&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;New Drugs&lt;/th&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;Placebo&lt;/th&gt;
+          &lt;th style=&quot;text-align: right&quot;&gt;New Drugs&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;3&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt;4&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;4.5&lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;4.5&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt;5&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt;6&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;7.5&lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;7.5&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt;7&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt;12&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;For the tie values, we use their mean of ranks.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sum the ranks for each group&lt;/p&gt;
+
+    &lt;p&gt;The second step is to calculate the sum of ranks, &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;, of each group.&lt;/p&gt;
+
+    &lt;p&gt;In the placebo group,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;R_{1} = 4.5 + 6 + 7.5 + 9 + 10 = 37&lt;/script&gt;
+
+    &lt;p&gt;In the new drugs group,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;R_{2} = 1 + 2 + 3 + 2 + 4.5 + 7.5 = 18&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compute &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt;&lt;/p&gt;
+
+    &lt;p&gt;Given,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;U_{i} = n_{1}n_{2} + \frac{n_{i}(n_{i}+1)}{2} - R_{i}
+\\
+U =  min( U_{1}, ..., U_{i})&lt;/script&gt;
+
+    &lt;p&gt;For this example,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;U_{1} = 5(5) + \frac{5(6)}{2} - 37 = 3
+\\
+U_{1} = 5(5) + \frac{5(6)}{2} - 18 = 22&lt;/script&gt;
+
+    &lt;p&gt;Thus, the test statistic is  &lt;script type=&quot;math/tex&quot;&gt;U=3&lt;/script&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compare &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; with critical &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt;&lt;/p&gt;
+
+    &lt;p&gt;In every test, we must determine whether the observed &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; such that,&lt;/p&gt;
+
+    &lt;p style=&quot;text-align:center&quot;&gt;If &lt;script type=&quot;math/tex&quot;&gt;U \leq critical \ U&lt;/script&gt;, we reject &lt;script type=&quot;math/tex&quot;&gt;H_{0}&lt;/script&gt; in favor of &lt;script type=&quot;math/tex&quot;&gt;H_{1}&lt;/script&gt; and,&lt;/p&gt;
+
+    &lt;p style=&quot;text-align:center&quot;&gt;if &lt;script type=&quot;math/tex&quot;&gt;U &gt; critical \ U&lt;/script&gt; we do not reject &lt;script type=&quot;math/tex&quot;&gt;H_{0}&lt;/script&gt;.&lt;/p&gt;
+
+    &lt;p&gt;The table of critical &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; is as follows.&lt;/p&gt;
+
+    &lt;iframe src=&quot;https://drive.google.com/file/d/1tDhqpREuVXevtImG0N_oviIFcb3khlah/preview&quot; width=&quot;600&quot; height=&quot;450&quot;&gt;&lt;/iframe&gt;
+
+    &lt;p&gt;From this table, we could get the critical &lt;script type=&quot;math/tex&quot;&gt;U = 2&lt;/script&gt; and therefore,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;U = 3 &gt; 2 = critical \ U&lt;/script&gt;
+
+    &lt;p&gt;We do not reject &lt;script type=&quot;math/tex&quot;&gt;H_{0}&lt;/script&gt; and do not have statistically significant evidence at &lt;script type=&quot;math/tex&quot;&gt;\alpha =0.05&lt;/script&gt;, to show that the two populations are not equal.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;when-sample-size-is-larger-n--20&quot;&gt;When sample size is larger (n &amp;gt; 20)&lt;/h3&gt;
+
+&lt;p&gt;With samples this large, the value of &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; approaches a normal distribution, and so the null hypothesis can be tested by a Z-test.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compute &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt;&lt;/p&gt;
+
+    &lt;p&gt;Here,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;U =  max( U_{1}, ..., U_{i})&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compute the z value of &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; statistic&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma _{U}={\sqrt {n_{1}n_{2}(n_{1}+n_{2}+1) \over 12}}
+\\
+\\
+Z = \frac{ U - \frac{n_{1}n{2}}{2}}{\sigma _{U}}&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Determination&lt;/p&gt;
+
+    &lt;p&gt;Compare the obtained Z value and the critical Z value to determine whether to retain or reject the null hypothesis. 
+at the 5% level of significance, similarly,&lt;/p&gt;
+
+    &lt;p style=&quot;text-align:center&quot;&gt;If &lt;script type=&quot;math/tex&quot;&gt;Z \leq critical \ Z = 1.96&lt;/script&gt;, we do not reject &lt;script type=&quot;math/tex&quot;&gt;H_{0}&lt;/script&gt; and,&lt;/p&gt;
+
+    &lt;p style=&quot;text-align:center&quot;&gt;if &lt;script type=&quot;math/tex&quot;&gt;Z &gt; critical \ Z = 1.96&lt;/script&gt; we reject &lt;script type=&quot;math/tex&quot;&gt;H_{0}&lt;/script&gt; in favor of &lt;script type=&quot;math/tex&quot;&gt;H_{1}&lt;/script&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;python-script-for-mannwhitney-u-test&quot;&gt;Python Script for Mann–Whitney U test&lt;/h2&gt;
+
+&lt;p&gt;The Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in &lt;a href=&quot;https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html&quot; target=&quot;_blank&quot;&gt;scipy.stat&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, the scipy version of Mann-Whitney U test noted that&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Use only when the number of observation in each sample is &amp;gt; 20.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed.&lt;/p&gt;
+
+&lt;p&gt;In &lt;a href=&quot;https://hatchin.github.io/stat/Mann-Whitney-U-Tool/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=part1&quot;&gt;Part 2&lt;/a&gt;, we go further to have a detailed demo on the new application.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;More details could be found:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mannwhitney.herokuapp.com/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=Webpage&quot; target=&quot;_blank&quot;&gt;Tool: Web Application&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Hatchin/Mann-Whitney-U-Test/blob/master/mannwhitney.py&quot; target=&quot;_blank&quot;&gt;Package Source Code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Hatchin/Mann-Whitney-U-Test&quot; target=&quot;_blank&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>{&quot;en&quot;=&gt;&quot;Hatchin&quot;, &quot;zh&quot;=&gt;&quot;哈金&quot;}</name></author><category term="Theory" /><summary type="html">In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in Scipy. Because the current scipy version only support test for large sample size(n&amp;gt;20), the new script is made to test for small sample size (n &amp;lt; 20). Part 1: an overview of Mann-Whitney U test Part 2 : an introduction to Mann-Whitney U test in Python Use of Mann-Whitney test The Mann–Whitney U test is a non-parametric alternative test to the independent sample t-test. It is a test of both location and shape. Given two independent samples, it tests whether one variable tends to have values higher than the other (test on sample means). Theoretically, in large samples the Mann-Whitney test can also detect differences in spread even when the medians are very similar. This test does not assume that the samples is normally distributed, that the variances of the two populations are equal or that the two sample sizes are equal. Hence, in summary: The Mann-Whitney U test is used as an alternative to a t test when the data are not normally distributed; The Mann-Whitney U test is usually used in cases that data sample size is small; The test can detect differences in shape and spread as well as just differences in medians. Test Statistic and Calculation Example Consider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below. Placebo 7 5 6 4 12 New Drug 3 6 4 2 1 The hypothesis is given below and and the test is supposed to run at the 5% level of significance (i.e., ).: The sample size is small (), so a nonparametric test is appropriate. We are going to use Mann-Whitney U test to solve this problem. The test statistic for the Mann-Whitney U Test is denoted , whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good. Small Sample Example The statistic, , could be easily calculated by hand, especially for small samples. Assign ranks The first step is to rank all the data. To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows. Sample Value (Ordered)   Ranks   Placebo New Drugs Placebo New Drugs   1   1   2   2   3   3   2   2 4 4 4.5 4.5 5   6   6 6 7.5 7.5 7   9   12   10   For the tie values, we use their mean of ranks. Sum the ranks for each group The second step is to calculate the sum of ranks, , of each group. In the placebo group, In the new drugs group, Compute Given, For this example, Thus, the test statistic is . Compare with critical In every test, we must determine whether the observed supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of such that, If , we reject in favor of and, if we do not reject . The table of critical is as follows. From this table, we could get the critical and therefore, We do not reject and do not have statistically significant evidence at , to show that the two populations are not equal. When sample size is larger (n &amp;gt; 20) With samples this large, the value of approaches a normal distribution, and so the null hypothesis can be tested by a Z-test. Compute Here, Compute the z value of statistic Determination Compare the obtained Z value and the critical Z value to determine whether to retain or reject the null hypothesis. at the 5% level of significance, similarly, If , we do not reject and, if we reject in favor of . Python Script for Mann–Whitney U test The Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in scipy.stat. However, the scipy version of Mann-Whitney U test noted that Use only when the number of observation in each sample is &amp;gt; 20. Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed. In Part 2, we go further to have a detailed demo on the new application. More details could be found: Tool: Web Application Package Source Code Github</summary></entry><entry><title type="html">Mann Whitney U Test - Overview</title><link href="https://hatchin.github.io//zh/stat/2019/05/07/Mann-Whitney-U/" rel="alternate" type="text/html" title="Mann Whitney U Test - Overview" /><published>2019-05-07T00:00:00-07:00</published><updated>2019-05-07T00:00:00-07:00</updated><id>https://hatchin.github.io//zh/stat/2019/05/07/Mann-Whitney-U</id><content type="html" xml:base="https://hatchin.github.io//zh/stat/2019/05/07/Mann-Whitney-U/">&lt;p&gt;In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in &lt;a href=&quot;https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html&quot; target=&quot;_blank&quot;&gt;Scipy&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Because the current scipy version only support test for large sample size(n&amp;gt;20),  the new script is made to test for small sample size (n &amp;lt; 20).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hatchin.github.io/stat/Mann-Whitney-U/&quot;&gt;Part 1&lt;/a&gt;: an overview of Mann-Whitney U test&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hatchin.github.io/stat/Mann-Whitney-U-Tool/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=part1&quot; target=&quot;_blank&quot;&gt;Part 2&lt;/a&gt; : an introduction to Mann-Whitney U test in Python&lt;/p&gt;
+
+&lt;h2 id=&quot;use-of-mann-whitney-test&quot;&gt;Use of Mann-Whitney test&lt;/h2&gt;
+
+&lt;p&gt;The Mann–Whitney U test is a non-parametric alternative test to the independent sample t-test. It is a test of both location and shape. Given two independent samples, it tests whether one variable tends to have values higher than the other (test on sample means). Theoretically, in large samples the Mann-Whitney test can also detect differences in spread even when the medians are very similar.&lt;/p&gt;
+
+&lt;p&gt;This test does not assume that the samples is normally distributed, that the variances of the two populations are equal or that the two sample sizes are equal.&lt;/p&gt;
+
+&lt;p&gt;Hence, in summary:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Mann-Whitney U test is used as an alternative to a t test when the data are not normally distributed;&lt;/li&gt;
+  &lt;li&gt;The Mann-Whitney U test is usually used in cases that data sample size is small;&lt;/li&gt;
+  &lt;li&gt;The test can detect differences in shape and spread as well as just differences in medians.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;test-statistic-and-calculation-example&quot;&gt;Test Statistic and Calculation Example&lt;/h2&gt;
+&lt;p&gt;Consider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Placebo&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;12&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;New Drug&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The hypothesis is given below and and the test is supposed to run at the 5% level of significance (i.e., &lt;script type=&quot;math/tex&quot;&gt;\alpha=0.05&lt;/script&gt;).:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;H_{0}: The \ two \ populations \ are \ equal \ versus
+\\
+H_{1}: The \ two \ populations \ are \ not \ equal.&lt;/script&gt;
+
+&lt;p&gt;The sample size is small (&lt;script type=&quot;math/tex&quot;&gt;n_{1}=n_{2}=5&lt;/script&gt;), so a nonparametric test is appropriate. We are going to use Mann-Whitney U test to solve this problem.&lt;/p&gt;
+
+&lt;p&gt;The test statistic for the Mann-Whitney U Test is denoted &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt;, whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good.&lt;/p&gt;
+
+&lt;h3 id=&quot;small-sample-example&quot;&gt;Small Sample Example&lt;/h3&gt;
+&lt;p&gt;The statistic, &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt;, could be easily calculated by hand, especially for small samples.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Assign ranks&lt;/p&gt;
+
+    &lt;p&gt;The first step is to rank all the data. To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows.&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th style=&quot;text-align: left&quot;&gt;Sample Value (Ordered)&lt;/th&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;Ranks&lt;/th&gt;
+          &lt;th style=&quot;text-align: right&quot;&gt; &lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th style=&quot;text-align: left&quot;&gt;Placebo&lt;/th&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;New Drugs&lt;/th&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;Placebo&lt;/th&gt;
+          &lt;th style=&quot;text-align: right&quot;&gt;New Drugs&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;3&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt;4&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;4.5&lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;4.5&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt;5&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt;6&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;7.5&lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt;7.5&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt;7&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: left&quot;&gt;12&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+          &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;For the tie values, we use their mean of ranks.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sum the ranks for each group&lt;/p&gt;
+
+    &lt;p&gt;The second step is to calculate the sum of ranks, &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;, of each group.&lt;/p&gt;
+
+    &lt;p&gt;In the placebo group,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;R_{1} = 4.5 + 6 + 7.5 + 9 + 10 = 37&lt;/script&gt;
+
+    &lt;p&gt;In the new drugs group,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;R_{2} = 1 + 2 + 3 + 2 + 4.5 + 7.5 = 18&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compute &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt;&lt;/p&gt;
+
+    &lt;p&gt;Given,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;U_{i} = n_{1}n_{2} + \frac{n_{i}(n_{i}+1)}{2} - R_{i}
+\\
+U =  min( U_{1}, ..., U_{i})&lt;/script&gt;
+
+    &lt;p&gt;For this example,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;U_{1} = 5(5) + \frac{5(6)}{2} - 37 = 3
+\\
+U_{1} = 5(5) + \frac{5(6)}{2} - 18 = 22&lt;/script&gt;
+
+    &lt;p&gt;Thus, the test statistic is  &lt;script type=&quot;math/tex&quot;&gt;U=3&lt;/script&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compare &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; with critical &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt;&lt;/p&gt;
+
+    &lt;p&gt;In every test, we must determine whether the observed &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; such that,&lt;/p&gt;
+
+    &lt;p style=&quot;text-align:center&quot;&gt;If &lt;script type=&quot;math/tex&quot;&gt;U \leq critical \ U&lt;/script&gt;, we reject &lt;script type=&quot;math/tex&quot;&gt;H_{0}&lt;/script&gt; in favor of &lt;script type=&quot;math/tex&quot;&gt;H_{1}&lt;/script&gt; and,&lt;/p&gt;
+
+    &lt;p style=&quot;text-align:center&quot;&gt;if &lt;script type=&quot;math/tex&quot;&gt;U &gt; critical \ U&lt;/script&gt; we do not reject &lt;script type=&quot;math/tex&quot;&gt;H_{0}&lt;/script&gt;.&lt;/p&gt;
+
+    &lt;p&gt;The table of critical &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; is as follows.&lt;/p&gt;
+
+    &lt;iframe src=&quot;https://drive.google.com/file/d/1tDhqpREuVXevtImG0N_oviIFcb3khlah/preview&quot; width=&quot;600&quot; height=&quot;450&quot;&gt;&lt;/iframe&gt;
+
+    &lt;p&gt;From this table, we could get the critical &lt;script type=&quot;math/tex&quot;&gt;U = 2&lt;/script&gt; and therefore,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;U = 3 &gt; 2 = critical \ U&lt;/script&gt;
+
+    &lt;p&gt;We do not reject &lt;script type=&quot;math/tex&quot;&gt;H_{0}&lt;/script&gt; and do not have statistically significant evidence at &lt;script type=&quot;math/tex&quot;&gt;\alpha =0.05&lt;/script&gt;, to show that the two populations are not equal.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;when-sample-size-is-larger-n--20&quot;&gt;When sample size is larger (n &amp;gt; 20)&lt;/h3&gt;
+
+&lt;p&gt;With samples this large, the value of &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; approaches a normal distribution, and so the null hypothesis can be tested by a Z-test.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compute &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt;&lt;/p&gt;
+
+    &lt;p&gt;Here,&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;U =  max( U_{1}, ..., U_{i})&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compute the z value of &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt; statistic&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma _{U}={\sqrt {n_{1}n_{2}(n_{1}+n_{2}+1) \over 12}}
+\\
+\\
+Z = \frac{ U - \frac{n_{1}n{2}}{2}}{\sigma _{U}}&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Determination&lt;/p&gt;
+
+    &lt;p&gt;Compare the obtained Z value and the critical Z value to determine whether to retain or reject the null hypothesis. 
+at the 5% level of significance, similarly,&lt;/p&gt;
+
+    &lt;p style=&quot;text-align:center&quot;&gt;If &lt;script type=&quot;math/tex&quot;&gt;Z \leq critical \ Z = 1.96&lt;/script&gt;, we do not reject &lt;script type=&quot;math/tex&quot;&gt;H_{0}&lt;/script&gt; and,&lt;/p&gt;
+
+    &lt;p style=&quot;text-align:center&quot;&gt;if &lt;script type=&quot;math/tex&quot;&gt;Z &gt; critical \ Z = 1.96&lt;/script&gt; we reject &lt;script type=&quot;math/tex&quot;&gt;H_{0}&lt;/script&gt; in favor of &lt;script type=&quot;math/tex&quot;&gt;H_{1}&lt;/script&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;python-script-for-mannwhitney-u-test&quot;&gt;Python Script for Mann–Whitney U test&lt;/h2&gt;
+
+&lt;p&gt;The Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in &lt;a href=&quot;https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html&quot; target=&quot;_blank&quot;&gt;scipy.stat&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, the scipy version of Mann-Whitney U test noted that&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Use only when the number of observation in each sample is &amp;gt; 20.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed.&lt;/p&gt;
+
+&lt;p&gt;In &lt;a href=&quot;https://hatchin.github.io/stat/Mann-Whitney-U-Tool/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=part1&quot;&gt;Part 2&lt;/a&gt;, we go further to have a detailed demo on the new application.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;More details could be found:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mannwhitney.herokuapp.com/?utm_source=blog&amp;amp;utm_medium=post&amp;amp;utm_campaign=Webpage&quot; target=&quot;_blank&quot;&gt;Tool: Web Application&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Hatchin/Mann-Whitney-U-Test/blob/master/mannwhitney.py&quot; target=&quot;_blank&quot;&gt;Package Source Code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Hatchin/Mann-Whitney-U-Test&quot; target=&quot;_blank&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>{&quot;en&quot;=&gt;&quot;Hatchin&quot;, &quot;zh&quot;=&gt;&quot;哈金&quot;}</name></author><category term="Theory" /><summary type="html">In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in Scipy. Because the current scipy version only support test for large sample size(n&amp;gt;20), the new script is made to test for small sample size (n &amp;lt; 20). Part 1: an overview of Mann-Whitney U test Part 2 : an introduction to Mann-Whitney U test in Python Use of Mann-Whitney test The Mann–Whitney U test is a non-parametric alternative test to the independent sample t-test. It is a test of both location and shape. Given two independent samples, it tests whether one variable tends to have values higher than the other (test on sample means). Theoretically, in large samples the Mann-Whitney test can also detect differences in spread even when the medians are very similar. This test does not assume that the samples is normally distributed, that the variances of the two populations are equal or that the two sample sizes are equal. Hence, in summary: The Mann-Whitney U test is used as an alternative to a t test when the data are not normally distributed; The Mann-Whitney U test is usually used in cases that data sample size is small; The test can detect differences in shape and spread as well as just differences in medians. Test Statistic and Calculation Example Consider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below. Placebo 7 5 6 4 12 New Drug 3 6 4 2 1 The hypothesis is given below and and the test is supposed to run at the 5% level of significance (i.e., ).: The sample size is small (), so a nonparametric test is appropriate. We are going to use Mann-Whitney U test to solve this problem. The test statistic for the Mann-Whitney U Test is denoted , whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good. Small Sample Example The statistic, , could be easily calculated by hand, especially for small samples. Assign ranks The first step is to rank all the data. To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows. Sample Value (Ordered)   Ranks   Placebo New Drugs Placebo New Drugs   1   1   2   2   3   3   2   2 4 4 4.5 4.5 5   6   6 6 7.5 7.5 7   9   12   10   For the tie values, we use their mean of ranks. Sum the ranks for each group The second step is to calculate the sum of ranks, , of each group. In the placebo group, In the new drugs group, Compute Given, For this example, Thus, the test statistic is . Compare with critical In every test, we must determine whether the observed supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of such that, If , we reject in favor of and, if we do not reject . The table of critical is as follows. From this table, we could get the critical and therefore, We do not reject and do not have statistically significant evidence at , to show that the two populations are not equal. When sample size is larger (n &amp;gt; 20) With samples this large, the value of approaches a normal distribution, and so the null hypothesis can be tested by a Z-test. Compute Here, Compute the z value of statistic Determination Compare the obtained Z value and the critical Z value to determine whether to retain or reject the null hypothesis. at the 5% level of significance, similarly, If , we do not reject and, if we reject in favor of . Python Script for Mann–Whitney U test The Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in scipy.stat. However, the scipy version of Mann-Whitney U test noted that Use only when the number of observation in each sample is &amp;gt; 20. Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed. In Part 2, we go further to have a detailed demo on the new application. More details could be found: Tool: Web Application Package Source Code Github</summary></entry></feed>
