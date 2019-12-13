@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Mann Whitney U Test - Overview | 地下室手记</title>
-<meta name="description" content="In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in Scipy.Because the current scipy version only support test for large sample size(n&gt;20),  the new script is made to test for small sample size (n &lt; 20).Part 1: an overview of Mann-Whitney U testPart 2 : an introduction to Mann-Whitney U test in PythonUse of Mann-Whitney testThe Mann–Whitney U test is a non-parametric alternative test to the independent sample t-test. It is a test of both location and shape. Given two independent samples, it tests whether one variable tends to have values higher than the other (test on sample means). Theoretically, in large samples the Mann-Whitney test can also detect differences in spread even when the medians are very similar.This test does not assume that the samples is normally distributed, that the variances of the two populations are equal or that the two sample sizes are equal.Hence, in summary:  The Mann-Whitney U test is used as an alternative to a t test when the data are not normally distributed;  The Mann-Whitney U test is usually used in cases that data sample size is small;  The test can detect differences in shape and spread as well as just differences in medians.Test Statistic and Calculation ExampleConsider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below.            Placebo      7      5      6      4      12                  New Drug      3      6      4      2      1      The hypothesis is given below and and the test is supposed to run at the 5% level of significance (i.e., ).:The sample size is small (), so a nonparametric test is appropriate. We are going to use Mann-Whitney U test to solve this problem.The test statistic for the Mann-Whitney U Test is denoted , whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good.Small Sample ExampleThe statistic, , could be easily calculated by hand, especially for small samples.      Assign ranks    The first step is to rank all the data. To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows.                            Sample Value (Ordered)                     Ranks                                     Placebo          New Drugs          Placebo          New Drugs                                                 1                     1                                     2                     2                                     3                     3                                     2                     2                          4          4          4.5          4.5                          5                     6                                     6          6          7.5          7.5                          7                     9                                     12                     10                                 For the tie values, we use their mean of ranks.        Sum the ranks for each group    The second step is to calculate the sum of ranks, , of each group.    In the placebo group,        In the new drugs group,            Compute     Given,        For this example,        Thus, the test statistic is  .        Compare  with critical     In every test, we must determine whether the observed  supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of  such that,    If , we reject  in favor of  and,    if  we do not reject .    The table of critical  is as follows.        From this table, we could get the critical  and therefore,        We do not reject  and do not have statistically significant evidence at , to show that the two populations are not equal.  When sample size is larger (n &gt; 20)With samples this large, the value of  approaches a normal distribution, and so the null hypothesis can be tested by a Z-test.      Compute     Here,            Compute the z value of  statistic            Determination    Compare the obtained Z value and the critical Z value to determine whether to retain or reject the null hypothesis. at the 5% level of significance, similarly,    If , we do not reject  and,    if  we reject  in favor of .  Python Script for Mann–Whitney U testThe Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in scipy.stat.However, the scipy version of Mann-Whitney U test noted thatUse only when the number of observation in each sample is &gt; 20.Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed.In Part 2, we go further to have a detailed demo on the new application.More details could be found:Tool: Web ApplicationPackage Source CodeGithub">
+<meta name="description" content="在该系列, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in Scipy.Because the current scipy version only support test for large sample size(n&gt;20),  the new script is made to test for small sample size (n &lt; 20).Part 1: an overview of Mann-Whitney U testPart 2 : an introduction to Mann-Whitney U test in PythonUse of Mann-Whitney testThe Mann–Whitney U test is a non-parametric alternative test to the independent sample t-test. It is a test of both location and shape. Given two independent samples, it tests whether one variable tends to have values higher than the other (test on sample means). Theoretically, in large samples the Mann-Whitney test can also detect differences in spread even when the medians are very similar.This test does not assume that the samples is normally distributed, that the variances of the two populations are equal or that the two sample sizes are equal.Hence, in summary:  The Mann-Whitney U test is used as an alternative to a t test when the data are not normally distributed;  The Mann-Whitney U test is usually used in cases that data sample size is small;  The test can detect differences in shape and spread as well as just differences in medians.Test Statistic and Calculation ExampleConsider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below.            Placebo      7      5      6      4      12                  New Drug      3      6      4      2      1      The hypothesis is given below and and the test is supposed to run at the 5% level of significance (i.e., ).:The sample size is small (), so a nonparametric test is appropriate. We are going to use Mann-Whitney U test to solve this problem.The test statistic for the Mann-Whitney U Test is denoted , whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good.Small Sample ExampleThe statistic, , could be easily calculated by hand, especially for small samples.      Assign ranks    The first step is to rank all the data. To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows.                            Sample Value (Ordered)                     Ranks                                     Placebo          New Drugs          Placebo          New Drugs                                                 1                     1                                     2                     2                                     3                     3                                     2                     2                          4          4          4.5          4.5                          5                     6                                     6          6          7.5          7.5                          7                     9                                     12                     10                                 For the tie values, we use their mean of ranks.        Sum the ranks for each group    The second step is to calculate the sum of ranks, , of each group.    In the placebo group,        In the new drugs group,            Compute     Given,        For this example,        Thus, the test statistic is  .        Compare  with critical     In every test, we must determine whether the observed  supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of  such that,    If , we reject  in favor of  and,    if  we do not reject .    The table of critical  is as follows.        From this table, we could get the critical  and therefore,        We do not reject  and do not have statistically significant evidence at , to show that the two populations are not equal.  When sample size is larger (n &gt; 20)With samples this large, the value of  approaches a normal distribution, and so the null hypothesis can be tested by a Z-test.      Compute     Here,            Compute the z value of  statistic            Determination    Compare the obtained Z value and the critical Z value to determine whether to retain or reject the null hypothesis. at the 5% level of significance, similarly,    If , we do not reject  and,    if  we reject  in favor of .  Python Script for Mann–Whitney U testThe Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in scipy.stat.However, the scipy version of Mann-Whitney U test noted thatUse only when the number of observation in each sample is &gt; 20.Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed.In Part 2, we go further to have a detailed demo on the new application.More details could be found:Tool: Web ApplicationPackage Source CodeGithub">
 
 
 
@@ -18,10 +18,10 @@
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="地下室手记">
 <meta property="og:title" content="Mann Whitney U Test - Overview">
-<meta property="og:url" content="https://hatchin.github.io//zh/stat/2019/05/07/Mann-Whitney-U.html">
+<meta property="og:url" content="http://localhost:4000/zh/stat/2019/05/07/Mann-Whitney-U.html">
 
 
-  <meta property="og:description" content="In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in Scipy.Because the current scipy version only support test for large sample size(n&gt;20),  the new script is made to test for small sample size (n &lt; 20).Part 1: an overview of Mann-Whitney U testPart 2 : an introduction to Mann-Whitney U test in PythonUse of Mann-Whitney testThe Mann–Whitney U test is a non-parametric alternative test to the independent sample t-test. It is a test of both location and shape. Given two independent samples, it tests whether one variable tends to have values higher than the other (test on sample means). Theoretically, in large samples the Mann-Whitney test can also detect differences in spread even when the medians are very similar.This test does not assume that the samples is normally distributed, that the variances of the two populations are equal or that the two sample sizes are equal.Hence, in summary:  The Mann-Whitney U test is used as an alternative to a t test when the data are not normally distributed;  The Mann-Whitney U test is usually used in cases that data sample size is small;  The test can detect differences in shape and spread as well as just differences in medians.Test Statistic and Calculation ExampleConsider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below.            Placebo      7      5      6      4      12                  New Drug      3      6      4      2      1      The hypothesis is given below and and the test is supposed to run at the 5% level of significance (i.e., ).:The sample size is small (), so a nonparametric test is appropriate. We are going to use Mann-Whitney U test to solve this problem.The test statistic for the Mann-Whitney U Test is denoted , whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good.Small Sample ExampleThe statistic, , could be easily calculated by hand, especially for small samples.      Assign ranks    The first step is to rank all the data. To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows.                            Sample Value (Ordered)                     Ranks                                     Placebo          New Drugs          Placebo          New Drugs                                                 1                     1                                     2                     2                                     3                     3                                     2                     2                          4          4          4.5          4.5                          5                     6                                     6          6          7.5          7.5                          7                     9                                     12                     10                                 For the tie values, we use their mean of ranks.        Sum the ranks for each group    The second step is to calculate the sum of ranks, , of each group.    In the placebo group,        In the new drugs group,            Compute     Given,        For this example,        Thus, the test statistic is  .        Compare  with critical     In every test, we must determine whether the observed  supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of  such that,    If , we reject  in favor of  and,    if  we do not reject .    The table of critical  is as follows.        From this table, we could get the critical  and therefore,        We do not reject  and do not have statistically significant evidence at , to show that the two populations are not equal.  When sample size is larger (n &gt; 20)With samples this large, the value of  approaches a normal distribution, and so the null hypothesis can be tested by a Z-test.      Compute     Here,            Compute the z value of  statistic            Determination    Compare the obtained Z value and the critical Z value to determine whether to retain or reject the null hypothesis. at the 5% level of significance, similarly,    If , we do not reject  and,    if  we reject  in favor of .  Python Script for Mann–Whitney U testThe Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in scipy.stat.However, the scipy version of Mann-Whitney U test noted thatUse only when the number of observation in each sample is &gt; 20.Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed.In Part 2, we go further to have a detailed demo on the new application.More details could be found:Tool: Web ApplicationPackage Source CodeGithub">
+  <meta property="og:description" content="在该系列, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in Scipy.Because the current scipy version only support test for large sample size(n&gt;20),  the new script is made to test for small sample size (n &lt; 20).Part 1: an overview of Mann-Whitney U testPart 2 : an introduction to Mann-Whitney U test in PythonUse of Mann-Whitney testThe Mann–Whitney U test is a non-parametric alternative test to the independent sample t-test. It is a test of both location and shape. Given two independent samples, it tests whether one variable tends to have values higher than the other (test on sample means). Theoretically, in large samples the Mann-Whitney test can also detect differences in spread even when the medians are very similar.This test does not assume that the samples is normally distributed, that the variances of the two populations are equal or that the two sample sizes are equal.Hence, in summary:  The Mann-Whitney U test is used as an alternative to a t test when the data are not normally distributed;  The Mann-Whitney U test is usually used in cases that data sample size is small;  The test can detect differences in shape and spread as well as just differences in medians.Test Statistic and Calculation ExampleConsider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below.            Placebo      7      5      6      4      12                  New Drug      3      6      4      2      1      The hypothesis is given below and and the test is supposed to run at the 5% level of significance (i.e., ).:The sample size is small (), so a nonparametric test is appropriate. We are going to use Mann-Whitney U test to solve this problem.The test statistic for the Mann-Whitney U Test is denoted , whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good.Small Sample ExampleThe statistic, , could be easily calculated by hand, especially for small samples.      Assign ranks    The first step is to rank all the data. To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows.                            Sample Value (Ordered)                     Ranks                                     Placebo          New Drugs          Placebo          New Drugs                                                 1                     1                                     2                     2                                     3                     3                                     2                     2                          4          4          4.5          4.5                          5                     6                                     6          6          7.5          7.5                          7                     9                                     12                     10                                 For the tie values, we use their mean of ranks.        Sum the ranks for each group    The second step is to calculate the sum of ranks, , of each group.    In the placebo group,        In the new drugs group,            Compute     Given,        For this example,        Thus, the test statistic is  .        Compare  with critical     In every test, we must determine whether the observed  supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of  such that,    If , we reject  in favor of  and,    if  we do not reject .    The table of critical  is as follows.        From this table, we could get the critical  and therefore,        We do not reject  and do not have statistically significant evidence at , to show that the two populations are not equal.  When sample size is larger (n &gt; 20)With samples this large, the value of  approaches a normal distribution, and so the null hypothesis can be tested by a Z-test.      Compute     Here,            Compute the z value of  statistic            Determination    Compare the obtained Z value and the critical Z value to determine whether to retain or reject the null hypothesis. at the 5% level of significance, similarly,    If , we do not reject  and,    if  we reject  in favor of .  Python Script for Mann–Whitney U testThe Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in scipy.stat.However, the scipy version of Mann-Whitney U test noted thatUse only when the number of observation in each sample is &gt; 20.Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed.In Part 2, we go further to have a detailed demo on the new application.More details could be found:Tool: Web ApplicationPackage Source CodeGithub">
 
 
 
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="https://hatchin.github.io//zh/stat/2019/05/07/Mann-Whitney-U.html">
+<link rel="canonical" href="http://localhost:4000/zh/stat/2019/05/07/Mann-Whitney-U.html">
 
 
 
@@ -53,7 +53,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "哈金",
-      "url": "https://hatchin.github.io/",
+      "url": "http://localhost:4000/zh",
       "sameAs": null
     }
   </script>
@@ -67,7 +67,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="地下室手记 Feed">
+<link href="/zh/feed.xml" type="application/atom+xml" rel="alternate" title="地下室手记 Feed">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,7 +77,7 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/zh/assets/css/main.css">
 
 <!--[if IE ]>
   <style>
@@ -118,13 +118,13 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-          <a class="site-logo" href="/"><img src="/assets/images/logo.jpg" alt=""></a>
+          <a class="site-logo" href="/zh/"><img src="/zh/assets/images/logo.jpg" alt=""></a>
         
-        <a class="site-title" href="/"> </a>
+        <a class="site-title" href="/zh/"> </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/posts/" >Posts</a>
+              <a href="/zh/posts/" >Posts</a>
             </li><li class="masthead__menu-item">
-              <a href="/about/" >About</a>
+              <a href="/zh/about/" >About</a>
             </li></ul>
         
         <button class="search__toggle" type="button">
@@ -135,7 +135,7 @@
         </button>
         
         <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">Toggle menu</span>
+          <span class="visually-hidden">切换菜单</span>
           <div class="navicon"></div>
         </button>
         <ul class="hidden-links hidden"></ul>
@@ -163,7 +163,7 @@
       
 
       
-        <img src="/assets/images/photo.png" alt="哈金" itemprop="image">
+        <img src="/zh/assets/images/photo.png" alt="哈金" itemprop="image">
       
     </div>
   
@@ -286,7 +286,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Mann Whitney U Test - Overview">
-    <meta itemprop="description" content="In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in Scipy.Because the current scipy version only support test for large sample size(n&gt;20),  the new script is made to test for small sample size (n &lt; 20).Part 1: an overview of Mann-Whitney U testPart 2 : an introduction to Mann-Whitney U test in PythonUse of Mann-Whitney testThe Mann–Whitney U test is a non-parametric alternative test to the independent sample t-test. It is a test of both location and shape. Given two independent samples, it tests whether one variable tends to have values higher than the other (test on sample means). Theoretically, in large samples the Mann-Whitney test can also detect differences in spread even when the medians are very similar.This test does not assume that the samples is normally distributed, that the variances of the two populations are equal or that the two sample sizes are equal.Hence, in summary:  The Mann-Whitney U test is used as an alternative to a t test when the data are not normally distributed;  The Mann-Whitney U test is usually used in cases that data sample size is small;  The test can detect differences in shape and spread as well as just differences in medians.Test Statistic and Calculation ExampleConsider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below.            Placebo      7      5      6      4      12                  New Drug      3      6      4      2      1      The hypothesis is given below and and the test is supposed to run at the 5% level of significance (i.e., ).:The sample size is small (), so a nonparametric test is appropriate. We are going to use Mann-Whitney U test to solve this problem.The test statistic for the Mann-Whitney U Test is denoted , whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good.Small Sample ExampleThe statistic, , could be easily calculated by hand, especially for small samples.      Assign ranks    The first step is to rank all the data. To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows.                            Sample Value (Ordered)                     Ranks                                     Placebo          New Drugs          Placebo          New Drugs                                                 1                     1                                     2                     2                                     3                     3                                     2                     2                          4          4          4.5          4.5                          5                     6                                     6          6          7.5          7.5                          7                     9                                     12                     10                                 For the tie values, we use their mean of ranks.        Sum the ranks for each group    The second step is to calculate the sum of ranks, , of each group.    In the placebo group,        In the new drugs group,            Compute     Given,        For this example,        Thus, the test statistic is  .        Compare  with critical     In every test, we must determine whether the observed  supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of  such that,    If , we reject  in favor of  and,    if  we do not reject .    The table of critical  is as follows.        From this table, we could get the critical  and therefore,        We do not reject  and do not have statistically significant evidence at , to show that the two populations are not equal.  When sample size is larger (n &gt; 20)With samples this large, the value of  approaches a normal distribution, and so the null hypothesis can be tested by a Z-test.      Compute     Here,            Compute the z value of  statistic            Determination    Compare the obtained Z value and the critical Z value to determine whether to retain or reject the null hypothesis. at the 5% level of significance, similarly,    If , we do not reject  and,    if  we reject  in favor of .  Python Script for Mann–Whitney U testThe Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in scipy.stat.However, the scipy version of Mann-Whitney U test noted thatUse only when the number of observation in each sample is &gt; 20.Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed.In Part 2, we go further to have a detailed demo on the new application.More details could be found:Tool: Web ApplicationPackage Source CodeGithub">
+    <meta itemprop="description" content="在该系列, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in Scipy.Because the current scipy version only support test for large sample size(n&gt;20),  the new script is made to test for small sample size (n &lt; 20).Part 1: an overview of Mann-Whitney U testPart 2 : an introduction to Mann-Whitney U test in PythonUse of Mann-Whitney testThe Mann–Whitney U test is a non-parametric alternative test to the independent sample t-test. It is a test of both location and shape. Given two independent samples, it tests whether one variable tends to have values higher than the other (test on sample means). Theoretically, in large samples the Mann-Whitney test can also detect differences in spread even when the medians are very similar.This test does not assume that the samples is normally distributed, that the variances of the two populations are equal or that the two sample sizes are equal.Hence, in summary:  The Mann-Whitney U test is used as an alternative to a t test when the data are not normally distributed;  The Mann-Whitney U test is usually used in cases that data sample size is small;  The test can detect differences in shape and spread as well as just differences in medians.Test Statistic and Calculation ExampleConsider a test designed to investigate the effectiveness of a new drug. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the significance of discomfort (the higher the value, the more uncomfortable). The data are shown below.            Placebo      7      5      6      4      12                  New Drug      3      6      4      2      1      The hypothesis is given below and and the test is supposed to run at the 5% level of significance (i.e., ).:The sample size is small (), so a nonparametric test is appropriate. We are going to use Mann-Whitney U test to solve this problem.The test statistic for the Mann-Whitney U Test is denoted , whose whose distribution under the null hypothesis is known. In the case of small samples, the distribution is tabulated, but for sample sizes above ~20, approximation using the normal distribution is fairly good.Small Sample ExampleThe statistic, , could be easily calculated by hand, especially for small samples.      Assign ranks    The first step is to rank all the data. To do so we order the data from smallest to largest. This is done on the combined or total sample (i.e., pooling the data from the two treatment groups (n=10)), and assigning ranks from 1 to 10, as follows.                            Sample Value (Ordered)                     Ranks                                     Placebo          New Drugs          Placebo          New Drugs                                                 1                     1                                     2                     2                                     3                     3                                     2                     2                          4          4          4.5          4.5                          5                     6                                     6          6          7.5          7.5                          7                     9                                     12                     10                                 For the tie values, we use their mean of ranks.        Sum the ranks for each group    The second step is to calculate the sum of ranks, , of each group.    In the placebo group,        In the new drugs group,            Compute     Given,        For this example,        Thus, the test statistic is  .        Compare  with critical     In every test, we must determine whether the observed  supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of  such that,    If , we reject  in favor of  and,    if  we do not reject .    The table of critical  is as follows.        From this table, we could get the critical  and therefore,        We do not reject  and do not have statistically significant evidence at , to show that the two populations are not equal.  When sample size is larger (n &gt; 20)With samples this large, the value of  approaches a normal distribution, and so the null hypothesis can be tested by a Z-test.      Compute     Here,            Compute the z value of  statistic            Determination    Compare the obtained Z value and the critical Z value to determine whether to retain or reject the null hypothesis. at the 5% level of significance, similarly,    If , we do not reject  and,    if  we reject  in favor of .  Python Script for Mann–Whitney U testThe Mann–Whitney U test is included in most modern statistical packages. For instance, in Python, Mann-Whitney U is available in scipy.stat.However, the scipy version of Mann-Whitney U test noted thatUse only when the number of observation in each sample is &gt; 20.Because Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples), a complete application of Mann-Whitney U test, including two conditions of small sample and large sample, was developed.In Part 2, we go further to have a detailed demo on the new application.More details could be found:Tool: Web ApplicationPackage Source CodeGithub">
     <meta itemprop="datePublished" content="May 07, 2019">
     
 
@@ -326,7 +326,7 @@
             </nav>
           </aside>
         
-        <p>In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html" target="_blank">Scipy</a>.</p>
+        <p>在该系列, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html" target="_blank">Scipy</a>.</p>
 
 <p>Because the current scipy version only support test for large sample size(n&gt;20),  the new script is made to test for small sample size (n &lt; 20).</p>
 
@@ -509,7 +509,6 @@ U_{1} = 5(5) + \frac{5(6)}{2} - 18 = 22</script>
     <p>The table of critical <script type="math/tex">U</script> is as follows.</p>
 
     <iframe src="https://drive.google.com/file/d/1tDhqpREuVXevtImG0N_oviIFcb3khlah/preview" width="600" height="450"></iframe>
-
     <p>From this table, we could get the critical <script type="math/tex">U = 2</script> and therefore,</p>
 
     <script type="math/tex; mode=display">U = 3 > 2 = critical \ U</script>
@@ -591,7 +590,7 @@ at the 5% level of significance, similarly,</p>
     
       
       
-      <a href="/tags/#theory" class="page__taxonomy-item" rel="tag">Theory</a>
+      <a href="/zh/tags/#theory" class="page__taxonomy-item" rel="tag">Theory</a>
     
     </span>
   </p>
@@ -613,11 +612,7 @@ at the 5% level of significance, similarly,</p>
     
       
       
-      <a href="/categories/#stat" class="page__taxonomy-item" rel="tag">Stat</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/categories/#zh" class="page__taxonomy-item" rel="tag">zh</a>
+      <a href="/zh/categories/#stat" class="page__taxonomy-item" rel="tag">Stat</a>
     
     </span>
   </p>
@@ -634,22 +629,21 @@ at the 5% level of significance, similarly,</p>
     <h4 class="page__share-title">分享</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Mann+Whitney+U+Test+-+Overview%20https%3A%2F%2Fhatchin.github.io%2F%2Fzh%2Fstat%2F2019%2F05%2F07%2FMann-Whitney-U.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="分享 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Mann+Whitney+U+Test+-+Overview%20http%3A%2F%2Flocalhost%3A4000%2Fzh%2Fstat%2F2019%2F05%2F07%2FMann-Whitney-U.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="分享 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhatchin.github.io%2F%2Fzh%2Fstat%2F2019%2F05%2F07%2FMann-Whitney-U.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="分享 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fzh%2Fstat%2F2019%2F05%2F07%2FMann-Whitney-U.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="分享 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fhatchin.github.io%2F%2Fzh%2Fstat%2F2019%2F05%2F07%2FMann-Whitney-U.html" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="分享 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fzh%2Fstat%2F2019%2F05%2F07%2FMann-Whitney-U.html" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="分享 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/en/stat/2019/05/07/Mann-Whitney-U.html" class="pagination--pager" title="Mann Whitney U Test - Overview
-">向前</a>
+      <a href="#" class="pagination--pager disabled">Previous</a>
     
     
-      <a href="/en/stat/2019/05/08/Mann-Whitney-U-Tool.html" class="pagination--pager" title="Mann Whitney U Test - with Python Solution for Small Sample
+      <a href="/zh/stat/2019/05/08/Mann-Whitney-U-Tool.html" class="pagination--pager" title="Mann Whitney U Test - with Python Solution for Small Sample
 ">向后</a>
     
   </nav>
@@ -676,7 +670,7 @@ at the 5% level of significance, similarly,</p>
       <div class="archive__item-teaser">
         <img src=
           
-            "/assets/images/teaser.JPG"
+            "/zh/assets/images/teaser.JPG"
           
           alt="">
       </div>
@@ -699,11 +693,11 @@ at the 5% level of significance, similarly,</p>
     
     <p class="archive__item-excerpt" itemprop="description">黑
 
-Backgroud
+背景
 
 FlowSOM(Van Gassen et al., 2015)[1] is one of the available algorithms for flow cytometry and high-dimensional data analysis.
 
-Flow cytometry i...</p>
+Flow cytometry is a tec...</p>
   </article>
 </div>
 
@@ -718,46 +712,7 @@ Flow cytometry i...</p>
       <div class="archive__item-teaser">
         <img src=
           
-            "/assets/images/teaser.JPG"
-          
-          alt="">
-      </div>
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/en/neural%20network/clustering/2019/08/30/FlowSOM.html" rel="permalink">FlowSOM: to analyze flow or mass cytometry data using a self‐organizing map
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  4 分钟读完
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Backgroud
-FlowSOM(Van Gassen et al., 2015)[1] is one of the available algorithms for flow cytometry and high-dimensional data analysis.
-
-Flow cytometry is a ...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-      <div class="archive__item-teaser">
-        <img src=
-          
-            "/assets/images/teaser.JPG"
+            "/zh/assets/images/teaser.JPG"
           
           alt="">
       </div>
@@ -778,47 +733,9 @@ Flow cytometry is a ...</p>
 
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">黑In this part, I am going to show a demo on the Mann-Whitney U Test Python script which is able to perform test on both small and large sample size.
+    <p class="archive__item-excerpt" itemprop="description">在本文, I am going to show a demo on the Mann-Whitney U Test Python script which is able to perform test on both small and large sample size.
 
-Mann-Wh...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-      <div class="archive__item-teaser">
-        <img src=
-          
-            "/assets/images/teaser.JPG"
-          
-          alt="">
-      </div>
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/en/stat/2019/05/08/Mann-Whitney-U-Tool.html" rel="permalink">Mann Whitney U Test - with Python Solution for Small Sample
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  2 分钟读完
-
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">In this part, I am going to show a demo on the Mann-Whitney U Test Python script which is able to perform test on both small and large sample size.
-
-Mann-Whi...</p>
+Mann-Whitney U te...</p>
   </article>
 </div>
 
@@ -847,7 +764,7 @@ Mann-Whi...</p>
         <div class="page__footer-follow">
   <ul class="social-icons">
     
-      <li><strong>Follow:</strong></li>
+      <li><strong>关注:</strong></li>
     
 
     
@@ -868,11 +785,11 @@ Mann-Whi...</p>
       
     
 
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    <li><a href="/zh/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2019 Notes from the Underground. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2019 地下室手记. 技术来自于 <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
@@ -885,15 +802,15 @@ Mann-Whi...</p>
     })</script>
 
     
-  <script src="/assets/js/main.min.js"></script>
+  <script src="/zh/assets/js/main.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
 
 
 
 
-<script src="/assets/js/lunr/lunr.min.js"></script>
-<script src="/assets/js/lunr/lunr-store.js"></script>
-<script src="/assets/js/lunr/lunr-en.js"></script>
+<script src="/zh/assets/js/lunr/lunr.min.js"></script>
+<script src="/zh/assets/js/lunr/lunr-store.js"></script>
+<script src="/zh/assets/js/lunr/lunr-en.js"></script>
 
 
 
