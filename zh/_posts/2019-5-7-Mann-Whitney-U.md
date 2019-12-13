@@ -11,6 +11,12 @@ comments: true
 toc: true
 toc_sticky: true
 language: zh
+
+pagination: 
+  enabled: true
+  category: software, ruby
+  locale: en
+  
 ---
 
 In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in [Scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html){:target="_blank"}. 
