@@ -253,7 +253,7 @@ pagination:
   category: 'posts'
   locale: 'en'
 
-
+languages: ["en", "zh"]
 
 # Plugins (previously gems:)
 #   - jekyll-paginate
