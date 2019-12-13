@@ -1,0 +1,22 @@
+---
+layout: home
+author_profile: true
+subscribe: true
+language: zh
+nav-order: 1
+header:
+  overlay_image: /assets/images/teaser.JPG
+  
+---
+
+
+<h1 id="page-title" class="page__title">{{ page.language }}</h1>
+
+<h1 id="page-title" class="page__title">{{ site.locale[page.language] }}</h1>
+
+<h1 id="page-title" class="page__title">{{site.data.ui-text[page.language].email_label}}</h1>
+
+{% for post in paginator.posts %}
+  <li><a>{{ post.language }}</a></li>
+{% endfor %}
+
