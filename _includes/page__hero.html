@@ -39,7 +39,7 @@
         {% if paginator and site.paginate_show_page_num %}
           {{ site.title[page.language] }}{% unless paginator.page == 1 %} {{ site.data.ui-text[page.language].page | default: "Page" }} {{ paginator.page }}{% endunless %}
         {% else %}
-          {{ page.title | default: site.title[page.language] | markdownify | remove: "<p>" | remove: "</p>" }}
+          {{ site.translations[site.lang].basic[page.title].title | default: site.title[site.lang] | markdownify | remove: "<p>" | remove: "</p>" }}
         {% endif %}
       </h1>
       {% if page.header.show_overlay_excerpt != false and page.excerpt %}
