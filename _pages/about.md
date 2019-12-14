@@ -1,5 +1,5 @@
 ---
-title: About Me
+title: basic.about.title
 pagename: about
 layout: single
 permalink: /about/
