@@ -1,5 +1,5 @@
 ---
-title: "Posts by Year"
+title: "Posts_by_Year"
 permalink: /posts/
 layout: posts
 sidebar:
