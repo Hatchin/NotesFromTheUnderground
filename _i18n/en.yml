@@ -8,3 +8,7 @@ about:
   message                    : Message (if any)
   subscribe                  : Subscribe
   send                       : Send
+   
+navi:
+  Posts                      : Posts
+  About                      : About
