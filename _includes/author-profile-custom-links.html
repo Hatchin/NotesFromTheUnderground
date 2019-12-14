@@ -20,8 +20,8 @@
 
 {% if author.subscribe %}
         <li>
-          <a href="https://hatchin.github.io/about/#Contact" itemprop="sameAs" rel="nofollow noopener noreferrer">
-            <i class="fas fa-compass" aria-hidden="true"></i> Subscribe
+          <a href="{{site.lang}}/about/#Contact" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fas fa-compass" aria-hidden="true"></i> {{ site.data.ui-text[site.lang].subscribe | default: "Subscribe"}}
           </a>
         </li>
       {% endif %}
