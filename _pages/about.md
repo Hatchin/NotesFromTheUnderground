@@ -10,7 +10,7 @@ header:
 
 ---
 
-<p>{% t about.intro %}</p>
+<p>{% t basic.about.intro %}</p>
 
 
 <html>
