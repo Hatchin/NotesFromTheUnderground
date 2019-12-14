@@ -15,10 +15,15 @@ navi:
   
 sidebar:
   Topics                     : 主题
+  Posts_by_Year              : 按年份阅读
+  Posts_by_Category          : 各类别阅读
+  Posts_by_Tag               : 按标签阅读
+  
   Categories                 : 类别
-  Tags                       : 标签
   Clustering                 : 聚类
   Stat                       : 统计
+  
+  Tags                       : 标签
   Theory                     : 理论
   Tool                       : 工具
   WebApp                     : 网页应用
