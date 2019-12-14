@@ -1,6 +1,5 @@
 ---
-title: basic.about.title
-pagename: about
+title: about
 layout: single
 permalink: /about/
 author_profile: true
@@ -12,7 +11,7 @@ header:
 
 <p>{% t basic.about.intro %}</p>
 
-{% for item in site.translations[site.lang].basic.[page.pagename]]%}
+{% for item in site.translations[site.lang].basic.[page.pagename].title]%}
     <p>{{ item[0] }} -> {{ item[1] }}</p>
 {% endfor %}
 
