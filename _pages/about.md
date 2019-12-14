@@ -9,18 +9,16 @@ header:
 
 ---
 
-<p>{% t basic.about.intro %}</p>
-
-<p>{{ site.translations[site.lang].basic[page.title].title }}</p>
+<p>{% t about.intro %}</p>
 
 
 
 <html>
 <br>
-  <h3>Contact</h3><a class ="Contact" id="Contact"></a>
-  If you would like to subscribe or leave me a message
+  <h3>{% t about.contact %}</h3><a class ="Contact" id="Contact"></a>
+  {% t about.contact_message %}
   <form id="second" method="post" action="https://briskforms.com/go/6326a6cc0d3a86c7aaf91d2fa55606b0">
-        <input type="text" placeholder="Name" name="name" >
+        <input type="text" placeholder={% t about.name %} name="name" >
         <input type="email" placeholder="Email" name="_replyto" required >
         <textarea form ="second" name="message" rows = "3" cols = "80" placeholder="Message (if any)"></textarea>
         <input type="checkbox" name="Subscribe" value="Add me"> Subscribe
