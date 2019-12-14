@@ -20,7 +20,8 @@
       {% assign keyValue = hash | split: '#' %}
       {% capture tag_word %}{{ keyValue[1] | strip_newlines }}{% endcapture %}
       <p> {{tag_word}} </p>
-      <a href="{{ tag_word | slugify | prepend: path_type | prepend: site.tag_archive.path | relative_url }}" class="page__taxonomy-item" rel="tag">{{ site.translations[site.lang][page.sub][tag_word] }}</a>{% unless forloop.last %}<span class="sep">, </span>{% endunless %}
+      {% assign tag_name = tag_word %}
+      <a href="{{ tag_word | slugify | prepend: path_type | prepend: site.tag_archive.path | relative_url }}" class="page__taxonomy-item" rel="tag">{{ site.translations[site.lang][page.sub][tag_name] }}</a>{% unless forloop.last %}<span class="sep">, </span>{% endunless %}
     {% endfor %}
     </span>
   </p>
