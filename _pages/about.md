@@ -11,6 +11,7 @@ header:
 ---
 
 <p>{% t basic.about.intro %}</p>
+{% t basic.about.title %}
 
 
 <html>
