@@ -1,5 +1,5 @@
 ---
-title: {% t about.title %}
+title: t about.title 
 layout: single
 permalink: /about/
 author_profile: true
