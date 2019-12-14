@@ -354,7 +354,7 @@ zh: &DEFAULT_ZH_HANS
   feed_label                 : "Feed"
   powered_by                 : "技术来自于"
   website_label              : "网站"
-  email_label                : "电子邮箱"
+  email_label                : "邮箱"
   recent_posts               : "最新文章"
   undefined_wpm              : "_config.yml配置中words_per_minute字段未定义"
   comment_form_info          : "您的电子邮箱地址并不会被展示。请填写标记为必须的字段。"
