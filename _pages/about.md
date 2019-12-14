@@ -1,5 +1,6 @@
 ---
-title: t about.title 
+title: About Me
+pagename: about
 layout: single
 permalink: /about/
 author_profile: true
