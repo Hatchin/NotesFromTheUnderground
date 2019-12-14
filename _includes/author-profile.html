@@ -18,19 +18,19 @@
           {% assign author_link = author.home | relative_url %}
         {% endif %}
         <a href="{{ author_link }}">
-          <img src="{{ author_src }}" alt="{{ author.name[page.language] | default: "Hatchin" }}" itemprop="image">
+          <img src="{{ author_src }}" alt="{{ author.name[site.lang] | default: "Hatchin" }}" itemprop="image">
         </a>
       {% else %}
-        <img src="{{ author_src }}" alt="{{ author.name[page.language] | default: "Hatchin" }}" itemprop="image">
+        <img src="{{ author_src }}" alt="{{ author.name[site.lang] | default: "Hatchin" }}" itemprop="image">
       {% endif %}
     </div>
   {% endif %}
 
   <div class="author__content">
     {% if author.home %}
-      <a href="{{ author_link }}"><h3 class="author__name" itemprop="name">{{ author.name[page.language]  | default: "Hatchin" }}</h3></a>
+      <a href="{{ author_link }}"><h3 class="author__name" itemprop="name">{{ author.name[site.lang]  | default: "Hatchin" }}</h3></a>
     {% else %}
-      <h3 class="author__name" itemprop="name">{{ author.name[page.language]  | default: "Hatchin" }}</h3>
+      <h3 class="author__name" itemprop="name">{{ author.name[site.lang]  | default: "Hatchin" }}</h3>
     {% endif %}
     {% if author.bio %}
       <p class="author__bio" itemprop="description">
@@ -40,11 +40,11 @@
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">{{ site.data.ui-text[page.language].follow_label | remove: ":" | default: "Follow" }}</button>
+    <button class="btn btn--inverse">{{ site.data.ui-text[site.lang].follow_label | remove: ":" | default: "Follow" }}</button>
     <ul class="author__urls social-icons">
       {% if author.location %}
         <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
-          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">{{ author.location[page.language] }}</span>
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">{{ author.location[site.lang] }}</span>
         </li>
       {% endif %}
 
@@ -59,7 +59,7 @@
       {% if author.uri %}
         <li>
           <a href="{{ author.uri }}" itemprop="url">
-            <i class="fas fa-fw fa-link" aria-hidden="true"></i> {{ site.data.ui-text[page.language].website_label | default: "Website" }}
+            <i class="fas fa-fw fa-link" aria-hidden="true"></i> {{ site.data.ui-text[site.lang].website_label | default: "Website" }}
           </a>
         </li>
       {% endif %}
@@ -68,7 +68,7 @@
         <li>
           <a href="mailto:{{ author.email }}">
             <meta itemprop="email" content="{{ author.email }}" />
-            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> {{ site.data.ui-text[page.language].email_label | default: "Email" }}
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> {{ site.data.ui-text[site.lang].email_label | default: "Email" }}
           </a>
         </li>
       {% endif %}
