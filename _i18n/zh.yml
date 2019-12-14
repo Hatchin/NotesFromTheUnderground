@@ -12,3 +12,13 @@ about:
 navi:
   Posts                      : 笔记
   About                      : 关于
+  
+sidebar:
+  Topics                     : 主题
+  Categories                 : 类别
+  Tags                       : 标签
+  Clustering                 : 聚类
+  Stat                       : 统计
+  Theory                     : 理论
+  Tool                       : 工具
+  WebApp                     : 网页应用
