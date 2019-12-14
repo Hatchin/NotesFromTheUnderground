@@ -12,3 +12,14 @@ about:
 navi:
   Posts                      : Posts
   About                      : About
+
+sidebar:
+  Topics                     : Topics
+  Categories                 : Categories
+  Tags                       : Tags
+  Clustering                 : Clustering
+  Stat                       : Stat
+  Theory                     : Theory
+  Tool                       : Tool
+  WebApp                     : Web App
+  
