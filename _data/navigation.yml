@@ -35,4 +35,6 @@ sidebar-sample:
         url: /tags/#tool
       - title: "WebApp"
         url: /tags/#web-app
+      - title: "Neural_Network"
+        url: /tags/#neural-network
 
