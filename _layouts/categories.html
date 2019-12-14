@@ -17,7 +17,7 @@ layout: archive
       {% if category[1].size == i %}
         <li>
           <a href="#{{ category[0] | slugify }}">
-            {% assign category_name = category[0] %}
+            {% assign category_name = category[0].text() %}
             <p> {{category_name}} </p>
             <strong>{{ site.translations[site.lang][page.sub]['Stat']}}</strong> <span class="taxonomy__count">{{ i }}</span>
           </a>
