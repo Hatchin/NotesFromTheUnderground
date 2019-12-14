@@ -12,7 +12,7 @@ header:
 
 <p>{% t basic.about.intro %}</p>
 
-{% for item in site.translations[site.lang]["my_nested_yaml_collection"] %}
+{% for item in site.translations[site.lang]%}
     <p>{{ item[0] }} -> {{ item[1] }}</p>
 {% endfor %}
 
