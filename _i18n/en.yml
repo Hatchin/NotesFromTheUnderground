@@ -1,10 +1,11 @@
-about:
-  title                      : About Here
-  intro                      : Hey —</p><p>This is Hatchin. </p><p>Another station, to share and record, for something about Data Science.
-  contact                    : Contact
-  contact_message            : If you would like to subscribe or leave me a message
-  name                       : Name
-  email                      : Email
-  message                    : Message (if any)
-  subscribe                  : Subscribe
-  send                       : Send
+basic: 
+  about:
+    title                      : About Here
+    intro                      : Hey —</p><p>This is Hatchin. </p><p>Another station, to share and record, for something about Data Science.
+    contact                    : Contact
+    contact_message            : If you would like to subscribe or leave me a message
+    name                       : Name
+    email                      : Email
+    message                    : Message (if any)
+    subscribe                  : Subscribe
+    send                       : Send
