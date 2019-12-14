@@ -5,7 +5,7 @@ categories:
   - Stat
 tags:
   - Tool
-  - Web App
+  - WebApp
 author_profile: true
 mathjax: true
 comments: true
