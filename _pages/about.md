@@ -15,6 +15,8 @@ This is Hatchin.
 
 Another station, to share and record, for something about Data Science. 
 
+<p>{% t about.intro %}</p>
+
 
 <html>
 <br>
