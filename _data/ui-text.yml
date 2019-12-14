@@ -44,6 +44,7 @@ en: &DEFAULT_EN
   search_placeholder_text    : "Enter your search term..."
   results_found              : "Result(s) found"
   back_to_top                : "Back to top"
+  subscribe                  : "Subscribe"
 en-US:
   <<: *DEFAULT_EN
 en-CA:
@@ -361,7 +362,7 @@ zh: &DEFAULT_ZH_HANS
   comment_form_comment_label : "评论"
   comment_form_md_info       : "Markdown语法已支持。"
   comment_form_name_label    : "姓名"
-  comment_form_email_label   : "电子邮箱"
+  comment_form_email_label   : "邮箱"
   comment_form_website_label : "网站（可选）"
   comment_btn_submit         : "提交评论"
   comment_btn_submitted      : "已提交"
@@ -371,6 +372,7 @@ zh: &DEFAULT_ZH_HANS
   search_placeholder_text    : "输入您要搜索的关键词..."
   results_found              : "条记录匹配"
   back_to_top                : "返回顶部"
+  subscribe                  : "订阅"
 zh-CN:
   <<: *DEFAULT_ZH_HANS
 zh-SG:
