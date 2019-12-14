@@ -1,5 +1,5 @@
 about:
-  title                      : 关于
+  title                      : 关于此地
   intro                      : 一个小站，</p><p>  有关数据科学，</p><p>    为哈金的记录与分享。
   contact                    : 联系
   contact_message            : 留言/订阅
@@ -8,3 +8,7 @@ about:
   message                    : 留言 (若有）
   subscribe                  : 订阅
   send                       : 提交
+  
+navi:
+  Posts                      : 笔记
+  About                      : 关于
