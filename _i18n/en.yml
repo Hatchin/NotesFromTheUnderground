@@ -15,10 +15,15 @@ navi:
 
 sidebar:
   Topics                     : Topics
+  Posts_by_Year              : Posts by Year
+  Posts_by_Category          : Posts by Category
+  Posts_by_Tag               : Posts by Tag
+  
   Categories                 : Categories
-  Tags                       : Tags
   Clustering                 : Clustering
   Stat                       : Stat
+  
+  Tags                       : Tags
   Theory                     : Theory
   Tool                       : Tool
   WebApp                     : Web App
