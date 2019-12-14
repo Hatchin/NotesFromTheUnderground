@@ -21,10 +21,10 @@ header:
         <input type="text" placeholder="{% t about.name %}" name="name" >
         <input type="email" placeholder="{% t about.email %}" name="_replyto" required >
         <textarea form ="second" name="message" rows = "3" cols = "80" placeholder="{% t about.message %}"></textarea>
-        <input type="checkbox" name="Subscribe" value="Add me"> {{% t about.Subscribe %}}
+        <input type="checkbox" name="Subscribe" value="Add me"> {{ t about.Subscribe }}
         <label for="Subscribe">
         </label>
-        <input type="submit" value="{{% t about.send %}}">
+        <input type="submit" value="{% t about.send %}">
     </form>
 
 </html>
