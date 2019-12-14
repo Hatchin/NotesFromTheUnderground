@@ -11,7 +11,7 @@ header:
 
 <p>{% t basic.about.intro %}</p>
 
-<p>{% site.translations[site.lang].basic[page.pagename].title %}</p>
+<p>{{ site.translations[site.lang].basic[page.pagename].title }}</p>
 
 
 
