@@ -12,7 +12,7 @@ header:
 
 <p>{% t basic.about.intro %}</p>
 
-{% for item in site.translations[site.lang]%}
+{% for item in site.translations[site.lang].basic]%}
     <p>{{ item[0] }} -> {{ item[1] }}</p>
 {% endfor %}
 
