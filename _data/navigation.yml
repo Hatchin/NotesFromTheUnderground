@@ -26,6 +26,8 @@ sidebar-sample:
         url: /categories/#clustering
       - title: "Stat"
         url: /categories/#stat
+      - title: "Neural_Network"
+        url: /tags/#neural-network
   - title: "Tags"
     url: /tags/
     children:
@@ -35,6 +37,5 @@ sidebar-sample:
         url: /tags/#tool
       - title: "WebApp"
         url: /tags/#web-app
-      - title: "Neural_Network"
-        url: /tags/#neural-network
+
 
