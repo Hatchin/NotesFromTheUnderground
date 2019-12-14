@@ -23,16 +23,16 @@ sidebar-sample:
     url: /categories/
     children:
       - title: "Clustering"
-        url: https://hatchin.github.io/categories/#clustering
+        url: /categories/#clustering
       - title: "Stat"
-        url: https://hatchin.github.io/categories/#stat
+        url: /categories/#stat
   - title: "Tags"
-    url: https://hatchin.github.io/tags/
+    url: /tags/
     children:
       - title: "Theory"
-        url: https://hatchin.github.io/tags/#theory
+        url: /tags/#theory
       - title: "Tool"
-        url: https://hatchin.github.io/tags/#tool
+        url: /tags/#tool
       - title: "Web App"
-        url: https://hatchin.github.io/tags/#web-app
+        url: /tags/#web-app
 
