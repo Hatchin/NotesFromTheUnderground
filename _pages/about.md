@@ -11,7 +11,7 @@ header:
 
 <p>{% t basic.about.intro %}</p>
 
-{% for item in site.translations[site.lang].basic[page.pagename].title]%}
+{% for item in site.translations[site.lang].basic[page.pagename].title %}
     <p>{{ item}}</p>
 {% endfor %}
 
