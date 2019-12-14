@@ -1,5 +1,5 @@
 ---
-title: "About Me"
+title: {% t about.title %}
 layout: single
 permalink: /about/
 author_profile: true
@@ -8,12 +8,6 @@ header:
   overlay_filter: 0.3 # same as adding an opacity of 0.3 to a black background
 
 ---
-
-Hey — 
-
-This is Hatchin. 
-
-Another station, to share and record, for something about Data Science. 
 
 <p>{% t about.intro %}</p>
 
