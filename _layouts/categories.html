@@ -18,7 +18,7 @@ layout: archive
         <li>
           <a href="#{{ category[0] | slugify }}">
             {% assign category_name = "{{category[0]}}" %}
-            <strong>{{ site.translations[site.lang][page.sub]["{{category[0]}}" ] }}</strong> <span class="taxonomy__count">{{ i }}</span>
+            <strong>{{ site.translations[site.lang][page.sub]}}</strong> <span class="taxonomy__count">{{ i }}</span>
           </a>
         </li>
       {% endif %}
