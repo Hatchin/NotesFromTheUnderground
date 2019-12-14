@@ -64,7 +64,7 @@
 {% endif %}
 
 <meta property="og:type" content="{{ og_type }}">
-<meta property="og:locale" content="{{ site.locale[page.language] | replace: "-", "_" | default: "en_US" }}">
+<meta property="og:locale" content="{{ site.locale[site.lang] | replace: "-", "_" | default: "en_US" }}">
 <meta property="og:site_name" content="{{ site.title[page.language] }}">
 <meta property="og:title" content="{{ page.title | default: site.title.en | markdownify | strip_html | strip_newlines | escape_once }}">
 <meta property="og:url" content="{{ canonical_url }}">
