@@ -17,3 +17,10 @@
     </form>
   {% endif %}
 -->
+{% if author.subscribe %}
+        <li>
+          <a href="{{site.lang}}/about/#Contact" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fas fa-compass" aria-hidden="true"></i> {{ site.data.ui-text[site.lang].subscribe | default: "Subscribe"}}
+          </a>
+        </li>
+      {% endif %}
