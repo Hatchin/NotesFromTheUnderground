@@ -4,9 +4,9 @@ about:
   contact                    : 联系
   contact_message            : 留言/订阅
   name                       : 昵称
-  email                      : 邮箱
+  Email                      : 邮箱
   message                    : 留言 (若有）
-  subscribe                  : 订阅
+  Subscribe                  : 订阅
   send                       : 提交
   
 navi:
