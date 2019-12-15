@@ -19,9 +19,9 @@ header:
   {% t about.contact_message %}
   <form id="second" method="post" action="https://briskforms.com/go/6326a6cc0d3a86c7aaf91d2fa55606b0">
         <input type="text" placeholder="{% t about.name %}" name="name" >
-        <input type="email" placeholder="{% t about.email %}" name="_replyto" required >
+        <input type="email" placeholder="{% t about.Email %}" name="_replyto" required >
         <textarea form ="second" name="message" rows = "3" cols = "80" placeholder="{% t about.message %}"></textarea>
-        <input type="checkbox" name="Subscribe" value="Add me"> {% t about.subscribe %}
+        <input type="checkbox" name="Subscribe" value="Add me"> {% t about.Subscribe %}
         <label for="Subscribe">
         </label>
         <input type="submit" value="{% t about.send %}">
