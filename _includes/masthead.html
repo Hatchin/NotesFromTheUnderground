@@ -28,10 +28,10 @@
           <li class="masthead__menu-item"><a href="{{ post.url | prepend: '/'}}">中</a>|<a href="{{ page.url | prepend: '/'}} ">En</a></li>
         </ul>
         {%- for post in site.posts -%}
-          <p> {{ post }} </p>
+          <p> {{ post.url }} </p>
         {%- endfor -%}
         {%- for post in site.pages -%}
-          <p> {{ post }} </p>
+          <p> {{ post.url }} </p>
         {%- endfor -%}
         {% if site.search == true %}
         <button class="search__toggle" type="button">
