@@ -1,5 +1,7 @@
 ---
-title: "Posts_by_Category"
+title: 
+  en: "Posts_by_Category"
+  zh: "按类别阅读"
 sub: "sidebar"
 layout: categories
 permalink: /categories/
