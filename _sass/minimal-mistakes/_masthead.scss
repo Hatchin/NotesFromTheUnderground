@@ -87,29 +87,3 @@
   }
 }
 
-.nav-link {
- display: block;
- text-align: right;
- width: 100%;
- padding: 0.25em 0;
- @include media ($tablet) {
-   background: transparent;
-   display: inline;
-   text-decoration: none;
-   width: auto;
- }
-}
-
-.nav-link {
-a {
-    display: inline-block;
-    @include media ($tablet) {
-      padding-right: 1.5em;
-    }
-  }
-  &:last-child a {
-   @include media ($tablet) {
-      padding-right: 1em;
-   }
- }
-}
