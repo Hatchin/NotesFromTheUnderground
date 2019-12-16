@@ -121,7 +121,7 @@ author:
     en             : "Invisible City"
     zh             : "看不见的城市"
   email            :
-  Subscribe        :
+  subscribe        :
     icon: "fas fa-compass"
     url: "/about/#Contact"
 
