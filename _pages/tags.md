@@ -1,5 +1,7 @@
 ---
-title: "Posts_by_Tag"
+title: 
+  en: "Posts_by_Tag"
+  zh: "按标签阅读"
 sub: "sidebar"
 permalink: /tags/
 layout: tags
