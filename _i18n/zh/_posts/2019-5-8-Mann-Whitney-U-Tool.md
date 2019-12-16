@@ -26,9 +26,9 @@ permalink: /mannwhitneyutool/
 
 Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples). However, in many modern statistical packages which included Mann-Whitney U test, they were only valid when the data sample size was large. Hence, it is necessary and helpful to have a complete application of Mann-Whitney U test, including two conditions of small sample and large sample. 
 
-[Part 1](https://hatchin.github.io/stat/Mann-Whitney-U/?utm_source=blog&utm_medium=post&utm_campaign=part2){:target="_blank"}: an overview of Mann-Whitney U test
+[Part 1](https://hatchin.netlify.com/mannwhitneyu/?utm_source=blog&utm_medium=post&utm_campaign=part2){:target="_blank"}: an overview of Mann-Whitney U test
 
-[Part 2](https://hatchin.github.io/stat/Mann-Whitney-U-Tool/): an introduction to Mann-Whitney U test in Python
+[Part 2](https://hatchin.netlify.com/mannwhitneyutool/): an introduction to Mann-Whitney U test in Python
 
 ------------------------
 
