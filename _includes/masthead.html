@@ -27,6 +27,12 @@
           
           <li class="masthead__menu-item"><a href="{{ post.url | prepend: '/'}}">中</a>|<a href="{{ page.url | prepend: '/'}} ">En</a></li>
         </ul>
+        {% for post in site.posts %}
+          <p> {{ post }} </p>
+        {% endif %}
+        {% for post in site.pages %}
+          <p> {{ post }} </p>
+        {% endif %}
         {% if site.search == true %}
         <button class="search__toggle" type="button">
           <span class="visually-hidden">{{ site.data.ui-text[site.lang].search_label | default: "Toggle search" }}</span>
