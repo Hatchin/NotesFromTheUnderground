@@ -23,6 +23,7 @@
               <a href="{{ url }}" {% if link.description %}title="{{ link.description }}"{% endif %}>{{ site.translations[site.lang].navi[link.title] }}</a>
             </li>
           {%- endfor -%}
+          <li class="masthead__menu-item"><a href="{{ page.path | prepend: '/zh'}}">中</a>|<a href="{{ page.url | prepend: '/'}} ">En</a></li>
         </ul>
         {% if site.search == true %}
         <button class="search__toggle" type="button">
