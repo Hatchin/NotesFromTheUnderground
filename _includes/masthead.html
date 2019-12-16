@@ -27,9 +27,11 @@
           
           <li class="masthead__menu-item"><a href="{{ post.url | prepend: '/'}}">中</a>|<a href="{{ page.url | prepend: '/'}} ">En</a></li>
         </ul>
+        <p> posts </p>
         {%- for post in site.posts -%}
           <p> {{ post.url }} </p>
         {%- endfor -%}
+        <p> sites</p>
         {%- for post in site.pages -%}
           <p> {{ post.url }} </p>
         {%- endfor -%}
