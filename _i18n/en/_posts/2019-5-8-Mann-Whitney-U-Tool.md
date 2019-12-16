@@ -18,6 +18,8 @@ pagination:
   category: software, ruby
   locale: en
   
+permalink: /mannwhitneyutool/
+  
 ---
 In this part, I am going to show a demo on the Mann-Whitney U Test Python script which is able to perform test on both small and large sample size. 
 
