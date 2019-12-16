@@ -16,6 +16,8 @@ pagination:
   enabled: true
   category: software, ruby
   locale: zh
+
+permalink: /mannwhitneyu/
   
 ---
 
