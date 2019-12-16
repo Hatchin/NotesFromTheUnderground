@@ -53,11 +53,8 @@
           {% if link.label and link.url %}
             <p> {{ link.label }} </p>
             <p> {{ site.baseurl}} </p>
-            {% assign label_name = "{{link.label}}" %}
-            {% if label_name == 'Subscribe" %}
-              
-              <li><a href="{{ link.url | prepend: site.baseurl }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i> {{ site.translations[site.lang].about[link.label] | default: link.label }}</a></li>
-            {% endif %}
+            <li><a href="{{ link.url }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i> {{ site.translations[site.lang].about[link.label] | default: link.label }}</a></li>
+
           {% endif %}
         {% endfor %}
       {% endif %}
