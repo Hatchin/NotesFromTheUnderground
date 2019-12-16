@@ -87,7 +87,7 @@
   }
 }
 
-ul li.nav-link {
+.nav-link {
  display: block;
  text-align: right;
  width: 100%;
@@ -100,7 +100,7 @@ ul li.nav-link {
  }
 }
 
-li.nav-link {
+.nav-link {
 a {
     display: inline-block;
     @include media ($tablet) {
