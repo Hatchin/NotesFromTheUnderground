@@ -1,6 +1,6 @@
 ---
 title: 
-  en:"Mann Whitney U Test - Overview"
+  en: "Mann Whitney U Test - Overview"
 excerpt_separator: "<!--more-->"
 categories:
   - Stat
