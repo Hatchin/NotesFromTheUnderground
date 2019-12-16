@@ -107,7 +107,7 @@ social:
 analytics:
   provider               : "google"
   google:
-    tracking_id          : "UA-139196533-1"
+    tracking_id          : "UA-139196533-3"
     anonymize_ip         : true #, false (default)
 
 # Site Author
