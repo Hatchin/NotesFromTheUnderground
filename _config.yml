@@ -121,6 +121,9 @@ author:
     en             : "Invisible City"
     zh             : "看不见的城市"
   email            :
+  Subscribe        :
+    icon: "fas fa-compass"
+    url: "/about/#Contact"
 
   links:
     - label: "Email"
@@ -141,9 +144,7 @@ author:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
-    - label: "Subscribe"
-      icon: "fas fa-compass"
-      url: "/about/#Contact" 
+ 
 
 # Site Footer
 footer:
