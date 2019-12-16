@@ -51,8 +51,10 @@
       {% if author.links %}
         {% for link in author.links %}
           {% if link.label and link.url %}
+            <p> {{ link.label }} </p>
+            <p> {{ site.baseurl}} </p>
             {% if link.label == 'Subscribe" %}
-              <p> {{ site.baseurl}} </p>
+              
               <li><a href="{{ link.url | prepend: site.baseurl }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i> {{ site.translations[site.lang].about[link.label] | default: link.label }}</a></li>
             {% else %}
               <li><a href="{{ link.url }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i> {{ site.translations[site.lang].about[link.label] | default: link.label }}</a></li>
