@@ -1,5 +1,6 @@
 ---
-title: "Mann Whitney U Test - Overview"
+title: 
+  zh: "Mann Whitney U Test - Overview"
 excerpt_separator: "<!--more-->"
 categories:
   - Stat
