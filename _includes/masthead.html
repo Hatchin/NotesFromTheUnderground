@@ -23,9 +23,10 @@
               <a href="{{ url }}" {% if link.description %}title="{{ link.description }}"{% endif %}>{{ site.translations[site.lang].navi[link.title] }}</a>
             </li>
           {%- endfor -%}
-          {% assign current_page = page.url | remove: "index.html" %}
           
-          <li class="nav-link"><a href="{{ page.url | prepend: '/zh'}}">中</a>|<a href="{{ page.url }} ">En</a></li>
+          <li class="nav-link"><a href="{{ page.url | prepend: '/zh'}}">中</a></li>
+          <p> | </p>
+          <li class="nav-link"><a href="{{ page.url }} ">En</a></li>
         </ul>
  
         {% if site.search == true %}
