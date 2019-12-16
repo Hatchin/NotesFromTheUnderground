@@ -23,6 +23,13 @@
               <a href="{{ url }}" {% if link.description %}title="{{ link.description }}"{% endif %}>{{ site.translations[site.lang].navi[link.title] }}</a>
             </li>
           {%- endfor -%}
+          {% assign pages = site.pages | where:"ref", page.ref %}
+          {% assign posts = site.posts | where:"ref", page.ref %}
+          {% assign ps = pages | concat: posts %}
+          {% assign en_page = ps | where:"lang", "en" %}
+          {% assign zh_page = ps | where:"lang", "zh" %}
+          <li class="masthead__menu-item"><a href="{% if en_page.size > 0 %}{{ en_page[0].url }}{% else %}/not-found{% endif %}">En</a>|<a href="{% if zh_page.size > 0 %}{{ zh_page[0].url }}{% else %}/not-found{% endif %}">中</a></li>
+          
           <li class="masthead__menu-item"><a href="{{ page.path | prepend: '/zh'}}">中</a>|<a href="{{ page.url | prepend: '/'}} ">En</a></li>
         </ul>
         {% if site.search == true %}
