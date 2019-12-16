@@ -1,7 +1,7 @@
 ---
 title: 
-  en: about
-  zh: 关于
+  en: About Here
+  zh: 关于此地
 layout: single
 permalink: /about/
 author_profile: true
