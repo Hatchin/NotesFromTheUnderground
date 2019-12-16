@@ -24,9 +24,8 @@
             </li>
           {%- endfor -%}
           {% assign current_page = page.url | remove: "index.html" %}
-          <li class="masthead__menu-item"><a href="{{ site.baseurl_root }}/zh{{ current_page }}">中</a>|<a href="{{ page.url | prepend: '/'}} ">En</a></li>
           
-          <li class="masthead__menu-item"><a href="{{ document.URL | prepend: '/zh'}}">中</a>|<a href="{{ page.url | prepend: '/'}} ">En</a></li>
+          <li class="masthead__menu-item"><a href="{{ post.url | prepend: '/'}}">中</a>|<a href="{{ page.url | prepend: '/'}} ">En</a></li>
         </ul>
         {% if site.search == true %}
         <button class="search__toggle" type="button">
