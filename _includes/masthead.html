@@ -30,7 +30,7 @@
           {% assign zh_page = ps %}
           <li class="masthead__menu-item"><a href="{% if en_page.size > 0 %}{{ en_page[0].url }}{% else %}/not-found{% endif %}">En</a>|<a href="{% if zh_page.size > 0 %}{{ zh_page[0].url }}{% else %}/not-found{% endif %}">中</a></li>
           
-          <li class="masthead__menu-item"><a href="{{ page.path | prepend: '/zh'}}">中</a>|<a href="{{ page.url | prepend: '/'}} ">En</a></li>
+          <li class="masthead__menu-item"><a href="{{ page.path | prepend: '/zh'}}">中</a>|<a href="{{ post.url | prepend: '/'}} ">En</a></li>
         </ul>
         {% if site.search == true %}
         <button class="search__toggle" type="button">
