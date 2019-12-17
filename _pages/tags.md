@@ -1,6 +1,6 @@
 ---
 title: 
-  en: "Posts_by_Tag"
+  en: "Posts by Tag"
   zh: "按标签阅读"
 sub: "sidebar"
 permalink: /tags/
