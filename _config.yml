@@ -242,7 +242,7 @@ timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 pagination:
   enabled: true
   collection: 'posts'
-  per_page: 2
+  per_page: 5
   permalink: '/page:num/'
   title: ':title - page :num'
   #permalink: '/page/:num/' # Pages are index.html inside this folder (default)
