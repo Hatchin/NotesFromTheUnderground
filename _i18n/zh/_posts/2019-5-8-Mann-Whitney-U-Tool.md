@@ -13,6 +13,7 @@ comments: true
 toc: true
 toc_sticky: true
 language: zh
+permalink: /mannwhitneyutool/
 
 ---
 
