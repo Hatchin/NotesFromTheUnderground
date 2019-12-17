@@ -6,4 +6,9 @@ sub: "sidebar"
 permalink: /tags/
 layout: tags
 author_profile: false
+
+sidebar:
+  title: "Topics"
+  nav: sidebar-sample
+
 ---
