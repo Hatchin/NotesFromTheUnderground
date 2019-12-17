@@ -241,11 +241,11 @@ timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 pagination:
   enabled: true
-  collection: '_i18n/zh/'
+  collection: 'posts'
   per_page: 2
   # permalink: '/pagina/:num/'
   # title: ':title - página :num'
-  permalink: '/page/:num/' # Pages are index.html inside this folder (default)
+  permalink: '/_i18n/page/:num/' # Pages are index.html inside this folder (default)
   title: ':title - page :num'
 
   limit: 0
