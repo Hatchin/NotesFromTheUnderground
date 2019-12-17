@@ -12,11 +12,6 @@ comments: true
 toc: true
 toc_sticky: true
 language: en
-
-pagination: 
-  enabled: true
-  category: software, ruby
-  locale: en
   
 permalink: /mannwhitneyu/
 
