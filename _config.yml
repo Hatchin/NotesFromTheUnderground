@@ -245,7 +245,7 @@ pagination:
   per_page: 2
   # permalink: '/pagina/:num/'
   # title: ':title - página :num'
-  permalink: '/_i18n/page/:num/' # Pages are index.html inside this folder (default)
+  permalink: '/page/:num/' # Pages are index.html inside this folder (default)
   title: ':title - page :num'
 
   limit: 0
