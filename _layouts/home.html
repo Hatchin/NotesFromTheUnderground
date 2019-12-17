@@ -10,7 +10,7 @@ layout: archive
 <p></p>
 {% for post in site.posts %}
   <p> {{post.title}} </p>
-{% endif %}
+{% endfor %}
 {% for post in paginator.posts %}
   <p> {{post}}</p>
   {% if post.language == site.lang %} 
