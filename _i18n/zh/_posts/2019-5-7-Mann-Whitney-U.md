@@ -13,11 +13,6 @@ toc: true
 toc_sticky: true
 language: zh
 
-pagination: 
-  enabled: true
-  category: software, ruby
-  locale: zh
-
 permalink: /mannwhitneyu/
   
 ---
