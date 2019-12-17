@@ -6,7 +6,7 @@ layout: archive
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.lang].recent_posts | default: "Recent Posts" }}</h3>
 
-<p>{{ paginator}}</p>
+<p>{{ paginator.posts}}</p>
 {% for post in paginator.posts %}
   <p> {{post}}</p>
   {% if post.language == site.lang %} 
