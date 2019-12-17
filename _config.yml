@@ -241,7 +241,7 @@ timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 pagination:
   enabled: true
-  collection: 'posts'
+  collection: '_i18n/zh/'
   per_page: 2
   # permalink: '/pagina/:num/'
   # title: ':title - página :num'
@@ -252,7 +252,7 @@ pagination:
   sort_field: 'date'
   sort_reverse: true
   category: 'posts'
-  locale: 'en'
+  locale: 'zh'
 
 languages: ["en", "zh"]
 
