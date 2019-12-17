@@ -13,10 +13,10 @@ toc: true
 toc_sticky: true
 language: en
   
-permalink: /mannwhitneyu/
+
 
 ---
-
+permalink: /mannwhitneyu/
 In this series, I am going to take a journey on Mann-Whitney U test and my Python solution for testing on small sample size. There is going to be an extension for original Mann-Whitney U test in [Scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html){:target="_blank"}. 
 
 Because the current scipy version only support test for large sample size(n>20),  the new script is made to test for small sample size (n < 20).
