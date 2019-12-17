@@ -14,9 +14,9 @@ toc: true
 toc_sticky: true
 language: zh
 
-permalink: /mannwhitneyutool/
-
 ---
+
+permalink: /mannwhitneyutool/
 在本文, I am going to show a demo on the Mann-Whitney U Test Python script which is able to perform test on both small and large sample size. 
 
 Mann-Whitney U test is very useful in small data sample cases, such as clinical dataset (many clinical trials only have very few samples). However, in many modern statistical packages which included Mann-Whitney U test, they were only valid when the data sample size was large. Hence, it is necessary and helpful to have a complete application of Mann-Whitney U test, including two conditions of small sample and large sample. 
