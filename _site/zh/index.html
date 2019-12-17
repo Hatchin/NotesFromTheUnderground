@@ -9,15 +9,15 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Notes from the Underground</title>
+<!-- begin _includes/seo.html --><title>地下室手记 | 地下室手记</title>
 <meta name="description" content="Hatchin’s Page.">
 
 
 
 <meta property="og:type" content="website">
-<meta property="og:locale" content="en">
-<meta property="og:site_name" content="Notes from the Underground">
-<meta property="og:title" content="Notes from the Underground">
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="地下室手记">
+<meta property="og:title" content="地下室手记">
 <meta property="og:url" content="http://localhost:4000/zh/">
 
 
@@ -50,7 +50,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Hatchin",
+      "name": "哈金",
       "url": "http://localhost:4000/zh",
       "sameAs": null
     }
@@ -100,6 +100,16 @@
 
 <!-- end custom head snippets -->
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139196533-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-139196533-3');
+</script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/icon.ico?">
   </head>
 
@@ -120,10 +130,14 @@
         
         <a class="site-title" href="/zh/"> </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/zh/posts/" >Posts</a>
+              <a href="/zh/posts/" >笔记</a>
             </li><li class="masthead__menu-item">
-              <a href="/zh/about/" >About</a>
-            </li></ul>
+              <a href="/zh/about/" >关于</a>
+            </li>
+          <li class="nav-link"><a href="/zh/">中</a></li> |
+          <li class="nav-link"><a href="/ ">En</a></li>
+        </ul>
+ 
         
         <button class="search__toggle" type="button">
           <span class="visually-hidden">Toggle search</span>
@@ -164,7 +178,7 @@
     <div class="wrapper">
       <h1 id="page-title" class="page__title" itemprop="headline">
         
-          Notes from the Underground
+          地下室手记
 
         
       </h1>
@@ -194,14 +208,14 @@
       
 
       
-        <img src="/zh/assets/images/photo.png" alt="Hatchin" itemprop="image">
+        <img src="/zh/assets/images/photo.png" alt="哈金" itemprop="image">
       
     </div>
   
 
   <div class="author__content">
     
-      <h3 class="author__name" itemprop="name">Hatchin</h3>
+      <h3 class="author__name" itemprop="name">哈金</h3>
     
     
       <p class="author__bio" itemprop="description">
@@ -211,18 +225,19 @@
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
+    <button class="btn btn--inverse">关注</button>
     <ul class="author__urls social-icons">
       
         <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
-          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Invisible City</span>
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">看不见的城市</span>
         </li>
       
 
       
         
           
-            <li><a href="mailto:sangyushen@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+            <li><a href="mailto:sangyushen@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> 邮箱</a></li>
+
           
         
           
@@ -233,12 +248,9 @@
         
           
             <li><a href="https://github.com/Hatchin" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+
           
         
-          
-        
-          
-            <li><a href="https://hatchin.github.io/about/#Contact" rel="nofollow noopener noreferrer"><i class="fas fa-compass" aria-hidden="true"></i> Subscribe</a></li>
           
         
       
@@ -310,8 +322,13 @@
     </form>
   
 -->
-
-
+  
+        <li>
+          <a href="/zh/about/#Contact" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fas fa-compass" aria-hidden="true"></i> 订阅
+          </a>
+        </li>
+      
 
       
       
@@ -328,12 +345,15 @@
     
     
 
-<h3 class="archive__subtitle">Recent posts</h3>
+<h3 class="archive__subtitle">最新文章</h3>
+
+<p>{"per_page"=>2, "posts"=>[], "total_posts"=>0, "total_pages"=>1, "page"=>1, "page_path"=>"/index.html", "previous_page"=>nil, "previous_page_path"=>nil, "next_page"=>nil, "next_page_path"=>nil, "first_page"=>1, "first_page_path"=>"/", "last_page"=>1, "last_page_path"=>"/page/1/", "page_trail"=>nil}</p>
 
 
 
 
 
+  
 
   </div>
 </div>

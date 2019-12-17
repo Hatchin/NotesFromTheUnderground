@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Notes from the Underground</title>
+<!-- begin _includes/seo.html --><title>Notes from the Underground | Notes from the Underground</title>
 <meta name="description" content="Hatchin’s Page.">
 
 
@@ -100,6 +100,16 @@
 
 <!-- end custom head snippets -->
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139196533-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-139196533-3');
+</script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/icon.ico?">
   </head>
 
@@ -123,7 +133,11 @@
               <a href="/posts/" >Posts</a>
             </li><li class="masthead__menu-item">
               <a href="/about/" >About</a>
-            </li></ul>
+            </li>
+          <li class="nav-link"><a href="/zh/">中</a></li> |
+          <li class="nav-link"><a href="/ ">En</a></li>
+        </ul>
+ 
         
         <button class="search__toggle" type="button">
           <span class="visually-hidden">Toggle search</span>
@@ -223,6 +237,7 @@
         
           
             <li><a href="mailto:sangyushen@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+
           
         
           
@@ -233,12 +248,9 @@
         
           
             <li><a href="https://github.com/Hatchin" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+
           
         
-          
-        
-          
-            <li><a href="https://hatchin.github.io/about/#Contact" rel="nofollow noopener noreferrer"><i class="fas fa-compass" aria-hidden="true"></i> Subscribe</a></li>
           
         
       
@@ -310,8 +322,13 @@
     </form>
   
 -->
-
-
+  
+        <li>
+          <a href="/about/#Contact" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fas fa-compass" aria-hidden="true"></i> Subscribe
+          </a>
+        </li>
+      
 
       
       
@@ -330,10 +347,13 @@
 
 <h3 class="archive__subtitle">Recent posts</h3>
 
+<p>{"per_page"=>2, "posts"=>[], "total_posts"=>0, "total_pages"=>1, "page"=>1, "page_path"=>"/index.html", "previous_page"=>nil, "previous_page_path"=>nil, "next_page"=>nil, "next_page_path"=>nil, "first_page"=>1, "first_page_path"=>"/", "last_page"=>1, "last_page_path"=>"/page/1/", "page_trail"=>nil}</p>
 
 
 
 
+
+  
 
   </div>
 </div>
