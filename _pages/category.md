@@ -1,6 +1,6 @@
 ---
 title: 
-  en: "Posts_by_Category"
+  en: "Posts by Category"
   zh: "按类别阅读"
 sub: "sidebar"
 layout: categories
