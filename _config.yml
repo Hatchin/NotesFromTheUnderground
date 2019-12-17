@@ -243,8 +243,8 @@ pagination:
   enabled: true
   collection: 'posts'
   per_page: 2
-  permalink: '/pagina/:num/'
-  title: ':title - página :num'
+  permalink: '/page:num/'
+  title: ':title - page :num'
   #permalink: '/page/:num/' # Pages are index.html inside this folder (default)
   #title: ':title - page :num'
 
