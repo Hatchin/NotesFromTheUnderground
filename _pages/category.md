@@ -6,6 +6,11 @@ sub: "sidebar"
 layout: categories
 permalink: /categories/
 author_profile: false
+
+sidebar:
+  title: "Topics"
+  nav: sidebar-sample
+
 ---
 
 
