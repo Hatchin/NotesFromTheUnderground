@@ -8,7 +8,9 @@ layout: archive
 
 <p>{{ paginator}}</p>
 <p></p>
-<p> {{site.posts}} </p>
+{% for post in site.posts %}
+  <p> {{post.title}} </p>
+{% endif %}
 {% for post in paginator.posts %}
   <p> {{post}}</p>
   {% if post.language == site.lang %} 
