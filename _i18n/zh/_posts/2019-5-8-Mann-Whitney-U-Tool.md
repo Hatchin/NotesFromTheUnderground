@@ -12,12 +12,7 @@ mathjax: true
 comments: true
 toc: true
 toc_sticky: true
-language: cn
-
-pagination: 
-  enabled: true
-  category: software, ruby
-  locale: zh
+language: zh
 
 permalink: /mannwhitneyutool/
 
