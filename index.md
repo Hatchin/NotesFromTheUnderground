@@ -2,8 +2,6 @@
 layout: home
 author_profile: true
 subscribe: true
-language: en
-nav-order: 1
 header:
   overlay_image: /assets/images/teaser.JPG
 
