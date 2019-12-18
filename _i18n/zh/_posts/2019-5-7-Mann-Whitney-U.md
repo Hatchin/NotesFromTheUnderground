@@ -185,7 +185,7 @@ Use only when the number of observation in each sample is > 20.
 
 因为曼-惠特尼U检验对于小样本检验而言非常有用，比如医疗数据（许多临床试验只有非常少的样本量），所以在这里使用Python实现了一个完整的曼-惠特尼U检验，可用于小样本与大样本两种情况。
 
-在 [第二部分](hatchin.netlify.com/zh/mannwhitneyutool/?utm_source=blog&utm_medium=post&utm_campaign=part1)，将详细展示这个新应用。
+在 [第二部分](https://hatchin.netlify.com/zh/mannwhitneyutool/?utm_source=blog&utm_medium=post&utm_campaign=part1)，将详细展示这个新应用。
 
 ---------------------------------
 
