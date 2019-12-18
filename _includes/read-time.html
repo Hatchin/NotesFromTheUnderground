@@ -10,7 +10,7 @@
   {% if site.lang == 'en %}
     {% assign words = page.content | strip_html | number_of_words %}
   {% else %}
-    {% assign words = page.content | strip_html | strip_newlines | size %}
+    {% assign words = page.content | strip_html | strip_newlines |split: ""| size %}
   {% endif %}
 {% endif %}
 
