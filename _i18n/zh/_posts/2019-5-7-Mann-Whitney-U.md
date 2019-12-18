@@ -12,7 +12,7 @@ comments: true
 toc: true
 toc_sticky: true
 language: zh
-
+permalink: /mannwhitneyu/
 
   
 ---
@@ -120,7 +120,7 @@ $$
    
 4. 比较 $$U$$ 与 $$U$$的临界值
    
-   在每一次检验中，我们都将判断基于观测到的 $$U$$ 值，原假设是否成立。对于曼-惠特尼U检验，判断的方式与其他参数检验相同。我们将首先定义 $$U$$的临界值， 满足：In every test, we must determine whether the observed $$U$$ supports the null hypothesis. This is done following the same approach used in parametric testing. Specifically, we determine a critical value of $$U$$ such that,
+   在每一次检验中，我们都将判断基于观测到的 $$U$$ 值，原假设是否成立。对于曼-惠特尼U检验，判断的方式与其他参数检验相同。我们将首先定义 $$U$$的临界值， 满足：
    
    {: style="text-align:center"}
    若 $$U \leq \ U的临界值$$，我们拒绝原假设 $$H_{0}$$，而
