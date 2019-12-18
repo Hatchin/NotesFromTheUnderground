@@ -45,6 +45,7 @@ en: &DEFAULT_EN
   results_found              : "Result(s) found"
   back_to_top                : "Back to top"
   subscribe                  : "Subscribe"
+  words                      : "Words"
 en-US:
   <<: *DEFAULT_EN
 en-CA:
@@ -373,6 +374,7 @@ zh: &DEFAULT_ZH_HANS
   results_found              : "条记录匹配"
   back_to_top                : "返回顶部"
   subscribe                  : "订阅"
+  words                      : "字"
 zh-CN:
   <<: *DEFAULT_ZH_HANS
 zh-SG:
