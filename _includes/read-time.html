@@ -4,13 +4,13 @@
   {% if site.lang == 'en %}
     {% assign words = post.content | strip_html | number_of_words %}
   {% else %}
-    {% assign words = post.content | strip_html | strip_newlines | size %}
+    {% assign words = post.content | strip_html | strip_newlines | remove: " " | size %}
   {% endif %}
 {% elsif page.read_time %}
   {% if site.lang == 'en %}
     {% assign words = page.content | strip_html | number_of_words %}
   {% else %}
-    {% assign words = page.content | strip_html | strip_newlines |split: ""| size %}
+    {% assign words = page.content | strip_html | strip_newlines |remove: " "| size %}
   {% endif %}
 {% endif %}
 
