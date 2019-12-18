@@ -25,8 +25,7 @@ header:
         <a class="btn btn-primary btn-sm" href="https://hatchin.netlify.com/zh" role="button">回到主页</a> | 
         <a class="btn btn-primary btn-sm" href="https://hatchin.netlify.com/" role="button">Continue to homepage</a>
       </p>
-
     </div>
   </p>
-
+</br>
 </html>
