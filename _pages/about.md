@@ -19,7 +19,7 @@ header:
 <br>
   <h3>{% t about.contact %}</h3><a class ="Contact" id="Contact"></a>
   {% t about.contact_message %}
-  <form id="second" method="post" action="https://briskforms.com/go/6326a6cc0d3a86c7aaf91d2fa55606b0">
+  <form id="second" method="post" action="https://forms.un-static.com/forms/f589de0bf21a5148ee4cae28f412f326f36288ef">
         <input type="text" placeholder="{% t about.name %}" name="name" >
         <input type="email" placeholder="{% t about.Email %}" name="_replyto" required >
         <textarea form ="second" name="message" rows = "3" cols = "80" placeholder="{% t about.message %}"></textarea>
