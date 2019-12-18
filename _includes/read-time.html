@@ -5,13 +5,13 @@
     {% assign words = post.content | strip_html | number_of_words %}
   {% else %}
     {% assign words = post.content | strip_html | strip_newlines | size %}
-  {% end if %}
+  {% endif %}
 {% elsif page.read_time %}
   {% if site.lang == 'en %}
     {% assign words = page.content | strip_html | number_of_words %}
   {% else %}
     {% assign words = page.content | strip_html | strip_newlines | size %}
-  {% end if %}
+  {% endif %}
 {% endif %}
 
 <!--
