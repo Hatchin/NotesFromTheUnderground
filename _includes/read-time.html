@@ -9,7 +9,7 @@
   {% endif %}
 {% elsif page.read_time %}
   {% if site.lang == 'en' %}
-    {% assign words = post.content | strip_html | number_of_words %}
+    {% assign words = page.content | strip_html | number_of_words %}
   {% else %}
     {% assign words = page.content | strip_html | strip_newlines |remove: " "| size %}
   {% endif %}
