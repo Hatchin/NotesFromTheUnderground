@@ -1,6 +1,6 @@
 ---
 title: 
-  zh: "中Mann Whitney U Test - with Python Solution for Small Sample"
+  zh: "曼-惠特尼U检验 - 小样本检验Python实现"
 excerpt_separator: "<!--more-->"
 categories:
   - Stat
