@@ -29,7 +29,11 @@ layout: default
           {% if page.read_time %}
             <p class="page__meta">
                <i class="far fa-clock" aria-hidden="true"></i> {% include read-time.html %} | 
-               <i class="far fa-calendar-alt" aria-hidden="true"></i> {{ page.date | date: "%B %d, %Y" }}
+               {% if site.lang == 'en' %}
+                  <i class="far fa-calendar-alt" aria-hidden="true"></i> {{ page.date | date: "%B %d, %Y" }}
+               {% else %}
+                  <i class="far fa-calendar-alt" aria-hidden="true"></i> {{ page.date | date: "%-m月%-d日，%Y" }}
+               {& endif %}
             </p>
           {% endif %}
         </header>
