@@ -20,12 +20,8 @@ header:
   <h3>{% t about.contact %}</h3><a class ="Contact" id="Contact"></a>
   {% t about.contact_message %}
   <form id="second" method="post" action="https://forms.un-static.com/forms/f589de0bf21a5148ee4cae28f412f326f36288ef">
-        <div class="wrapper">
-          <input class="inputbold" type="text" name="" placeholder="boldinput" />
-          <input class="inputbold" type="text" name="" placeholder="blah" />
-        </div>
-        <input type="text" placeholder="{% t about.name %}" name="name" />
-        <input type="text" placeholder="Personal URL" name="link" >
+        <input type="text" placeholder="{% t about.name %}" name="name" required>
+        <input type="text" placeholder="{% t about.personal_url %}" name="link" >
         <input type="email" placeholder="{% t about.Email %}" name="_replyto" required >
         <textarea form ="second" name="message" rows = "3" cols = "80" placeholder="{% t about.message %}"></textarea>
         <input type="checkbox" name="Subscribe" value="Add me"> {% t about.Subscribe %}
