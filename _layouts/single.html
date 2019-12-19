@@ -33,7 +33,7 @@ layout: default
                   <i class="far fa-calendar-alt" aria-hidden="true"></i> {{ page.date | date: "%B %d, %Y" }}
                {% else %}
                   <i class="far fa-calendar-alt" aria-hidden="true"></i> {{ page.date | date: "%-m月%-d日，%Y" }}
-               {& endif %}
+               {% endif %}
             </p>
           {% endif %}
         </header>
