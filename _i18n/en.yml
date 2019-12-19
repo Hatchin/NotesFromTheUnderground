@@ -9,6 +9,7 @@ about:
   Subscribe                  : Subscribe
   send                       : Send
   personal_url               : Personal URL (optional)
+  private                    : Private (won't publish on Board)
    
 navi:
   Posts                      : Posts
