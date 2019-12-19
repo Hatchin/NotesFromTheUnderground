@@ -24,8 +24,9 @@ header:
         <input type="text" placeholder="{% t about.personal_url %}" name="link" >
         <input type="email" placeholder="{% t about.Email %}" name="_replyto" required >
         <textarea form ="second" name="message" rows = "3" cols = "80" placeholder="{% t about.message %}"></textarea>
-        <input type="checkbox" name="Subscribe" value="Add me"> {% t about.Subscribe %}
-        <label for="Subscribe">
+        <input type="checkbox" name="Subscribe" value="Add me"> {% t about.Subscribe %}<label for="Subscribe"></label>
+        <input type="checkbox" name="Private" value="Add me"> {% t about.private %}
+        <label for="Private">
         </label>
         <input type="submit" value="{% t about.send %}">
     </form>
