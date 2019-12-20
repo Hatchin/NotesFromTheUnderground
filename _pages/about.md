@@ -19,7 +19,7 @@ header:
 <br>
   <h3>{% t about.contact %}</h3><a class ="Contact" id="Contact"></a>
   {% t about.contact_message %}
-  <form id="second" method="post" action="https://formspree.io/sangyushen@gmail.com">
+  <form id="second" method="post" action="https://formsubmit.io/send/sangyushen@gmail.com">
         <input type="text" placeholder="{% t about.name %}" name="name" required>
         <input type="text" placeholder="{% t about.personal_url %}" name="link" >
         <input type="email" placeholder="{% t about.Email %}" name="_replyto" required >
@@ -28,6 +28,7 @@ header:
         <input type="checkbox" name="Private" value="Add me"> {% t about.private %}
         <label for="Private">
         </label>
+        <input name="_formsubmit_id" type="text" style="display:none">
         <input type="submit" value="{% t about.send %}">
     </form>
 
