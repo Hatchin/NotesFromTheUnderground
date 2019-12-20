@@ -18,7 +18,7 @@ header:
   <h3>{% t about.contact %}</h3><a class ="Contact" id="Contact"></a>
   {% t about.contact_message %}
   <form id="second" method="post" action="https://formsubmit.io/send/sangyushen@gmail.com">
-        <input name="_redirect" type="hidden" id="name" value="https://hatchin.netlify.com/{{site.baseurl}}thankyou">
+        <input name="_redirect" type="hidden" id="name" value="https://hatchin.netlify.com{{site.baseurl}}/thankyou">
         <input type="text" placeholder="{% t about.name %}" name="name" required>
         <input type="text" placeholder="{% t about.personal_url %}" name="link" >
         <input type="email" placeholder="{% t about.Email %}" name="_replyto" required >
