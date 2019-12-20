@@ -12,9 +12,9 @@ about:
   private                    : 私信（不公开）
 
 thankyou:
-  thankyou                   : Thank you! 
-  response                   : It is great to hear from you! We will get in touch soon.
-  back_to_home               : Back to homepage
+  thankyou                   : 谢谢！
+  response                   : 感谢来信，将尽快回复。
+  back_to_home               : 回到主页
   
 navi:
   Posts                      : 笔记
