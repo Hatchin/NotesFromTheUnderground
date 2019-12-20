@@ -19,7 +19,7 @@ header:
 <br>
   <h3>{% t about.contact %}</h3><a class ="Contact" id="Contact"></a>
   {% t about.contact_message %}
-  <form id="second" method="post" action="https://forms.un-static.com/forms/f589de0bf21a5148ee4cae28f412f326f36288ef">
+  <form id="second" method="post" action="https://formspree.io/sangyushen@gmail.com">
         <input type="text" placeholder="{% t about.name %}" name="name" required>
         <input type="text" placeholder="{% t about.personal_url %}" name="link" >
         <input type="email" placeholder="{% t about.Email %}" name="_replyto" required >
