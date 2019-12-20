@@ -27,7 +27,6 @@ header:
         <input type="checkbox" name="Private" value="Add me"> {% t about.private %}
         <label for="Private">
         </label>
-        <input name="_formsubmit_id" type="text" style="display:none">
         <input type="submit" value="{% t about.send %}">
     </form>
 
