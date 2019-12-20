@@ -21,7 +21,7 @@ header:
         <input name="_redirect" type="hidden" id="name" value="https://hatchin.netlify.com{{site.baseurl}}/thankyou">
         <input type="text" placeholder="{% t about.name %}" name="name" required>
         <input type="text" placeholder="{% t about.personal_url %}" name="link" >
-        <input type="email" placeholder="{% t about.Email %}" name="_replyto" required >
+        <input type="text" placeholder="{% t about.Email %}" name="_replyto" required >
         <textarea form ="second" name="message" rows = "3" cols = "80" placeholder="{% t about.message %}"></textarea>
         <input type="checkbox" name="Subscribe" value="Add me"> {% t about.Subscribe %}<label for="Subscribe"></label>
         <input type="checkbox" name="Private" value="Add me"> {% t about.private %}
