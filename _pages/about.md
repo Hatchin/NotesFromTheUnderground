@@ -13,8 +13,6 @@ header:
 
 <p>{% t about.intro %}</p>
 
-"{{ "/about/#Contact" | prepend: site.baseurl  }}"
-
 <html>
 <br>
   <h3>{% t about.contact %}</h3><a class ="Contact" id="Contact"></a>
