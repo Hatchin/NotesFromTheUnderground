@@ -10,6 +10,11 @@ about:
   send                       : 提交
   personal_url               : 个人网站 (选填)
   private                    : 私信（不公开）
+
+thankyou:
+  thankyou                   : Thank you! 
+  response                   : It is great to hear from you! We will get in touch soon.
+  back_to_home               : Back to homepage
   
 navi:
   Posts                      : 笔记
