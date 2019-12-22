@@ -23,23 +23,36 @@ header:
     </div>
   </p>
 
-<body>
-    <div class="wrap">
-        <!-- 留言显示区 -->
-        <ul class="mes-board">
-            <li class="mes-content">
-                <h4>义乌小白：</h4>
-                <small>2016-10-02 11:00</small>
-                <p>大神之路，从留言板开始！</p>
+
+<div class="list">
+        <h3><span>大家在说</span></h3>
+        <ul>
+            <li>
+                <div class="userPic"><img src="img/face.gif" /></div>
+                <div class="content">
+                    <div class="userName"><a href="javascript:;">freecode</a>:</div>
+                    <div class="msgInfo">每天坚持写一点点代码，解决一个个小问题，日积月累你会发现，原来坚持下去就可以成为一个牛逼的程序猿！</div>
+                    <div class="times"><span>07月05日 15:14</span><a class="del" href="javascript:;">删除</a></div>
+                </div>
             </li>
-            <li class="mes-content">
-                <h4>义乌小白：</h4>
-                <small>2016-10-02 11:00</small>
-                <p>大神之路，从留言板开始！</p>
+			<li>
+                <div class="userPic"><img src="img/face2.gif" /></div>
+                <div class="content">
+                    <div class="userName"><a href="javascript:;">设计师</a>:</div>
+                    <div class="msgInfo">不要以为程序猿很牛逼，没有我们设计师，你们做出来的东西在用户眼里全都是垃圾，我是设计师，我骄傲！</div>
+                    <div class="times"><span>07月04日 15:05</span><a class="del" href="javascript:;">删除</a></div>
+                </div>
+            </li>
+			<li>
+                <div class="userPic"><img src="img/face4.gif" /></div>
+                <div class="content">
+                    <div class="userName"><a href="javascript:;">IOS攻城狮</a>:</div>
+                    <div class="msgInfo">以后能不能不要总是拿着安卓手机来问我，为什么我的app无法卸载，无法登录，记住我是ios攻城狮！</div>
+                    <div class="times"><span>07月04日 15:05</span><a class="del" href="javascript:;">删除</a></div>
+                </div>
             </li>
         </ul>
-    </div>
-</body>
+    </div>	
 
 
 </html>
