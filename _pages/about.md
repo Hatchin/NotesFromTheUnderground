@@ -25,17 +25,6 @@ header:
         <textarea form ="second" name="message" rows = "3" cols = "80" placeholder="{% t about.message %}"></textarea>
         <input type="checkbox" name="Subscribe" value="Add me"> {% t about.Subscribe %}<label for="Subscribe"></label>
         <input type="checkbox" name="Private" value="Add me"> {% t about.private %}
-        <div class="secret_comment" id="secret_comment" data-toggle="tooltip" data-original-title="开启该功能，您的评论仅作者和评论双方可见">
-                            <label class="secret_comment_label control-label">私密评论</label>
-                            <div class="secret_comment_check">
-                                <label class="i-switch i-switch-sm bg-dark m-b-ss m-r">
-                                    <input type="checkbox" id="secret_comment_checkbox">
-                                    <i></i>
-                                </label>
-                            </div>
-                        </div>
-        
-        
         <label for="Private">
         </label>
         <input type="submit" value="{% t about.send %}">
