@@ -1,13 +1,14 @@
 {% if post.read_time %}
   {% if site.lang == 'en' %}
-    <i class="fa fa-calendar-o" aria-hidden="true"></i> {{ post.date | date: "%B %d, %Y" }}
+    <i class="far fa-calendar-o" aria-hidden="true"></i> {{ post.date | date: "%B %d, %Y" }}
   {% else %}
-    <i class="fa fa-calendar-o" aria-hidden="true"></i> {{ post.date | date: "%-m月%-d日，%Y" }}
+    <i class="far fa-calendar-o" aria-hidden="true"></i> {{ post.date | date: "%-m月%-d日，%Y" }}
   {% endif %}
 {% elsif page.read_time %}
   {% if site.lang == 'en' %}
-    <i class="fa fa-calendar-o" aria-hidden="true"></i> {{ page.date | date: "%B %d, %Y" }}
+    <i class="far fa-calendar-o" aria-hidden="true"></i> {{ page.date | date: "%B %d, %Y" }}
   {% else %}
-    <i class="fa fa-calendar-o" aria-hidden="true"></i> {{ page.date | date: "%-m月%-d日，%Y" }}
+    <i class="far fa-calendar-o" aria-hidden="true"></i> {{ page.date | date: "%-m月%-d日，%Y" }}
   {% endif %}
 {% endif %}
+<i class="far fa-calendar"></i>
