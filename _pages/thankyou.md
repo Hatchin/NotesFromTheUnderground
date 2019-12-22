@@ -18,7 +18,7 @@ header:
       <p class="lead">{% t thankyou.response %}</p>
       <hr>
       <p class="lead">
-        <a class="btn btn-primary btn-sm" href="{{ site.url }}/{{ site.baseurl }}" role="button">{% t thankyou.back_to_home %}</a> 
+        <a class="btn btn-primary btn-sm" href="{{ site.url }}{{ site.baseurl }}" role="button">{% t thankyou.back_to_home %}</a> 
       </p>
     </div>
   </p>
