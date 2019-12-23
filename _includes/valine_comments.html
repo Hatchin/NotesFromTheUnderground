@@ -6,14 +6,14 @@
     <!--Valine 的核心代码库:-->
     <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
     <script>
-         new Valine([
+         new Valine({
             av: AV,
             el: '#comments',
-            app_id: '[[ site.valine.appid ]]',
-            app_key: '[[ site.valine.appkey ]]',
-            path: '[[ site.valine.path ]]',
-            placeholder: '[[ site.valine.placeholder ]]',
-            notify: '[[ site.valine.notify ]]',
-            verify: '[[ site.valine.verify ]]',
-        ])
+            app_id: '{{ site.valine.appid }}',
+            app_key: '{{ site.valine.appkey }}',
+            path: '{{ site.valine.path }}',
+            placeholder: '{{ site.valine.placeholder }}',
+            notify: '{{ site.valine.notify }}',
+            verify: '{{ site.valine.verify }}',
+         })
     </script>
