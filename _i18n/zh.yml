@@ -37,5 +37,4 @@ sidebar:
   WebApp                     : 网页应用
 
 comments:
-  en                         : en
-  zh                         : zh-cn
+  lang                       : zh-cn
