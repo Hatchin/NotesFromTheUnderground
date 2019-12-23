@@ -35,3 +35,7 @@ sidebar:
   Theory                     : 理论
   Tool                       : 工具
   WebApp                     : 网页应用
+
+comments:
+  en                         : en
+  zh                         : zh-cn
