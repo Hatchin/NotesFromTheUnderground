@@ -313,6 +313,22 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+    
+# Valine评论系统开关
+# Valine.
+# You can get your appid and appkey from https://leancloud.app
+# more info please open https://valine.js.org
+valine:
+  enable: true
+  appid:  U9chBDyV5aUSrBugXYcTMOCK-MdYXbMMI # your leancloud app id
+  appkey: 0X4p7knhjvYFjjY9GOm8WHOv # your leancloud app key
+  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
+  verify: true # Verification code
+  placeholder: 留言？ # comment box placeholder
+  avatar: 'retro'  # gravatar style
+  guest_info: 昵称,邮件,网址 # custom comment header
+  pageSize: 10 # pagination size
+  # path: window.location.pathname
 
 
 # Defaults
