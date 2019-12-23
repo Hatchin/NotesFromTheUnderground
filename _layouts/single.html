@@ -73,7 +73,7 @@ layout: default
       {% include post_pagination.html %}
     </div>
 
-    {% if jekyll.environment == 'production' and site.valine.enable and page.comments %}
+    {% if site.valine.enable and page.comments %}
       {% include valine_comments.html %}
     {% endif %}
   </article>
