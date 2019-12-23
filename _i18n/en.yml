@@ -35,4 +35,6 @@ sidebar:
   Theory                     : Theory
   Tool                       : Tool
   WebApp                     : Web App
-  
+
+comments:
+  lang                       : en
