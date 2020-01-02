@@ -13,6 +13,13 @@
     {% include head.html %}
     {% include head/custom.html %}
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/icon.ico?">
+    <style type="text/css">
+      aboutcomment
+        {
+          max-width: 100px;
+          margin-left: 500px;
+        }
+    </style>
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
