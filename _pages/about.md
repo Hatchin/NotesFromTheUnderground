@@ -30,9 +30,8 @@ header:
         <input type="submit" value="{% t about.send %}">
     </form>
 <br>
-<div class="page__comments">
-    <section id="custom-comments">
-	<p class="comment-header"><b>评论：</b></p>
+<br>
+<p class="comment-header"><b>评论：</b></p>
 	<div class="comment" id="comment-395"><a name="395"></a>
 		<div class="comment-info">
 			<b><a href="http://www.mryu.top/" target="_blank">spain</a> Say:</b>
@@ -53,6 +52,5 @@ header:
 		</div>
 		<hr style="height:1px;border:none;border-top:1px dashed grey;">
 	</div>
-    </section>
-</div>
+
 </html>
