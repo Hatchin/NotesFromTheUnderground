@@ -30,7 +30,7 @@ header:
         <input type="submit" value="{% t about.send %}">
     </form>
 
-
+<hr style="height:1px;border:none;border-top:1px dashed grey;">
 <div>
 <p class="comment-header"><b>评论：</b></p>
 <div class="comment" id="comment-395"><a name="395"></a>
