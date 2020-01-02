@@ -35,7 +35,7 @@ header:
 	<div class="comment" id="comment-395"><a name="395"></a>
 		<div class="comment-info">
 			<b><a href="http://www.mryu.top/" target="_blank">spain</a> Say:</b>
-				<div class="comment-content">github 搜 Crawler4Caida 来的，<br>
+				<div class="aboutcomment">github 搜 Crawler4Caida 来的，<br>
 					有个资源不能爬了 哈哈<br>
 					请指教
 				</div>
