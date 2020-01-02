@@ -31,7 +31,7 @@ header:
     </form>
 
 
-
+<div>
 <p class="comment-header"><b>评论：</b></p>
 <div class="comment" id="comment-395"><a name="395"></a>
 	<div class="comment-info">
@@ -52,5 +52,6 @@ header:
 		</div>
 	</div>
 	<hr style="height:1px;border:none;border-top:1px dashed grey;">
+</div>
 </div>
 </html>
