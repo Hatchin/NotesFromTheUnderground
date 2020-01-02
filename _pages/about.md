@@ -29,7 +29,7 @@ header:
         </label>
         <input type="submit" value="{% t about.send %}">
     </form>
-
+<br>
 <div class="page__comments">
     <section id="custom-comments">
 	<p class="comment-header"><b>评论：</b></p>
