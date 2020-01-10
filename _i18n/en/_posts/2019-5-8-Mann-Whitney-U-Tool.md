@@ -110,11 +110,11 @@ You could also visit the [webpage](https://mannwhitney.herokuapp.com/?utm_source
   <img src="https://raw.githubusercontent.com/Hatchin/Mann-Whitney-U-Test/master/demo.png" alt="">Example
 </p>
 
-Similary, just provide two groups of data and the application will run the test and show all the result. 
+Similarly, just provide two groups of data and the application will run the test and show all the result. 
 
 The valid format of input data includes:
   - copy directly from Excel (a row or a column)
-  - mannul typing
+  - manual typing
     - separate with comma, e.g. `1, 2, 3, 4`
     - separate with space, e.g. `1 2 3 4`
     - mixture, e.g. `1  2  , 3, 4`
