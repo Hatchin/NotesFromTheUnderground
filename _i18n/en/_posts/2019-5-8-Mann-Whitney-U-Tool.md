@@ -79,7 +79,7 @@ After testing, you could fetch the following results:
 
 `mwm.significance`  bool, e.g. True
 
-​								whether the test show signicant difference
+​								whether the test show significant difference
 
 `mwm.criticalu`       float, e.g. 3.0
 
