@@ -69,21 +69,37 @@ mwm = mannWhitney(data1,
 
 After testing, you could fetch the following results:
 
-`mwm.n1` & `mwm.n2`  the number of sample size for a group
+`mwm.n1` & `mwm.n2`  int, e.g. 10
 
-`mwm.sample_size`    small or large sample size
+​								the number of sample size for a group
 
-`mwm.significance`   whether the test show signicant difference
+`mwm.sample_size`   str, e.g. "small"
 
-`mwm.criticalu`      the critical U value obtained from the table (only available when sample size is small)
+​								small or large sample size
 
-`mwm.p`              the p value calculated from the testing data (only available when sample size is large)
+`mwm.significance`  bool, e.g. True
 
-`mwm.stat_a`         the U statistics calculated from the testing data
+​								whether the test show signicant difference
 
-`mwm.effectsize`     the effect size
+`mwm.criticalu`       float, e.g. 3.0
 
-`mwm.largergroup`    the index of the larger group (1 or 2)
+​							    the critical U value obtained from the table (only available when sample size is small)
+
+`mwm.p`              	   float, e.g. 0.05
+
+​								the p value calculated from the testing data (only available when sample size is large)
+
+`mwm.stat_a`         	float, e.g. 3.0
+
+​								the U statistics calculated from the testing data
+
+`mwm.effectsize`     float, e.g. 0.8
+
+​								the effect size
+
+`mwm.largergroup`    int, e.g. 1
+
+​								the index of the larger group (1 or 2)
 
 Web Application
 --------------
