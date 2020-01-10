@@ -17,7 +17,7 @@ permalink: /mannwhitneyu/
   
 ---
 
-在此系列, 本文将介绍曼-惠特尼U检验，并且实现小样本显著性检验的Python代码。这是 [Scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html){:target="_blank"} 的原版曼-惠特尼U检验的扩展代码。
+在此系列, 本文将介绍曼-惠特尼U检验，并且实现能进行小样本显著性检验的Python代码。这是 [Scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html){:target="_blank"} 的原版曼-惠特尼U检验的扩展代码。
 
 当前（2019）的scipy版本仅支持大样本检验（n>20），所以新代码补充了小样本（n<20）检验的方法。
 
