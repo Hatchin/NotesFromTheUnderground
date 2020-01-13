@@ -31,11 +31,11 @@ header:
     </form>
 <br>
 <br>
-<div class="page__innerwrap"><h2>脚印</h2>
+<div class="page__innerwrap"><h2>{% t about.comments %}</h2>
 	<div class="comment" id="comment-1">
 		<b><font size="4em"><a href="https://hatchin.netlify.com/" target="_blank">哈金</a>:</font></b>
 			<p class="aboutcomment"><font size="3.5em"> 试试</font><br>
-				<font size="3em">2019-12-20 10:05<a href="{{ "/about/#Contact" | prepend: site.baseurl  }}">   回复</a></font>
+				<font size="3em">2019-12-20 10:05<a href="{{ "/about/#Contact" | prepend: site.baseurl  }}">   {% t about.reply %}</a></font>
 		</p>	
 		<b><font size="4em"><a class="replytitle" href="https://hatchin.netlify.com/" target="_blank">哈金</a>:</font></b>
 				<p class="replycomment"><font size="3.5em"> @哈金：repeat</font> <br>
