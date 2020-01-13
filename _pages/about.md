@@ -32,16 +32,14 @@ header:
 <br>
 <br>
 <div class="page__innerwrap"><h2>脚印</h2>
-	<div class="comment" id="comment-395"><a name="395"></a>
-		<div class="comment-info">
+	<div class="comment" id="comment-395">
 			<b><a href="http://www.mryu.top/" target="_blank">spain</a> Say:</b>
 				<p class="aboutcomment">github 搜 Crawler4Caida 来的，<br>
 					有个资源不能爬了 哈哈<br>
 					请指教
 				</p>
 	<!--<span class="comment-time" ></span>-->
-				<p><font size="3em" face="arial" color="red">A paragraph.</font></p>
-				<p font-size: >2019-12-20 10:05</p>
+				<p><font size="3em" color="red">2019-12-20 10:05</font></p>
 				<div class="comment-reply"><a href="http://www.mryu.top/about.html#comment-395" onclick="commentReply(395,this)">回复</a></div>
 		</div>
 		<div class="comment comment-children" id="comment-396"><a name="396"></a>
