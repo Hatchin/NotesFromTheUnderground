@@ -33,18 +33,18 @@ header:
 <br>
 <div class="page__innerwrap"><h2>脚印</h2>
 	<div class="comment" id="comment-1">
-		<b><font size="4em"><a href="http://www.mryu.top/" target="_blank">spain</a> Say:</font></b>
+		<b><font size="4em"><a href="http://www.mryu.top/" target="_blank">spain</a>:</font></b>
 			<p class="aboutcomment"><font size="3.5em"> github 搜 Crawler4Caida 来的，<br>
 								    有个资源不能爬了 哈哈<br>
 								    请指教</font><br>
-				<font size="3em">2019-12-20 10:05</font><a href="{{ "/about/#Contact" | prepend: site.baseurl  }}">回复</a>
+				<font size="3em">2019-12-20 10:05</font><a href="{{ "/about/#Contact" | prepend: site.baseurl  }}">   回复</a>
 		</p>	
-		<b><a href="http://www.mryu.top/" target="_blank">云中布衣</a> </b><br><span class="comment-time">2019-12-21 09:35</span>
-				<div class="comment-content">@xiaopan：哪个？</div>
-				<div class="comment-reply"><a href="http://www.mryu.top/about.html#comment-396" onclick="commentReply(396,this)">回复</a></div>		
-
-		</div>
+		<b><font size="4em"><a class="replytitle" href="http://www.mryu.top/" target="_blank">云中布衣</a>:</font></b>
+				<p class="replycomment"><font size="3.5em"> @xiaopan：哪个？</font> 
+				<font size="3em">2019-12-21 09:35</font><a href="{{ "/about/#Contact" | prepend: site.baseurl  }}">   回复</a>
+		</p>
+	</div>		
+</div>
 		<hr style="height:1px;border:none;border-top:1px dashed grey;">
-	</div>
 
 </html>
