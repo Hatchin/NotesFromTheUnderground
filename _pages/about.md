@@ -15,8 +15,8 @@ header:
 
 <html>
 <br>
-  <h3>{% t about.contact %}</h3><a class ="Contact" id="Contact"></a>
-  {% t about.contact_message %}
+  <h2>{% t about.contact %}</h2><a class ="Contact" id="Contact"></a>
+  <h3>{% t about.contact_message %}</h3>
   <form id="second" method="post" action="https://getsimpleform.com/messages?form_api_token=bce488d72133f1c308485c01fad8b4bb" >
         <input name="redirect_to" type="hidden" id="name" value="https://hatchin.netlify.com{{site.baseurl}}/thankyou">
         <input type="text" placeholder="{% t about.name %}" name="name" required>
@@ -31,7 +31,7 @@ header:
     </form>
 <br>
 <br>
-<p class="comment-header"><b>评论：</b></p>
+<p class="page__innerwrap"><b>评论：</b></p>
 	<div class="comment" id="comment-395"><a name="395"></a>
 		<div class="comment-info">
 			<b><a href="http://www.mryu.top/" target="_blank">spain</a> Say:</b>
