@@ -27,7 +27,7 @@ sidebar-sample:
       - title: "Stat"
         url: /categories/#stat
       - title: "Neural_Network"
-        url: /tags/#neural-network
+        url: /categories/#neural-network
   - title: "Tags"
     url: /tags/
     children:
