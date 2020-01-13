@@ -36,7 +36,7 @@ header:
 		<b><font size="4em"><a href="http://www.mryu.top/" target="_blank">spain</a> Say:</font></b>
 			<p class="aboutcomment"><font size="3.5em"> github 搜 Crawler4Caida 来的，<br>
 								    有个资源不能爬了 哈哈<br>
-								    请指教</font>
+								    请指教</font><br>
 				<font size="3em">2019-12-20 10:05</font>
 			</p>
 			<a href="{{ "/about/#Contact" | prepend: site.baseurl  }}">回复</a>
