@@ -15,7 +15,7 @@ header:
 
 <html>
 <br>
-  <h2>{% t about.contact %}</h2><a class ="Contact" id="Contact"></a>
+  <h2>{% t about.contact %}</h2>
   <h3>{% t about.contact_message %}</h3>
   <form id="second" method="post" action="https://getsimpleform.com/messages?form_api_token=bce488d72133f1c308485c01fad8b4bb" >
         <input name="redirect_to" type="hidden" id="name" value="https://hatchin.netlify.com{{site.baseurl}}/thankyou">
