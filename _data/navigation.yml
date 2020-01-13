@@ -28,6 +28,8 @@ sidebar-sample:
         url: /categories/#stat
       - title: "Neural_Network"
         url: /categories/#neural-network
+      - title: "Random_Note"
+        url: /categories/#random-note
   - title: "Tags"
     url: /tags/
     children:
@@ -35,7 +37,9 @@ sidebar-sample:
         url: /tags/#theory
       - title: "Tool"
         url: /tags/#tool
-      - title: "WebApp"
+      - title: "Web"
         url: /tags/#webapp
+      - title: "How_do_I_build_my_blog?"
+        url: /tags/#myblog
 
 
