@@ -31,7 +31,7 @@ header:
     </form>
 <br>
 <br>
-<p class="page__innerwrap"><b>评论：</b></p>
+<div class="page__innerwrap"><b>评论：</b>
 	<div class="comment" id="comment-395"><a name="395"></a>
 		<div class="comment-info">
 			<b><a href="http://www.mryu.top/" target="_blank">spain</a> Say:</b>
@@ -52,5 +52,5 @@ header:
 		</div>
 		<hr style="height:1px;border:none;border-top:1px dashed grey;">
 	</div>
-
+	</div>
 </html>
