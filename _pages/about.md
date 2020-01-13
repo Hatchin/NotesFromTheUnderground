@@ -33,14 +33,12 @@ header:
 <br>
 <div class="page__innerwrap"><h2>脚印</h2>
 	<div class="comment" id="comment-1">
-		<b><font size="4em"><a href="http://www.mryu.top/" target="_blank">spain</a>:</font></b>
-			<p class="aboutcomment"><font size="3.5em"> github 搜 Crawler4Caida 来的，<br>
-								    有个资源不能爬了 哈哈<br>
-								    请指教</font><br>
+		<b><font size="4em"><a href="https://hatchin.netlify.com/" target="_blank">哈金</a>:</font></b>
+			<p class="aboutcomment"><font size="3.5em"> 试试</font><br>
 				<font size="3em">2019-12-20 10:05<a href="{{ "/about/#Contact" | prepend: site.baseurl  }}">   回复</a></font>
 		</p>	
 		<b><font size="4em"><a class="replytitle" href="https://hatchin.netlify.com/" target="_blank">哈金</a>:</font></b>
-				<p class="replycomment"><font size="3.5em"> @xiaopan：哪个？</font> <br>
+				<p class="replycomment"><font size="3.5em"> @哈金：repeat</font> <br>
 				<font size="3em">2019-12-21 09:35<a href="{{ "/about/#Contact" | prepend: site.baseurl  }}">   回复</a></font>
 		</p>
 	</div>		
