@@ -31,7 +31,7 @@ header:
     </form>
 <br>
 <br>
-<div class="page__innerwrap"><b>评论：</b>
+<div class="page__innerwrap"><h2>脚印</h2>
 	<div class="comment" id="comment-395"><a name="395"></a>
 		<div class="comment-info">
 			<b><a href="http://www.mryu.top/" target="_blank">spain</a> Say:</b>
