@@ -32,11 +32,13 @@ sidebar:
   Clustering                 : 聚类
   Stat                       : 统计
   Neural_Network             : 神经网络
+  Random_Note                : 随记
   
   Tags                       : 标签
   Theory                     : 理论
   Tool                       : 工具
-  WebApp                     : 网页应用
+  Web                        : 网页
+  How_do_I_build_my_blog?    : “这”是怎么建立的？
 
 comments:
   lang                       : zh-cn
