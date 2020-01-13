@@ -10,6 +10,8 @@ about:
   send                       : 提交
   personal_url               : 个人网站 (选填)
   private                    : 私信（不公开）
+  comments                   : 留言
+  reply                      : 回复
 
 thankyou:
   thankyou                   : 谢谢！
