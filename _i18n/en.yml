@@ -10,6 +10,8 @@ about:
   send                       : Send
   personal_url               : Personal URL (optional)
   private                    : Private (won't publish on Board)
+  comments                   : Comments
+  reply                      : Reply
 
 thankyou:
   thankyou                   : Thank you! 
