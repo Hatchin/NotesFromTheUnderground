@@ -1,6 +1,6 @@
 ---
 title: 
-  en: "Make Minimal Mistakes Bilingual"
+  en: "Make Minimal Mistakes Bilingual - a multilingual blog"
 excerpt_separator: "<!--more-->"
 categories:
   - Random_Note
