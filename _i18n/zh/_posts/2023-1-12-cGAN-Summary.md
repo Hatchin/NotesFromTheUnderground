@@ -13,7 +13,7 @@ mathjax: true
 comments: true
 toc: true
 toc_sticky: true
-language: en
+language: zh
 permalink: /cgansummary/
 
   
