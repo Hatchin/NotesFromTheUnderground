@@ -14,7 +14,7 @@ comments: true
 toc: true
 toc_sticky: true
 language: en
-permalink: /mannwhitneyutool/
+permalink: /cgansummary/
 
   
 ---
