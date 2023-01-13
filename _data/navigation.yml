@@ -30,6 +30,8 @@ sidebar-sample:
         url: /categories/#neural-network
       - title: "Random_Note"
         url: /categories/#random-note
+      - title: "Deep_Learning"
+        url: /categories/#deep-learning
       
   - title: "Tags"
     url: /tags/
