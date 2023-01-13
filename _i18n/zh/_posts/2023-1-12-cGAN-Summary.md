@@ -1,6 +1,6 @@
 ---
 title: 
-  en: "条件GAN总结"
+  zh: "条件GAN总结"
 excerpt_separator: "<!--more-->"
 categories:
   - Neural_Network
